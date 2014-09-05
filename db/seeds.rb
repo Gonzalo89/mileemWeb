@@ -18,3 +18,8 @@ Barrio.create([{nombre: 'Agronomía'},{nombre: 'Almagro'}, {nombre: 'Balvanera'}
   {nombre: 'Villa del Parque'},{nombre: 'Villa Devoto'},{nombre: 'Villa General Mitre'},{nombre: 'Villa Lugano'},
   {nombre: 'Villa Luro'},{nombre: 'Villa Ortúzar'},{nombre: 'Villa Pueyrredón'},{nombre: 'Villa Real'},
   {nombre: 'Villa Riachuelo'},{nombre: 'Villa Santa Rita'},{nombre: 'Villa Soldati'},{nombre: 'Villa Urquiza'},])
+  
+Propiedad.create([{direccion: 'PEDRO LOZANO al 4100', barrio_id: 2}, 
+  {direccion: 'Av Corrientes 4666', barrio: Barrio.find_by_nombre('Flores')},
+  {direccion: 'Murguiondo 449', barrio: Barrio.find_by_nombre('Liniers')},
+  {direccion: 'Av Paseo Colon 850', barrio_id: 35}])

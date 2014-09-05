@@ -11,12 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905140329) do
+ActiveRecord::Schema.define(version: 20140905145900) do
 
   create_table "barrios", force: true do |t|
     t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "propiedads", force: true do |t|
+    t.string   "direccion"
+    t.integer  "barrio_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "propiedads", ["barrio_id"], name: "index_propiedads_on_barrio_id", using: :btree
 
 end

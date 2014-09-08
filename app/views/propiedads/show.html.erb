@@ -10,5 +10,10 @@
   <%= @propiedad.barrio.nombre %>
 </p>
 
+<p>
+  <strong>Precio:</strong>
+  <%= @propiedad.precio %>
+</p>
+
 <%= link_to 'Edit', edit_propiedad_path(@propiedad) %> |
 <%= link_to 'Back', propiedads_path %>

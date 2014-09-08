@@ -16,6 +16,10 @@
     <%= f.text_field :direccion %>
   </div>
   <div class="field">
+    <%= f.label :precio %><br>
+    <%= f.text_field :precio %>
+  </div>
+  <div class="field">
     <%= f.label :barrio_id %><br>
     <%= f.collection_select :barrio_id, Barrio.all, :id, :nombre, :selected => @propiedad.barrio_id %>
   </div>

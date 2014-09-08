@@ -1,18 +1,35 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Direccion:</strong>
-  <%= @propiedad.direccion %>
+<p id="notice">
+	<%= notice %>
 </p>
 
 <p>
-  <strong>Barrio:</strong>
-  <%= @propiedad.barrio.nombre %>
+	<strong>Direccion:</strong>
+	<%= @propiedad.direccion %>
 </p>
 
 <p>
-  <strong>Precio:</strong>
-  <%= @propiedad.precio %>
+	<strong>Precio:</strong>
+	<%= @propiedad.precio %>
+</p>
+
+<p>
+	<strong>Superficie:</strong>
+	<%= @propiedad.superficie %>
+</p>
+
+<p>
+	<strong>Ambientes:</strong>
+	<%= @propiedad.ambientes %>
+</p>
+
+<p>
+	<strong>Barrio:</strong>
+	<%= @propiedad.barrio.nombre %>
+</p>
+
+<p>
+	<strong>Tipo:</strong>
+	<%= @propiedad.tipo_propiedad.nombre %>
 </p>
 
 <%= link_to 'Edit', edit_propiedad_path(@propiedad) %> |

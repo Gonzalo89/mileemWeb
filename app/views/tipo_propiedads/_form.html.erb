@@ -1,0 +1,21 @@
+<%= form_for(@tipo_propiedad) do |f| %>
+  <% if @tipo_propiedad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipo_propiedad.errors.count, "error") %> prohibited this tipo_propiedad from being saved:</h2>
+
+      <ul>
+      <% @tipo_propiedad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

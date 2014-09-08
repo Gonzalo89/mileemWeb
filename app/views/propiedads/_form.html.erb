@@ -1,29 +1,49 @@
 <%= form_for(@propiedad) do |f| %>
-  <% if @propiedad.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@propiedad.errors.count, "error") %> prohibited this propiedad from being saved:</h2>
+<% if @propiedad.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@propiedad.errors.count, "error") %> prohibited this propiedad from being saved:</h2>
 
-      <ul>
-      <% @propiedad.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @propiedad.errors.full_messages.each do |message| %>
+		<li>
+			<%= message %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :direccion %><br>
-    <%= f.text_field :direccion %>
-  </div>
-  <div class="field">
-    <%= f.label :precio %><br>
-    <%= f.text_field :precio %>
-  </div>
-  <div class="field">
-    <%= f.label :barrio_id %><br>
-    <%= f.collection_select :barrio_id, Barrio.all, :id, :nombre, :selected => @propiedad.barrio_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+	<%= f.label :direccion %>
+	<br>
+	<%= f.text_field :direccion %>
+</div>
+<div class="field">
+	<%= f.label :precio %>
+	<br>
+	<%= f.text_field :precio %>
+</div>
+<div class="field">
+	<%= f.label :superficie %>
+	<br>
+	<%= f.text_field :superficie %>
+</div>
+<div class="field">
+	<%= f.label :ambientes %>
+	<br>
+	<%= f.text_field :ambientes %>
+</div>
+<div class="field">
+	<%= f.label :barrio_id %>
+	<br>
+	<%= f.collection_select :barrio_id, Barrio.all, :id, :nombre, :selected => @propiedad.barrio_id %>
+</div>
+<div class="field">
+	<%= f.label :tipo_propiedad_id %>
+	<br>
+	<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id, :nombre, :selected => @propiedad.tipo_propiedad_id %>
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
 <% end %>

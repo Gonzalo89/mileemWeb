@@ -1,11 +1,14 @@
-<h1>Listing propiedads</h1>
+<h1>Lista de propiedades</h1>
 
 <table>
 	<thead>
 		<tr>
 			<th>Direccion</th>
 			<th>Precio</th>
+			<th>Superficie</th>
+			<th>Ambientes</th>			
 			<th>Barrio</th>
+			<th>Tipo</th>
 			<th colspan="3"></th>
 		</tr>
 	</thead>
@@ -15,7 +18,10 @@
 		<tr>
 			<td><%= propiedad.direccion %></td>
 			<td><%= propiedad.precio %></td>
+			<td><%= propiedad.superficie %></td>
+			<td><%= propiedad.ambientes %></td>
 			<td><%= propiedad.barrio.nombre %></td>
+			<td><%= propiedad.tipo_propiedad.nombre %></td>
 			<td><%= link_to 'Show', propiedad %></td>
 			<td><%= link_to 'Edit', edit_propiedad_path(propiedad) %></td>
 			<td><%= link_to 'Destroy', propiedad, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -36,5 +36,22 @@
 	<%= image_tag @propiedad.foto if @propiedad.foto? %>
 </p>
 
+<h2>Fotos</h2>
+<% @propiedad.fotos.each do |foto| %>
+  <p>
+    <%= image_tag foto.nombre if foto.nombre? %>
+  </p>
+<% end %>
+
+<%= form_for([@propiedad, @propiedad.fotos.build]) do |f| %>
+  <p>
+    <%= f.label "agregar foto" %><br>
+    <%= f.file_field :nombre %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_propiedad_path(@propiedad) %> |
 <%= link_to 'Back', propiedads_path %>

@@ -2,22 +2,7 @@
 
 <%= render 'form' %>
 
-<h2>Fotos</h2>
-<% @propiedad.fotos.each do |foto| %>
-  <p>
-    <%= image_tag foto.nombre if foto.nombre? %>
-  </p>
-<% end %>
-
-<%= form_for([@propiedad, @propiedad.fotos.build]) do |f| %>
-  <p>
-    <%= f.label "agregar foto" %><br>
-    <%= f.file_field :nombre %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'formFotos' %>
 
 <%= link_to 'Show', @propiedad %> |
 <%= link_to 'Back', propiedads_path %>

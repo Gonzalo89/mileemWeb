@@ -1,6 +1,5 @@
 class FotosController < ApplicationController
   before_action :set_foto, only: [:show, :edit, :update, :destroy]
-
   # GET /fotos
   # GET /fotos.json
   def index
@@ -25,20 +24,25 @@ class FotosController < ApplicationController
   # POST /fotos.json
   def create
     @propiedad = Propiedad.find(params[:propiedad_id])
-    @foto = @propiedad.fotos.create(foto_params)
-    redirect_to propiedad_path(@propiedad)
-    
-#    @foto = Foto.new(foto_params)
 
-#    respond_to do |format|
-#      if @foto.save
-#        format.html { redirect_to @foto, notice: 'Foto was successfully created.' }
-#        format.json { render :show, status: :created, location: @foto }
-#      else
-#        format.html { render :new }
-#        format.json { render json: @foto.errors, status: :unprocessable_entity }
-#      end
-#    end
+    if(@propiedad.fotos.count >= 3)
+      redirect_to propiedad_path(@propiedad), notice: 'No se puede cargar mas de 3 fotos.'
+    else
+      @foto = @propiedad.fotos.create(foto_params)
+      redirect_to propiedad_path(@propiedad)
+    end
+
+  #    @foto = Foto.new(foto_params)
+
+  #    respond_to do |format|
+  #      if @foto.save
+  #        format.html { redirect_to @foto, notice: 'Foto was successfully created.' }
+  #        format.json { render :show, status: :created, location: @foto }
+  #      else
+  #        format.html { render :new }
+  #        format.json { render json: @foto.errors, status: :unprocessable_entity }
+  #      end
+  #    end
   end
 
   # PATCH/PUT /fotos/1
@@ -58,21 +62,24 @@ class FotosController < ApplicationController
   # DELETE /fotos/1
   # DELETE /fotos/1.json
   def destroy
+    propiedad = @foto.propiedad
     @foto.destroy
     respond_to do |format|
-      format.html { redirect_to fotos_url, notice: 'Foto was successfully destroyed.' }
+    # format.html { redirect_to fotos_url, notice: 'Foto was successfully destroyed.' }
+      format.html { redirect_to propiedad_path(propiedad), notice: 'Foto was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_foto
-      @foto = Foto.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def foto_params
-      params.require(:foto).permit(:nombre, :propiedad_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_foto
+    @foto = Foto.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def foto_params
+    params.require(:foto).permit(:nombre, :propiedad_id)
+  end
 end

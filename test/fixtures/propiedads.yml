@@ -3,7 +3,22 @@
 one:
   direccion: Direccion1
   barrio: two
+  precio: 150000
+  superficie: 120
+  ambientes: 4
+  tipo_propiedad: TipoDepartamento  
 
 two:
   direccion: Direccion2
   barrio: one
+  precio: 150000
+  superficie: 65
+  ambientes: 2
+  tipo_propiedad: TipoCasa
+  
+validacionUS001:
+  direccion: Rivadavia 6598
+  barrio: Flores
+  superficie: 150
+  ambientes: 4
+  tipo_propiedad: TipoCasa

@@ -15,5 +15,10 @@ class PropiedadTest < ActiveSupport::TestCase
     assert propiedad.save
   end
 
+  test "validacion US001" do
+    propiedad = propiedads(:validacionUS001)
+    assert propiedad.save
+  end
+
 end
 

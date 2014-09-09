@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tipo_propiedads
+
   resources :propiedads
 
   resources :barrios

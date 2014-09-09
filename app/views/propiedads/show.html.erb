@@ -32,5 +32,9 @@
 	<%= @propiedad.tipo_propiedad.nombre %>
 </p>
 
+<p>
+	<%= image_tag @propiedad.foto if @propiedad.foto? %>
+</p>
+
 <%= link_to 'Edit', edit_propiedad_path(@propiedad) %> |
 <%= link_to 'Back', propiedads_path %>

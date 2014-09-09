@@ -43,10 +43,12 @@
 	<br>
 	<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id, :nombre, :selected => @propiedad.tipo_propiedad_id %>
 </div>
-<div class="field">
+
+<!-- <div class="field">
     <label>Foto</label>
-    <%= f.file_field :foto,  :selected =>  @propiedad.foto  %>
-</div>
+    <%= f.file_field :foto%>
+</div> -->
+
 <div class="actions">
 	<%= f.submit %>
 </div>

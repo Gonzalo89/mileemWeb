@@ -2,23 +2,68 @@
 
 one:
   direccion: Direccion1
+  numero: 1
+  piso: PB
+  departamento:
   barrio: two
+  descripcion: descripcion3
+  antiguedad: 1
+  operacion: alquiler   
   precio: 150000
+  moneda: pesos
   superficie: 120
   ambientes: 4
-  tipo_propiedad: TipoDepartamento  
+  dormitorios: 2
+  expensas: 1250
+  tipo_propiedad: departamento   
 
 two:
-  direccion: Direccion2
+  direccion: direccion2
+  numero: 256
+  piso:
+  departamento:
   barrio: one
+  descripcion: descripcion2
+  antiguedad: 2
+  operacion: venta  
   precio: 150000
+  moneda: pesos
   superficie: 65
   ambientes: 2
-  tipo_propiedad: TipoCasa
+  dormitorios: 3
+  expensas: 150
+  tipo_propiedad: casa
   
 validacionUS001:
-  direccion: Rivadavia 6598
-  barrio: Flores
+  direccion: Rivadavia
+  numero: 6598
+  piso: 3
+  departamento: D
+  barrio: flores
+  descripcion: descripcion3
+  antiguedad: 2
+  operacion: venta
+  precio: 185000
+  moneda: dolares
   superficie: 150
   ambientes: 4
-  tipo_propiedad: TipoCasa
+  dormitorios: 2
+  expensas: 150
+  tipo_propiedad: casa
+    
+validacionUS001org:
+  direccion: Rivadavia
+  numero: 6598
+  piso: 3
+  departamento: D
+  barrio: flores
+  descripcion: descripcion3
+  antiguedad: 2
+  operacion: venta
+  precio: 185000
+  moneda: dolares
+  superficie: 150
+  ambientes: 4
+  dormitorios: 2
+  expensas: 150
+  tipo_propiedad: casa 

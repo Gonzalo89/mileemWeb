@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TipoPropiedadsControllerTest < ActionController::TestCase
   setup do
-    @tipo_propiedad = tipo_propiedads(:TipoCasa)
+    @tipo_propiedad = tipo_propiedads(:casa)
   end
 
   test "should get index" do

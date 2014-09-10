@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  nombre: MyString
+pesos:
+  nombre: Pesos
 
-two:
-  nombre: MyString
+dolares:
+  nombre: Dolares

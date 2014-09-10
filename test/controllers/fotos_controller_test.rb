@@ -2,7 +2,7 @@ require 'test_helper'
 
 class FotosControllerTest < ActionController::TestCase
   setup do
-    @foto = fotos(:one)
+    @foto = fotos(:foto1)
   end
 
   test "should get index" do
@@ -40,10 +40,12 @@ class FotosControllerTest < ActionController::TestCase
   end
 
   test "should destroy foto" do
+    propiedad = @foto.propiedad
+    
     assert_difference('Foto.count', -1) do
       delete :destroy, id: @foto
     end
 
-    assert_redirected_to fotos_path
+    assert_redirected_to propiedad_path(propiedad)
   end
 end

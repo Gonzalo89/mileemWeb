@@ -18,7 +18,9 @@ class PropiedadsControllerTest < ActionController::TestCase
 
   test "should create propiedad" do
     assert_difference('Propiedad.count') do
-      post :create, propiedad: { barrio_id: @propiedad.barrio_id, direccion: @propiedad.direccion }
+      post :create, propiedad: { barrio_id: @propiedad.barrio_id, direccion: @propiedad.direccion,
+        numero: @propiedad.numero, descripcion: @propiedad.descripcion, moneda_id: @propiedad.moneda_id,
+        precio: @propiedad.precio, operacion_id: @propiedad.operacion_id}
     end
 
     assert_redirected_to propiedad_path(assigns(:propiedad))

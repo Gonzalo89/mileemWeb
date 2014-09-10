@@ -17,7 +17,7 @@ class PropiedadTest < ActiveSupport::TestCase
 
   test "validacion US001" do
     propiedad = propiedads(:validacionUS001)
-    assert propiedad.save
+    assert propiedad.save, "Fallo al guardar una propiedad"
   end
 
 end

@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-TipoCasa:
+casa:
   nombre: Casa
 
-TipoDepartamento:
+departamento:
   nombre: Departamento
+  
+dh:
+  nombre: PH
+  
+quinta:
+  nombre: Quinta

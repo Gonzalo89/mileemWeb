@@ -2,7 +2,7 @@ require 'test_helper'
 
 class MonedasControllerTest < ActionController::TestCase
   setup do
-    @moneda = monedas(:one)
+    @moneda = monedas(:pesos)
   end
 
   test "should get index" do

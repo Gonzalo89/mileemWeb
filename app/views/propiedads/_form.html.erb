@@ -24,6 +24,11 @@
 	<%= f.text_field :precio %>
 </div>
 <div class="field">
+	<%= f.label :moneda_id %>
+	<br>
+	<%= f.collection_select :moneda_id, Moneda.all, :id, :nombre, :selected => @propiedad.moneda_id %>
+</div>
+<div class="field">
 	<%= f.label :superficie %>
 	<br>
 	<%= f.text_field :superficie %>

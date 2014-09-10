@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :monedas
+
   resources :fotos
 
   resources :tipo_propiedads

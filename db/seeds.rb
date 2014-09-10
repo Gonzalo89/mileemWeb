@@ -24,4 +24,7 @@ Propiedad.create([{direccion: 'PEDRO LOZANO al 4100', barrio_id: 2, precio: 1500
   {direccion: 'Murguiondo 449', barrio: Barrio.find_by_nombre('Liniers'), precio: 120000, superficie: 80, ambientes: 3, tipo_propiedad_id: 1},
   {direccion: 'Av Paseo Colon 850', barrio_id: 35, precio: 115000, superficie: 75, ambientes: 3, tipo_propiedad_id: 1}])
   
-TipoPropiedad.create([{nombre: 'Casa'},{nombre: 'Departamento'}])
+TipoPropiedad.create([{nombre: 'Casa'},{nombre: 'Departamento'},{nombre: 'PH'},
+  {nombre: 'Countries y Barrios Cerrados'},{nombre: 'Terrenos y Lotes'},{nombre: 'Quinta'},{nombre: 'Campos y Chacras'},
+  {nombre: 'Galpones, Depositos y Edificios Ind.'},{nombre: 'Cocheras'},{nombre: 'Negocios y Fondos de Comercio'},{nombre: 'Oficinas'},
+  {nombre: 'Consultorios'},{nombre: 'Bovedas, Nichos y Parcelas'},{nombre: 'Locales Comerciales'},])

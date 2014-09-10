@@ -71,6 +71,6 @@ class PropiedadsController < ApplicationController
     def propiedad_params
       params.require(:propiedad).permit(:direccion, :barrio_id,
        :precio, :superficie, :ambientes, :tipo_propiedad_id, :foto,
-       :moneda_id, :numero, :piso, :departamento)
+       :moneda_id, :numero, :piso, :departamento, :descripcion)
     end
 end

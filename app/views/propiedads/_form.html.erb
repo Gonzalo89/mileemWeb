@@ -34,6 +34,11 @@
 	<%= f.text_area :descripcion %>
 </div>
 <div class="field">
+	<%= f.label :operacion_id %>
+	<br>
+	<%= f.collection_select :operacion_id, Operacion.all, :id, :tipo, :selected => @propiedad.operacion_id %>
+</div>
+<div class="field">
 	<%= f.label :precio %>
 	<br>
 	<%= f.text_field :precio %>

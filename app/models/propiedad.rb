@@ -9,5 +9,6 @@ class Propiedad < ActiveRecord::Base
   belongs_to :barrio
   belongs_to :tipo_propiedad
   belongs_to :moneda
-  mount_uploader :foto, FotoUploader  
+  belongs_to :operacion
+#  mount_uploader :foto, FotoUploader  
 end

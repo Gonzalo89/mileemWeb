@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910135634) do
+ActiveRecord::Schema.define(version: 20140910145724) do
 
   create_table "barrios", force: true do |t|
     t.string   "nombre"
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 20140910135634) do
     t.datetime "updated_at"
   end
 
+  create_table "operacions", force: true do |t|
+    t.string   "tipo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "propiedads", force: true do |t|
     t.string   "direccion"
     t.integer  "barrio_id"
@@ -49,10 +55,12 @@ ActiveRecord::Schema.define(version: 20140910135634) do
     t.integer  "numero"
     t.string   "departamento"
     t.text     "descripcion"
+    t.integer  "operacion_id"
   end
 
   add_index "propiedads", ["barrio_id"], name: "index_propiedads_on_barrio_id", using: :btree
   add_index "propiedads", ["moneda_id"], name: "index_propiedads_on_moneda_id", using: :btree
+  add_index "propiedads", ["operacion_id"], name: "index_propiedads_on_operacion_id", using: :btree
   add_index "propiedads", ["tipo_propiedad_id"], name: "index_propiedads_on_tipo_propiedad_id", using: :btree
 
   create_table "tipo_propiedads", force: true do |t|

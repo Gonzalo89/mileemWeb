@@ -20,6 +20,11 @@ class PropiedadsController < ApplicationController
   # GET /propiedads/1/edit
   def edit
   end
+  
+  def mostrarJson
+    @propiedads = Propiedad.all
+    render :template => '/propiedads/index.json'
+  end
 
   # POST /propiedads
   # POST /propiedads.json

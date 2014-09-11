@@ -10,5 +10,4 @@ class Propiedad < ActiveRecord::Base
   belongs_to :tipo_propiedad
   belongs_to :moneda
   belongs_to :operacion
-#  mount_uploader :foto, FotoUploader  
 end

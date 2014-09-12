@@ -1,6 +1,5 @@
 class PropiedadsController < ApplicationController
   before_action :set_propiedad, only: [:show, :edit, :update, :destroy]
-
   # GET /propiedads
   # GET /propiedads.json
   def index
@@ -20,10 +19,17 @@ class PropiedadsController < ApplicationController
   # GET /propiedads/1/edit
   def edit
   end
-  
+
   def mostrarJson
     @propiedads = Propiedad.all
-    render '/propiedads/index.json'
+#    render nothing: true
+#    render plain: "OKKKKKKK"
+    render file: "/propiedads/index.json", layout: false
+#    render json: @propiedads
+#    render json:
+#    @propiedads.each do |propiedad|
+#      propiedad.moneda.nombre.to_json
+#    end
   end
 
   # POST /propiedads
@@ -67,15 +73,16 @@ class PropiedadsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_propiedad
-      @propiedad = Propiedad.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def propiedad_params
-      params.require(:propiedad).permit(:direccion, :numero, :piso, :departamento,
-       :descripcion, :antiguedad, :operacion_id, :precio, :moneda_id, :superficie,
-       :ambientes, :dormitorios, :expensas, :barrio_id, :tipo_propiedad_id, :foto)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_propiedad
+    @propiedad = Propiedad.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def propiedad_params
+    params.require(:propiedad).permit(:direccion, :numero, :piso, :departamento,
+    :descripcion, :antiguedad, :operacion_id, :precio, :moneda_id, :superficie,
+    :ambientes, :dormitorios, :expensas, :barrio_id, :tipo_propiedad_id, :foto)
+  end
 end

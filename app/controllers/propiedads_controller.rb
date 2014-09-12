@@ -23,7 +23,7 @@ class PropiedadsController < ApplicationController
   
   def mostrarJson
     @propiedads = Propiedad.all
-    render :template => '/propiedads/index.json'
+    render '/propiedads/index.json'
   end
 
   # POST /propiedads

@@ -24,7 +24,7 @@ class PropiedadsController < ApplicationController
     @propiedads = Propiedad.all
 #    render nothing: true
 #    render plain: "OKKKKKKK"
-     render file: "/propiedads/index.json", layout: false
+    render file: "/propiedads/index.json", layout: false
 #    render json: @propiedads
 #    render json:
 #    @propiedads.each do |propiedad|

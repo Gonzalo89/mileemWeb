@@ -22,8 +22,10 @@ class PropiedadsController < ApplicationController
 
   def mostrarJson
     @propiedads = Propiedad.all
-    render file: "/propiedads/index.json", layout: false
-    # render json: @propiedads
+#    render nothing: true
+#    render plain: "OKKKKKKK"
+     render file: "/propiedads/index.json", layout: false
+#    render json: @propiedads
 #    render json:
 #    @propiedads.each do |propiedad|
 #      propiedad.moneda.nombre.to_json

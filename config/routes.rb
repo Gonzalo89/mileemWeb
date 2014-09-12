@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'propiedads/mostrarJson'
   get 'propiedads/mostrarjson' => 'propiedads#mostrarJson'
+  post 'propiedads/mostrarJson'
+  post 'propiedads/mostrarjson' => 'propiedads#mostrarJson'
   
   resources :operacions
 

@@ -83,5 +83,5 @@
 <br>
 <%= render 'formFotos' %>
 
-<span class="btn"><%= link_to 'Editar publicación', edit_propiedad_path(@propiedad) %></span>
-<span class="btn"><%= link_to 'Volver', propiedads_path %></span>
+<%= link_to 'Editar publicación', edit_propiedad_path(@propiedad), class: "btn" %>
+<%= link_to 'Volver', propiedads_path, class: "btn" %>

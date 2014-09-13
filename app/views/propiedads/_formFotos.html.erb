@@ -3,10 +3,11 @@
 <% @propiedad.fotos.each do |foto| %>
 <p class="center">
 	<%= image_tag foto.nombre if foto.nombre? %>
-	<%= button_to 'Eliminar', foto, method: :delete, data: { confirm: '¿Estás seguro?' } %>
+	<span class="center"><%= button_to 'Eliminar', foto, method: :delete, data: { confirm: '¿Estás seguro?' } %></span>
 </p>
 <% end %>
 
+<hr>
 <%= form_for([@propiedad, @propiedad.fotos.build]) do |f| %>
 <p>
 	<%= f.label "Agregar foto" %>
@@ -17,3 +18,4 @@
 	<%= f.submit %>
 </p>
 <% end %>
+<hr>

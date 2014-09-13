@@ -1,6 +1,8 @@
 require 'carrierwave/orm/activerecord'
 
 class Propiedad < ActiveRecord::Base
+  geocoded_by :direccion  
+  after_validation :geocode, :if => :direccion_changed?
   validates :direccion, presence: true
   validates :descripcion, length: { minimum: 10 }
   validates :precio, numericality: { only_integer: true, greater_than: 1 }

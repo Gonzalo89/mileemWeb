@@ -13,6 +13,7 @@
 </div>
 <% end %>
 
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=true&zoom=16&markers=#{@propiedad.latitude}%2C#{@propiedad.longitude}", :id => "mapa" %>
 <div class="field">
 	<%= f.label :direccion %>
 	<br>
@@ -28,6 +29,16 @@
 	<%= f.label :departamento %>
 	<%= f.text_field :departamento %>
 </div>
+<div class="field">
+<p>  
+  <strong>Latitude:</strong>  
+  <%= @propiedad.latitude %>  
+</p>  
+<p>  
+  <strong>Longitude:</strong>  
+  <%= @propiedad.longitude %>  
+</p>
+</div> 
 <div class="field">
 	<%= f.label :descripcion %>
 	<br>

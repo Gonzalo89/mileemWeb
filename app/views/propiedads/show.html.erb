@@ -6,6 +6,7 @@
 	<strong>Direccion:</strong>
 	<%= @propiedad.direccion %>
 </p>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@propiedad.latitude}%2C#{@propiedad.longitude}", :id => "mapa" %>
 <p>
 	<strong>Numero:</strong>
 	<%= @propiedad.numero %>

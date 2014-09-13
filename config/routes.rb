@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
-  get 'api/mostrar'
-
-  get 'propiedads/mostrarJson'
-  get 'propiedads/mostrarjson' => 'propiedads#mostrarJson'  
-  post 'propiedads/mostrarJson'
-  post 'propiedads/mostrarjson' => 'propiedads#mostrarJson'  
+  get 'api/mostrarJson'
+  get 'api/mostrarjson' => 'api#mostrarJson'  
   
   resources :operacions
 

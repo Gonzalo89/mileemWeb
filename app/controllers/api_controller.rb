@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
-  def mostrar
+  def mostrarJson
     @propiedads = Propiedad.all
-    render plain: "OKKKKKKKApiController"
+    render "/propiedads/index.json"
   end
 end

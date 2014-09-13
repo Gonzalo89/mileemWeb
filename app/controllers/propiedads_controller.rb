@@ -27,7 +27,7 @@ class PropiedadsController < ApplicationController
 
     respond_to do |format|
       if @propiedad.save
-        format.html { redirect_to @propiedad, notice: 'Propiedad was successfully created.' }
+        format.html { redirect_to @propiedad, notice: 'La propiedad fue creada exitosamente.' }
         format.json { render :show, status: :created, location: @propiedad }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class PropiedadsController < ApplicationController
   def update
     respond_to do |format|
       if @propiedad.update(propiedad_params)
-        format.html { redirect_to @propiedad, notice: 'Propiedad was successfully updated.' }
+        format.html { redirect_to @propiedad, notice: 'La propiedad fue actualizada exitosamente.' }
         format.json { render :show, status: :ok, location: @propiedad }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class PropiedadsController < ApplicationController
   def destroy
     @propiedad.destroy
     respond_to do |format|
-      format.html { redirect_to propiedads_url, notice: 'Propiedad was successfully destroyed.' }
+      format.html { redirect_to propiedads_url, notice: 'La propiedad fue eliminada exitosamente.' }
       format.json { head :no_content }
     end
   end

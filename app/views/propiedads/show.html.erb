@@ -2,11 +2,30 @@
 	<%= notice %>
 </p>
 
-<p>
-	<strong>Direccion:</strong>
+<h2>Datos de operación</h2>
+<hr>
+<p class="center">
+	<strong>Operacion:</strong>
+	<%= @propiedad.operacion.tipo %>
+</p>
+
+<p class="center">
+	<strong>Tipo:</strong>
+	<%= @propiedad.tipo_propiedad.nombre %>
+</p>
+
+<br>
+<h2>Ubicación</h2>
+<hr>
+<p class="center">
+	<strong>Barrio:</strong>
+	<%= @propiedad.barrio.nombre %>
+</p>
+<p class="center">
+	<strong>Calle:</strong>
 	<%= @propiedad.direccion %>
 </p>
-<p>
+<p class="center">
 	<strong>Numero:</strong>
 	<%= @propiedad.numero %>
 	<strong>Piso:</strong>
@@ -15,66 +34,54 @@
 	<%= @propiedad.departamento %>
 </p>
 
-<p>
+<br>
+<h2>Datos del inmueble</h2>
+<hr>
+<p class="center">
 	<strong>Descripcion:</strong>
 	<%= @propiedad.descripcion %>
 </p>
 
-<p>
+<p class="center">
 	<strong>Antiguedad:</strong>
-	<%= @propiedad.antiguedad %>
+	<%= @propiedad.antiguedad %> años
 </p>
 
-<p>
-	<strong>Operacion:</strong>
-	<%= @propiedad.operacion.tipo %>
-</p>
-
-<p>
-	<strong>Precio:</strong>
-	<%= @propiedad.precio %>
-</p>
-
-<p>
-	<strong>Moneda:</strong>
-	<%= @propiedad.moneda.nombre %>
-</p>
-
-<p>
+<p class="center">
 	<strong>Superficie:</strong>
-	<%= @propiedad.superficie %>
+	<%= @propiedad.superficie %> m2
 </p>
 
-<p>
+<p class="center">
 	<strong>Ambientes:</strong>
 	<%= @propiedad.ambientes %>
 </p>
 
-<p>
+<p class="center">
 	<strong>Dormitorios:</strong>
 	<%= @propiedad.dormitorios %>
 </p>
 
-<p>
+<p class="center">
+	<strong>Moneda:</strong>
+	<%= @propiedad.moneda.nombre %>
+</p>
+
+<p class="center">
+	<strong>Precio:</strong>
+	<%= @propiedad.precio %>
+</p>
+
+<p class="center">
 	<strong>Expensas:</strong>
 	<%= @propiedad.expensas %>
 </p>
 
 <p>
-	<strong>Barrio:</strong>
-	<%= @propiedad.barrio.nombre %>
-</p>
-
-<p>
-	<strong>Tipo:</strong>
-	<%= @propiedad.tipo_propiedad.nombre %>
-</p>
-
-<p>
 	<%= image_tag @propiedad.foto if @propiedad.foto? %>
 </p>
-
+<br>
 <%= render 'formFotos' %>
 
-<span class="btn"><%= link_to 'Edit', edit_propiedad_path(@propiedad) %></span>
-<span class="btn"><%= link_to 'Back', propiedads_path %></span>
+<%= link_to 'Editar publicación', edit_propiedad_path(@propiedad), class: "btn" %>
+<%= link_to 'Volver', propiedads_path, class: "btn" %>

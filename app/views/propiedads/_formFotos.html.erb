@@ -1,14 +1,15 @@
 <h2>Fotos</h2>
+<hr>
 <% @propiedad.fotos.each do |foto| %>
-<p>
+<p class="center">
 	<%= image_tag foto.nombre if foto.nombre? %>
-	<%= button_to 'Destroy', foto, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<%= button_to 'Eliminar', foto, method: :delete, data: { confirm: '¿Estás seguro?' } %>
 </p>
 <% end %>
 
 <%= form_for([@propiedad, @propiedad.fotos.build]) do |f| %>
 <p>
-	<%= f.label "agregar foto" %>
+	<%= f.label "Agregar foto" %>
 	<br>
 	<%= f.file_field :nombre , :id => "archivo", :required => true %>
 </p>

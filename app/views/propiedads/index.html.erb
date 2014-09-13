@@ -1,3 +1,7 @@
+<span class="btn btn-info">
+	<%= link_to 'PUBLICAR PROPIEDAD', new_propiedad_path %>
+</span>
+
 <h1>Lista de propiedades</h1>
 
 <table class="table table-condensed">
@@ -7,15 +11,10 @@
 			<th>Número</th>
 			<th>Piso</th>
 			<th>Depto</th>
-			<th>Descripción</th>
-			<th>Antiguedad</th>
 			<th>Operación</th>
 			<th>Precio</th>
 			<th>Moneda</th>
 			<th>Superficie</th>
-			<th>Ambientes</th>
-			<th>Dormitorios</th>
-			<th>Expensas</th>
 			<th>Barrio</th>
 			<th>Tipo</th>
 			<th>Fotos</th>
@@ -30,15 +29,10 @@
 			<td><%= propiedad.numero %></td>
 			<td><%= propiedad.piso %></td>
 			<td><%= propiedad.departamento %></td>
-			<td><%= propiedad.descripcion %></td>
-			<td></td>
 			<td><%= propiedad.operacion.tipo %></td>
 			<td><%= propiedad.precio %></td>
 			<td><%= propiedad.moneda.nombre %></td>
 			<td><%= propiedad.superficie %></td>
-			<td><%= propiedad.ambientes %></td>
-			<td></td>
-			<td></td>
 			<td><%= propiedad.barrio.nombre %></td>
 			<td><%= propiedad.tipo_propiedad.nombre %></td>
 			<!--	<td><%= image_tag propiedad.foto_url(:thumb) if propiedad.foto? %></td> -->
@@ -49,16 +43,12 @@
 			<% end %>
 			 </td>
 
-			<td><%= link_to 'Show', propiedad %></td>
-			<td><%= link_to 'Edit', edit_propiedad_path(propiedad) %></td>
-			<td><%= link_to 'Destroy', propiedad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<td><%= link_to 'Ver', propiedad %></td>
+			<td><%= link_to 'Editar', edit_propiedad_path(propiedad) %></td>
+			<td><%= link_to 'Eliminar', propiedad, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
 
 <br>
-
-<span class="btn">
-	<%= link_to 'New Propiedad', new_propiedad_path %>
-</span>

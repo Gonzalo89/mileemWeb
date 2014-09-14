@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'api/mostrarJson'
-  get 'api/mostrarjson' => 'api#mostrarJson'  
+  get 'api/mostrarjson' => 'api#mostrarJson'
+  get 'propiedades' => 'api#mostrarJson'
   
   resources :operacions
 

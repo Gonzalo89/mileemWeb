@@ -15,6 +15,7 @@
 			<th>Precio</th>
 			<th>Moneda</th>
 			<th>Superficie</th>
+			<th>Superficie no cubierta</th>
 			<th>Barrio</th>
 			<th>Tipo</th>
 			<th>Fotos</th>
@@ -33,6 +34,7 @@
 			<td><%= propiedad.precio %></td>
 			<td><%= propiedad.moneda.nombre %></td>
 			<td><%= propiedad.superficie %></td>
+			<td><%= propiedad.superficie_nc %></td>
 			<td><%= propiedad.barrio.nombre %></td>
 			<td><%= propiedad.tipo_propiedad.nombre %></td>
 			<!--	<td><%= image_tag propiedad.foto_url(:thumb) if propiedad.foto? %></td> -->

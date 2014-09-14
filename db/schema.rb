@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914150923) do
+ActiveRecord::Schema.define(version: 20140914182708) do
+
+  create_table "amenities", force: true do |t|
+    t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "barrios", force: true do |t|
     t.string   "nombre"
@@ -66,6 +72,16 @@ ActiveRecord::Schema.define(version: 20140914150923) do
   add_index "propiedads", ["moneda_id"], name: "index_propiedads_on_moneda_id", using: :btree
   add_index "propiedads", ["operacion_id"], name: "index_propiedads_on_operacion_id", using: :btree
   add_index "propiedads", ["tipo_propiedad_id"], name: "index_propiedads_on_tipo_propiedad_id", using: :btree
+
+  create_table "tieneamenities", force: true do |t|
+    t.integer  "propiedad_id"
+    t.integer  "amenity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tieneamenities", ["amenity_id"], name: "index_tieneamenities_on_amenity_id", using: :btree
+  add_index "tieneamenities", ["propiedad_id"], name: "index_tieneamenities_on_propiedad_id", using: :btree
 
   create_table "tipo_propiedads", force: true do |t|
     t.string   "nombre"

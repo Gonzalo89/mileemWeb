@@ -1,0 +1,27 @@
+<h1>Listing tieneamenities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Propiedad</th>
+      <th>Amenity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tieneamenities.each do |tieneamenity| %>
+      <tr>
+        <td><%= tieneamenity.propiedad.direccion %></td>
+        <td><%= tieneamenity.amenity.nombre %></td>
+        <td><%= link_to 'Show', tieneamenity %></td>
+        <td><%= link_to 'Edit', edit_tieneamenity_path(tieneamenity) %></td>
+        <td><%= link_to 'Destroy', tieneamenity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tieneamenity', new_tieneamenity_path %>

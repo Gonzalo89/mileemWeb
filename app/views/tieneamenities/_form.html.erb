@@ -1,0 +1,25 @@
+<%= form_for(@tieneamenity) do |f| %>
+  <% if @tieneamenity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tieneamenity.errors.count, "error") %> prohibited this tieneamenity from being saved:</h2>
+
+      <ul>
+      <% @tieneamenity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :propiedad_id %><br>
+    <%= f.text_field :propiedad_id %>
+  </div>
+  <div class="field">
+    <%= f.label :amenity_id %><br>
+    <%= f.text_field :amenity_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

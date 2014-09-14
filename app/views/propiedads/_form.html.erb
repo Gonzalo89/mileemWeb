@@ -78,6 +78,19 @@
 	<%= f.collection_select :moneda_id, Moneda.all, :id, :nombre, :selected => @propiedad.moneda_id %>
 </div>
 <div class="field center">
+	<%= f.label "Amenities" %>
+	<br>
+	<% @amenities.each do |a| %>
+	<%= f.label a.nombre %>
+	<% if @propiedad.tieneamenities%>
+	  <%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+	<% else  %>
+	  <%= check_box(:tieneamenities, a.nombre) %>
+	<% end  %>
+	<% end  %>
+</div>
+<br>
+<div class="field center">
 	<%= f.label :precio %>
 	<%= f.text_field :precio %>
 </div>
@@ -85,12 +98,6 @@
 	<%= f.label :expensas %>
 	<%= f.text_field :expensas %>
 </div>
-
-
-<!-- <div class="field">
-<label>Foto</label>
-<%= f.file_field :foto%>
-</div> -->
 
 <div class="actions center">
 	<%= f.submit %>

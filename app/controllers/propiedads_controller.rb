@@ -14,6 +14,7 @@ class PropiedadsController < ApplicationController
   # GET /propiedads/new
   def new
     @propiedad = Propiedad.new
+    @amenities = Amenity.all
   end
 
   # GET /propiedads/1/edit
@@ -38,9 +39,44 @@ class PropiedadsController < ApplicationController
 
   # PATCH/PUT /propiedads/1
   # PATCH/PUT /propiedads/1.json
+  def updatedd
+    amenities = params[:tieneamenities]
+
+    @propiedad.tieneamenities.each do |aprop|
+      aprop.destroy
+    end
+
+    amenities.each do |a|
+      if a[1] == '1'
+        newAmenity = Tieneamenity.new
+        newAmenity.propiedad = @propiedad
+        newAmenity.amenity = Amenity.find_by_nombre(a[0])
+      newAmenity.save
+      end
+    end
+    render :plain => amenities.to_yaml
+  end
+
+  # PATCH/PUT /propiedads/1
+  # PATCH/PUT /propiedads/1.json
   def update
     respond_to do |format|
       if @propiedad.update(propiedad_params)
+        amenities = params[:tieneamenities]
+
+        @propiedad.tieneamenities.each do |aprop|
+          aprop.destroy
+        end
+
+        amenities.each do |a|
+          if a[1] == '1'
+            newAmenity = Tieneamenity.new
+            newAmenity.propiedad = @propiedad
+            newAmenity.amenity = Amenity.find_by_nombre(a[0])
+          newAmenity.save
+          end
+        end
+
         format.html { redirect_to @propiedad, notice: 'La propiedad fue actualizada exitosamente.' }
         format.json { render :show, status: :ok, location: @propiedad }
       else
@@ -65,6 +101,7 @@ class PropiedadsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_propiedad
     @propiedad = Propiedad.find(params[:id])
+    @amenities = Amenity.all
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -72,6 +109,6 @@ class PropiedadsController < ApplicationController
     params.require(:propiedad).permit(:direccion, :numero, :piso, :departamento,
     :descripcion, :antiguedad, :operacion_id, :precio, :moneda_id, :superficie,
     :superficie_nc, :ambientes, :dormitorios, :expensas, :barrio_id,
-    :tipo_propiedad_id, :foto)
+    :tipo_propiedad_id)
   end
 end

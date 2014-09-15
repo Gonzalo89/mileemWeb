@@ -36,7 +36,7 @@
 	<strong>Departamento:</strong>
 	<%= @propiedad.departamento %>
 </p>
-<p>
+<p class="center">
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@propiedad.latitude}%2C#{@propiedad.longitude}",
  :id => "mapa" %>
 </p>

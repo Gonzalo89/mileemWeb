@@ -103,12 +103,6 @@ $(document).ready(function (){
 </div>
 <% end %>
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=true&zoom=16&markers=#{@propiedad.latitude}%2C#{@propiedad.longitude}", :id => "mapa" %>
-<div class="field">
-	<%= f.label :direccion %>
-	<br>
-</div>
-
 <h2>Datos de operacion</h2>
 <hr>
 <div class="field center">
@@ -139,9 +133,13 @@ $(document).ready(function (){
 
 	<%= f.label :departamento %>
 	<%= f.text_field :departamento %>
+	
+</div>
+<div class="field center">	
+	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=true&zoom=16&markers=#{@propiedad.latitude}%2C#{@propiedad.longitude}", :id => "mapa" %>
 </div>
 
-<div class="field">
+<div class="field center">
 <p>  
   <strong>Latitude:</strong>  
   <%= @propiedad.latitude %>  
@@ -151,11 +149,12 @@ $(document).ready(function (){
   <%= @propiedad.longitude %>  
 </p>
 </div> 
-<div class="field">
 
+<div class="field">
 <br>
 <h2>Datos del inmueble</h2>
 <hr>
+</div>
 <div class="field center">
 	<%= f.label :descripcion %>
 	<%= f.text_area :descripcion %>

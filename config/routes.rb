@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :tieneamenities
+
+  resources :amenities
+
   get 'api/mostrarJson'
   get 'api/mostrarjson' => 'api#mostrarJson'
   get 'propiedades' => 'api#mostrarJson'

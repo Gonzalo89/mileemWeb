@@ -36,7 +36,8 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+#gem 'debugger', '~> 1.6.8', group: [:development, :test]
+#gem 'debugger-ruby_core_source', '~> 1.3.5', group: [:development, :test]
 
 gem 'therubyracer', '~> 0.12.1'
 gem 'carrierwave', '~> 0.10.0'

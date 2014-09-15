@@ -68,6 +68,16 @@
 </p>
 
 <p class="center">
+	<strong>Amenities:</strong>
+	<% @propiedad.amenities.each do |a| %>
+	<%= a.nombre %>
+	<% if a != @propiedad.amenities.last %>
+	<%= ", " %>
+	<% end %>
+	<% end %>
+</p>
+
+<p class="center">
 	<strong>Moneda:</strong>
 	<%= @propiedad.moneda.nombre %>
 </p>

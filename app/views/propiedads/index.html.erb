@@ -1,6 +1,4 @@
-<span class="btn btn-info">
-	<%= link_to 'PUBLICAR PROPIEDAD', new_propiedad_path %>
-</span>
+<span class="btn btn-info"> <%= link_to 'PUBLICAR PROPIEDAD', new_propiedad_path %> </span>
 
 <h1>Lista de propiedades</h1>
 
@@ -12,6 +10,7 @@
 			<th>Piso</th>
 			<th>Depto</th>
 			<th>Operación</th>
+			<th>Amenities</th>
 			<th>Precio</th>
 			<th>Moneda</th>
 			<th>Superficie</th>
@@ -31,19 +30,24 @@
 			<td><%= propiedad.piso %></td>
 			<td><%= propiedad.departamento %></td>
 			<td><%= propiedad.operacion.tipo %></td>
+
+			<td> <% propiedad.amenities.each do |a| %>
+			<%= a.nombre %>
+			<% if a != propiedad.amenities.last %>
+			<%= ", " %>
+			<% end %>
+			<% end %> </td>
+
 			<td><%= propiedad.precio %></td>
 			<td><%= propiedad.moneda.nombre %></td>
 			<td><%= propiedad.superficie %></td>
 			<td><%= propiedad.superficie_nc %></td>
 			<td><%= propiedad.barrio.nombre %></td>
 			<td><%= propiedad.tipo_propiedad.nombre %></td>
-			<!--	<td><%= image_tag propiedad.foto_url(:thumb) if propiedad.foto? %></td> -->
-			
-			<td>
-			<% propiedad.fotos.each do |foto| %>
+
+			<td> <% propiedad.fotos.each do |foto| %>
 			<%= image_tag foto.nombre_url(:thumb) if foto.nombre? %>
-			<% end %>
-			 </td>
+			<% end %> </td>
 
 			<td><%= link_to 'Ver', propiedad %></td>
 			<td><%= link_to 'Editar', edit_propiedad_path(propiedad) %></td>

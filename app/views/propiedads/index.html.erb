@@ -31,8 +31,8 @@
 			<td><%= propiedad.departamento %></td>
 			<td><%= propiedad.operacion.tipo %></td>
 
-			<td> <% propiedad.tieneamenities.each do |a| %>
-			  <%= a.amenity.nombre if a.amenity.nombre? %>
+			<td> <% propiedad.amenities.each do |a| %>
+			  <%= a.nombre if a.nombre? %>
 			<% end %> </td>
 
 			<td><%= propiedad.precio %></td>

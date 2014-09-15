@@ -82,7 +82,7 @@
 	<br>
 	<% @amenities.each do |a| %>
 	<%= f.label a.nombre %>
-	<% if @propiedad.tieneamenities%>
+	<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
 	  <%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
 	<% else  %>
 	  <%= check_box(:tieneamenities, a.nombre) %>

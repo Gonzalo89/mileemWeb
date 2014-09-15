@@ -109,6 +109,6 @@ class PropiedadsController < ApplicationController
     params.require(:propiedad).permit(:direccion, :numero, :piso, :departamento,
     :descripcion, :antiguedad, :operacion_id, :precio, :moneda_id, :superficie,
     :superficie_nc, :ambientes, :dormitorios, :expensas, :barrio_id,
-    :tipo_propiedad_id)
+    :tipo_propiedad_id, :amenities)
   end
 end

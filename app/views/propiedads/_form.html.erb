@@ -1,3 +1,93 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function (){
+        $("#propiedad_tipo_propiedad_id").change(function() {
+        	switch ($(this).val()){
+        		case "1": //casa
+        		case "3": //ph
+        		case "6": //quinta
+        			$("#opc_antiguedad").show();
+        			$("#propiedad_ambientes").val('');
+        			$("#opc_ambientes").hide();        			
+        			$("#opc_dormitorios").show();
+        			break;
+        		case "2":
+        			$("#opc_antiguedad").show();
+        			$("#opc_ambientes").show();
+        			$("#propiedad_dormitorios").val('');
+        			$("#opc_dormitorios").hide();
+        			break;
+        		case "5": //terreno
+        		case "7": //campo
+        		case "8": //galpón
+        		case "13": //bóveda
+        			$("#propiedad_antiguedad").val('');
+        			$("#opc_antiguedad").hide();
+        			$("#propiedad_ambientes").val('');
+        			$("#opc_ambientes").hide();
+        			$("#propiedad_dormitorios").val('');
+        			$("#opc_dormitorios").hide();
+        			break;
+        		default:
+        			$("#opc_antiguedad").show();
+        			$("#propiedad_ambientes").val('');
+        			$("#opc_ambientes").hide();
+        			$("#propiedad_dormitorios").val('');
+        			$("#opc_dormitorios").hide();
+        	}
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (){
+        $("#propiedad_operacion_id").change(function() {
+        	switch ($(this).val()){
+        		case "1": //venta
+        			$("#opc_expensas").hide();
+        			break;
+        		default:
+        			$("#opc_expensas").show();
+        	}
+        });
+    });
+</script>
+<script>
+$(document).ready(function (){
+	    switch($("#propiedad_tipo_propiedad_id").val()){
+	    	case "1": //casa
+			case "3": //ph
+			case "6": //quinta
+				$("#opc_antiguedad").show();
+				$("#propiedad_ambientes").val('');
+				$("#opc_ambientes").hide();        			
+				$("#opc_dormitorios").show();
+				break;
+			case "2":
+				$("#opc_antiguedad").show();
+				$("#opc_ambientes").show();
+				$("#propiedad_dormitorios").val('');
+				$("#opc_dormitorios").hide();
+				break;
+			case "5": //terreno
+			case "7": //campo
+			case "8": //galpón
+			case "13": //bóveda
+				$("#propiedad_antiguedad").val('');
+				$("#opc_antiguedad").hide();
+				$("#propiedad_ambientes").val('');
+				$("#opc_ambientes").hide();
+				$("#propiedad_dormitorios").val('');
+				$("#opc_dormitorios").hide();
+				break;
+			default:
+				$("#opc_antiguedad").show();
+				$("#propiedad_ambientes").val('');
+				$("#opc_ambientes").hide();
+				$("#propiedad_dormitorios").val('');
+				$("#opc_dormitorios").hide();
+	    }
+	  });
+</script>
 <%= form_for(@propiedad) do |f| %>
 <% if @propiedad.errors.any? %>
 <div id="error_explanation">
@@ -30,7 +120,7 @@
 	<%= f.collection_select :barrio_id, Barrio.all, :id, :nombre, :selected => @propiedad.barrio_id %>
 </div>
 <div class="field center">
-	<%= f.label :direccion %>
+	<%= f.label "Calle" %>
 	<%= f.text_field :direccion %>
 </div>
 <div class="field center">
@@ -50,23 +140,23 @@
 	<%= f.label :descripcion %>
 	<%= f.text_area :descripcion %>
 </div>
-<div class="field center">
+<div class="field center" id="opc_antiguedad" style="display:none;">
 	<%= f.label :antiguedad %>
 	<%= f.text_field :antiguedad %>
 </div>
 <div class="field center">
-	<%= f.label :superficie %>
+	<%= f.label "Superficie cubierta"%>
 	<%= f.text_field :superficie %>
 </div>
 <div class="field center">
-	<%= f.label "Superficie No Cub" %>
+	<%= f.label "Superficie No Cubierta" %>
 	<%= f.text_field :superficie_nc %>
 </div>
-<div class="field center">
+<div class="field center" id="opc_dormitorios" style="display:none;">
 	<%= f.label :dormitorios %>
 	<%= f.text_field :dormitorios %>
 </div>
-<div class="field center">
+<div class="field center" id="opc_ambientes" style="display:none;">
 	<%= f.label :ambientes %>
 	<%= f.text_field :ambientes %>
 </div>
@@ -81,7 +171,7 @@
 	<%= f.label :precio %>
 	<%= f.text_field :precio %>
 </div>
-<div class="field center">
+<div class="field center" id="opc_expensas" style="display:none;">
 	<%= f.label :expensas %>
 	<%= f.text_field :expensas %>
 </div>
@@ -96,3 +186,9 @@
 	<%= f.submit %>
 </div>
 <% end %>
+<script type="text/javascript">
+function myFunction()
+{
+    window.location.reload(false);
+}
+</script>

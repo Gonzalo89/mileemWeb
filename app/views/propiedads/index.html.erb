@@ -32,7 +32,10 @@
 			<td><%= propiedad.operacion.tipo %></td>
 
 			<td> <% propiedad.amenities.each do |a| %>
-			  <%= a.nombre if a.nombre? %>
+			<%= a.nombre %>
+			<% if a != propiedad.amenities.last %>
+			<%= ", " %>
+			<% end %>
 			<% end %> </td>
 
 			<td><%= propiedad.precio %></td>

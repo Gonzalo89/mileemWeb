@@ -25,9 +25,19 @@ class PropiedadsController < ApplicationController
   # POST /propiedads.json
   def create
     @propiedad = Propiedad.new(propiedad_params)
+    amenities = params[:tieneamenities]
 
     respond_to do |format|
       if @propiedad.save
+        amenities.each do |a|
+          if a[1] == '1'
+            newAmenity = Tieneamenity.new
+            newAmenity.propiedad = @propiedad
+            newAmenity.amenity = Amenity.find_by_nombre(a[0])
+            newAmenity.save
+          end
+        end
+
         format.html { redirect_to @propiedad, notice: 'La propiedad fue creada exitosamente.' }
         format.json { render :show, status: :created, location: @propiedad }
       else
@@ -35,26 +45,6 @@ class PropiedadsController < ApplicationController
         format.json { render json: @propiedad.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  # PATCH/PUT /propiedads/1
-  # PATCH/PUT /propiedads/1.json
-  def updatedd
-    amenities = params[:tieneamenities]
-
-    @propiedad.tieneamenities.each do |aprop|
-      aprop.destroy
-    end
-
-    amenities.each do |a|
-      if a[1] == '1'
-        newAmenity = Tieneamenity.new
-        newAmenity.propiedad = @propiedad
-        newAmenity.amenity = Amenity.find_by_nombre(a[0])
-      newAmenity.save
-      end
-    end
-    render :plain => amenities.to_yaml
   end
 
   # PATCH/PUT /propiedads/1

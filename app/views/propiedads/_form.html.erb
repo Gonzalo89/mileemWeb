@@ -70,13 +70,6 @@
 	<%= f.label :ambientes %>
 	<%= f.text_field :ambientes %>
 </div>
-<br>
-<h2>Precio</h2>
-<hr>
-<div class="field center">
-	<%= f.label :moneda_id %>
-	<%= f.collection_select :moneda_id, Moneda.all, :id, :nombre, :selected => @propiedad.moneda_id %>
-</div>
 <div class="field center">
 	<%= f.label "Amenities" %>
 	<br>
@@ -89,7 +82,15 @@
 	<% end  %>
 	<% end  %>
 </div>
+
 <br>
+<h2>Precio</h2>
+<hr>
+<div class="field center">
+	<%= f.label :moneda_id %>
+	<%= f.collection_select :moneda_id, Moneda.all, :id, :nombre, :selected => @propiedad.moneda_id %>
+</div>
+
 <div class="field center">
 	<%= f.label :precio %>
 	<%= f.text_field :precio %>

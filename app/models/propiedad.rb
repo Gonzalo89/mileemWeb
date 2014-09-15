@@ -8,6 +8,8 @@ class Propiedad < ActiveRecord::Base
   validates :precio, numericality: { only_integer: true, greater_than: 1 }
   validates :numero, numericality: { only_integer: true}
   has_many :fotos, dependent: :destroy
+  has_many :tieneamenities, dependent: :destroy  
+  has_many :amenities, :through => :tieneamenities  
   belongs_to :barrio
   belongs_to :tipo_propiedad
   belongs_to :moneda

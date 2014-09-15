@@ -50,7 +50,7 @@ class FotosController < ApplicationController
   def update
     respond_to do |format|
       if @foto.update(foto_params)
-        format.html { redirect_to @foto, notice: 'Foto was successfully updated.' }
+        format.html { redirect_to @foto, notice: 'La foto fue actualizada exitosamente.' }
         format.json { render :show, status: :ok, location: @foto }
       else
         format.html { render :edit }
@@ -66,7 +66,7 @@ class FotosController < ApplicationController
     @foto.destroy
     respond_to do |format|
     # format.html { redirect_to fotos_url, notice: 'Foto was successfully destroyed.' }
-      format.html { redirect_to propiedad_path(propiedad), notice: 'Foto was successfully destroyed.' }
+      format.html { redirect_to propiedad_path(propiedad), notice: 'La foto fue eliminada exitosamente.' }
       format.json { head :no_content }
     end
   end

@@ -132,6 +132,8 @@
 <br>
 <h2>Ubicación</h2>
 <hr>
+<div id="mapa">
+</div>
 <div class="field center">
 	<%= f.label :barrio_id %>
 	<%= f.collection_select :barrio_id, Barrio.all, :id, :nombre, :selected => @propiedad.barrio_id %>
@@ -150,8 +152,6 @@
 	<%= f.label :departamento %>
 	<%= f.text_field :departamento %>
 	
-</div>
-<div id="mapa" class="field center" ></div>
 </div>
 
 <div class="field center">

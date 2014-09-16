@@ -119,13 +119,13 @@
 <% end %>
 <h2>Datos de operacion</h2>
 <hr>
-<div class="field center">
-	<%= f.label :tipo_propiedad_id %>
-	<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id, :nombre, :selected => @propiedad.tipo_propiedad_id %>
-</div>
-<div class="field center">
-	<%= f.label :operacion_id %>
-	<%= f.collection_select :operacion_id, Operacion.all, :id, :tipo, :selected => @propiedad.operacion_id %>
+<div class="camposInline" >
+	<span> <%= f.label :tipo_propiedad_id %>
+		<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id,
+    :nombre, :selected => @propiedad.tipo_propiedad_id %> </span>
+	<span> <%= f.label :operacion_id %>
+		<%= f.collection_select :operacion_id, Operacion.all, :id, :tipo,
+    :selected => @propiedad.operacion_id %> </span>
 </div>
 <br>
 <h2>Ubicación</h2>
@@ -179,14 +179,14 @@
 	<%= f.label "Amenities" %>
 	<br>
 	<% if @amenities %>
-	  <% @amenities.each do |a| %>
-	    <%= f.label a.nombre %>
-	    <% if @propiedad.amenities.find_by_nombre(a.nombre)%>
-	      <%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
-	    <% else  %>
-	      <%= check_box(:tieneamenities, a.nombre) %>
-	    <% end  %>
-	  <% end  %>
+	<% @amenities.each do |a| %>
+	<%= f.label a.nombre %>
+	<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
+	<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+	<% else  %>
+	<%= check_box(:tieneamenities, a.nombre) %>
+	<% end  %>
+	<% end  %>
 	<% end  %>
 </div>
 
@@ -194,14 +194,13 @@
 <h2>Precio</h2>
 <hr>
 <div class="field center">
+	<%= f.label :precio %>
+	<%= f.text_field :precio %>
+
 	<%= f.label :moneda_id %>
 	<%= f.collection_select :moneda_id, Moneda.all, :id, :nombre, :selected => @propiedad.moneda_id %>
 </div>
 
-<div class="field center">
-	<%= f.label :precio %>
-	<%= f.text_field :precio %>
-</div>
 <div class="field center" id="opc_expensas" style="display:none;">
 	<%= f.label :expensas %>
 	<%= f.text_field :expensas %>

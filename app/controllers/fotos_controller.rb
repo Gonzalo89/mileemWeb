@@ -23,6 +23,7 @@ class FotosController < ApplicationController
   # POST /fotos
   # POST /fotos.json
   def create
+    render :plain => params.inspect
     @propiedad = Propiedad.find(params[:propiedad_id])
 
     if(@propiedad.fotos.count >= 3)

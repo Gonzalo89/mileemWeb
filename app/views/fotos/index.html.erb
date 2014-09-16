@@ -13,7 +13,7 @@
     <% @fotos.each do |foto| %>
       <tr>
         <td><%= foto.nombre %></td>
-        <td><%= foto.propiedad %></td>
+        <td><%= foto.propiedad.direccion %></td>
         <td><%= link_to 'Show', foto %></td>
         <td><%= link_to 'Edit', edit_foto_path(foto) %></td>
         <td><%= link_to 'Destroy', foto, method: :delete, data: { confirm: 'Are you sure?' } %></td>

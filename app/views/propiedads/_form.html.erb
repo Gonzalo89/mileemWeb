@@ -1,3 +1,4 @@
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function (){
@@ -135,8 +136,7 @@ $(document).ready(function (){
 	<%= f.text_field :departamento %>
 	
 </div>
-<div class="field center">	
-	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=true&zoom=16&markers=#{@propiedad.latitude}%2C#{@propiedad.longitude}", :id => "mapa" %>
+<div id="mapa" class="field center" ></div>
 </div>
 
 <div class="field center">

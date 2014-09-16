@@ -1,65 +1,17 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function (){
-        $("#propiedad_tipo_propiedad_id").change(function() {
-        	switch ($(this).val()){
-        		case "1": //casa
-        		case "3": //ph
-        		case "6": //quinta
-        			$("#opc_antiguedad").show();
-        			$("#propiedad_ambientes").val('');
-        			$("#opc_ambientes").hide();        			
-        			$("#opc_dormitorios").show();
-        			break;
-        		case "2":
-        			$("#opc_antiguedad").show();
-        			$("#opc_ambientes").show();
-        			$("#propiedad_dormitorios").val('');
-        			$("#opc_dormitorios").hide();
-        			break;
-        		case "5": //terreno
-        		case "7": //campo
-        		case "8": //galpón
-        		case "13": //bóveda
-        			$("#propiedad_antiguedad").val('');
-        			$("#opc_antiguedad").hide();
-        			$("#propiedad_ambientes").val('');
-        			$("#opc_ambientes").hide();
-        			$("#propiedad_dormitorios").val('');
-        			$("#opc_dormitorios").hide();
-        			break;
-        		default:
-        			$("#opc_antiguedad").show();
-        			$("#propiedad_ambientes").val('');
-        			$("#opc_ambientes").hide();
-        			$("#propiedad_dormitorios").val('');
-        			$("#opc_dormitorios").hide();
-        	}
-        });
-    });
-</script>
-<script>
-    $(document).ready(function (){
-        $("#propiedad_operacion_id").change(function() {
-        	switch ($(this).val()){
-        		case "1": //venta
-        			$("#opc_expensas").hide();
-        			break;
-        		default:
-        			$("#opc_expensas").show();
-        	}
-        });
-    });
-</script>
-<script>
-$(document).ready(function (){
-	    switch($("#propiedad_tipo_propiedad_id").val()){
-	    	case "1": //casa
-			case "3": //ph
-			case "6": //quinta
+	$(document).ready(function() {
+		$("#propiedad_tipo_propiedad_id").change(function() {
+			switch ($(this).val()) {
+			case "1":
+			//casa
+			case "3":
+			//ph
+			case "6":
+				//quinta
 				$("#opc_antiguedad").show();
 				$("#propiedad_ambientes").val('');
-				$("#opc_ambientes").hide();        			
+				$("#opc_ambientes").hide();
 				$("#opc_dormitorios").show();
 				break;
 			case "2":
@@ -68,10 +20,14 @@ $(document).ready(function (){
 				$("#propiedad_dormitorios").val('');
 				$("#opc_dormitorios").hide();
 				break;
-			case "5": //terreno
-			case "7": //campo
-			case "8": //galpón
-			case "13": //bóveda
+			case "5":
+			//terreno
+			case "7":
+			//campo
+			case "8":
+			//galpón
+			case "13":
+				//bóveda
 				$("#propiedad_antiguedad").val('');
 				$("#opc_antiguedad").hide();
 				$("#propiedad_ambientes").val('');
@@ -85,8 +41,67 @@ $(document).ready(function (){
 				$("#opc_ambientes").hide();
 				$("#propiedad_dormitorios").val('');
 				$("#opc_dormitorios").hide();
-	    }
-	  });
+			}
+		});
+	}); 
+</script>
+<script>
+	$(document).ready(function() {
+		$("#propiedad_operacion_id").change(function() {
+			switch ($(this).val()) {
+			case "1":
+				//venta
+				$("#opc_expensas").hide();
+				break;
+			default:
+				$("#opc_expensas").show();
+			}
+		});
+	}); 
+</script>
+<script>
+	$(document).ready(function() {
+		switch($("#propiedad_tipo_propiedad_id").val()) {
+		case "1":
+		//casa
+		case "3":
+		//ph
+		case "6":
+			//quinta
+			$("#opc_antiguedad").show();
+			$("#propiedad_ambientes").val('');
+			$("#opc_ambientes").hide();
+			$("#opc_dormitorios").show();
+			break;
+		case "2":
+			$("#opc_antiguedad").show();
+			$("#opc_ambientes").show();
+			$("#propiedad_dormitorios").val('');
+			$("#opc_dormitorios").hide();
+			break;
+		case "5":
+		//terreno
+		case "7":
+		//campo
+		case "8":
+		//galpón
+		case "13":
+			//bóveda
+			$("#propiedad_antiguedad").val('');
+			$("#opc_antiguedad").hide();
+			$("#propiedad_ambientes").val('');
+			$("#opc_ambientes").hide();
+			$("#propiedad_dormitorios").val('');
+			$("#opc_dormitorios").hide();
+			break;
+		default:
+			$("#opc_antiguedad").show();
+			$("#propiedad_ambientes").val('');
+			$("#opc_ambientes").hide();
+			$("#propiedad_dormitorios").val('');
+			$("#opc_dormitorios").hide();
+		}
+	}); 
 </script>
 <%= form_for(@propiedad) do |f| %>
 <% if @propiedad.errors.any? %>
@@ -163,13 +178,15 @@ $(document).ready(function (){
 <div class="field center">
 	<%= f.label "Amenities" %>
 	<br>
-	<% @amenities.each do |a| %>
-	<%= f.label a.nombre %>
-	<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
-	  <%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
-	<% else  %>
-	  <%= check_box(:tieneamenities, a.nombre) %>
-	<% end  %>
+	<% if @amenities %>
+	  <% @amenities.each do |a| %>
+	    <%= f.label a.nombre %>
+	    <% if @propiedad.amenities.find_by_nombre(a.nombre)%>
+	      <%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+	    <% else  %>
+	      <%= check_box(:tieneamenities, a.nombre) %>
+	    <% end  %>
+	  <% end  %>
 	<% end  %>
 </div>
 
@@ -195,8 +212,7 @@ $(document).ready(function (){
 </div>
 <% end %>
 <script type="text/javascript">
-function myFunction()
-{
-    window.location.reload(false);
-}
+	function myFunction() {
+		window.location.reload(false);
+	}
 </script>

@@ -1,8 +1,8 @@
 require 'carrierwave/orm/activerecord'
 
 class Propiedad < ActiveRecord::Base
-  geocoded_by :direccion  
-  after_validation :geocode, :if => :direccion_changed?
+  geocoded_by :direccion_completa
+  after_validation :geocode
   validates :direccion, presence: true
   validates :numero, numericality: { only_integer: true, less_than_or_equal_to: 999999999 }
   validates :piso, length: { maximum: 10 }
@@ -15,13 +15,17 @@ class Propiedad < ActiveRecord::Base
   validates :superficie, numericality: {only_integer: true, less_than_or_equal_to: 999999999 }, allow_blank: true
   validates :ambientes, numericality: {only_integer: true, less_than_or_equal_to: 999999999 }, allow_blank: true
   validates :superficie_nc, numericality: {only_integer: true, less_than_or_equal_to: 999999999 }, allow_blank: true
-   
+
   has_many :fotos, dependent: :destroy
-  has_many :tieneamenities, dependent: :destroy  
-  has_many :amenities, :through => :tieneamenities  
-  
+  has_many :tieneamenities, dependent: :destroy
+  has_many :amenities, :through => :tieneamenities
+
   belongs_to :barrio
   belongs_to :tipo_propiedad
   belongs_to :moneda
-  belongs_to :operacion  
+  belongs_to :operacion
+  
+  def direccion_completa
+    [direccion, numero].compact.join(' ')
+  end     
 end

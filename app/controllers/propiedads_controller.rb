@@ -1,5 +1,7 @@
 class PropiedadsController < ApplicationController
   before_action :set_propiedad, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user! , only: [:new]
+  
   # GET /propiedads
   # GET /propiedads.json
   def index

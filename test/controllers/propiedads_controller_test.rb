@@ -12,8 +12,15 @@ class PropiedadsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
+    @user = users(:one)
+    sign_in @user
     get :new
     assert_response :success
+  end
+  
+  test "should get new sin autenticar" do
+    get :new
+    assert_response :redirect
   end
 
   test "should create propiedad" do

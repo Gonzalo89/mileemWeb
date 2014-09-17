@@ -1,4 +1,4 @@
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=TRUE"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
@@ -132,8 +132,6 @@
 <br>
 <h2>Ubicación</h2>
 <hr>
-<div id="mapa">
-</div>
 <div class="field center">
 	<%= f.label :barrio_id %>
 	<%= f.collection_select :barrio_id, Barrio.all, :id, :nombre, :selected => @propiedad.barrio_id %>
@@ -156,13 +154,15 @@
 
 <div class="field center">
 <p>  
-  <strong>Latitude:</strong>  
-  <%= @propiedad.latitude %>  
+  <strong hidden="true" >Latitude:</strong>  
+  <span id="latitude" hidden="true" ><%= @propiedad.latitude %> </span> 
 </p>  
 <p>  
-  <strong>Longitude:</strong>  
-  <%= @propiedad.longitude %>  
+  <strong hidden="true" >>Longitude:</strong>  
+  <span id="longitude" hidden="true""><%= @propiedad.longitude %> </span> 
 </p>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@propiedad.latitude}%2C#{@propiedad.longitude}",
+ :id => "mapa" %>
 </div> 
 
 <div class="field">
@@ -233,4 +233,21 @@
 	function myFunction() {
 		window.location.reload(false);
 	}
+</script>
+<script>
+$(document).ready(function() {
+	$('#propiedad_direccion').change(function() {
+	//	<% @propiedad.geocode %>
+	//	alert("<%= @propiedad.direccion %>");
+	//	$('#latitude').text(<%= @propiedad.latitude %>);
+	//	$('#longitude').text(<%= @propiedad.longitude %>);
+	//	$('#mapa').attr("src","http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=<%=@propiedad.latitude%>%2C<%=@propiedad.longitude%>");
+	//	alert("change!");
+	//	$('#mapa').attr("src","http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=-34.6439%2C-58.5181");
+	});
+	
+	<% if !@propiedad.latitude 	%>
+	  $('#mapa').hide();
+	<% end %>
+});
 </script>

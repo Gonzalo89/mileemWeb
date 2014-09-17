@@ -1,7 +1,7 @@
 require 'carrierwave/orm/activerecord'
 
 class Propiedad < ActiveRecord::Base
-  validates :direccion, presence: true
+  validates :direccion, presence: true, length: {maximum: 50}
   validates :numero, numericality: { only_integer: true, less_than_or_equal_to: 999999999 }
   validates :piso, length: { maximum: 10 }
   validates :departamento, length: { maximum: 10 }

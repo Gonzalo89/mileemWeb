@@ -49,22 +49,4 @@ class PropiedadsControllerTest < ActionController::TestCase
     assert_redirected_to propiedads_path
   end
 
-  test "propiedad con precio muy alto" do
-    @propiedad = propiedads(:propiedadPrecioMuyAlto)
-
-    assert @propiedad.save, "error al guardar prop con precio muy alto"
-  end
-
-  test "propiedad piso vacio" do
-    @propiedad = propiedads(:propiedadPisoVacio)
-
-    assert @propiedad.save
-  end
-
-  test "propiedad piso invalido" do
-    @propiedad = propiedads(:propiedadPisoInvalido)
-
-    assert_not @propiedad.save
-  end
-  
 end

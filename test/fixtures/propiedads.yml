@@ -1,8 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  direccion: Direccion1
-  numero: 1
+  direccion: Murguiondo
+  numero: 449
+  latitude: -346439
+  longitude: -58.5181
   piso: PB
   departamento:
   barrio: two

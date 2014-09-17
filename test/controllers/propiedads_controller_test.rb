@@ -67,4 +67,9 @@ class PropiedadsControllerTest < ActionController::TestCase
     assert_not @propiedad.save
   end
   
+  test "mostrar mapa en edit propiedad" do
+    get :edit, id: @propiedad
+    assert_select '#mapa', 1
+  end
+  
 end

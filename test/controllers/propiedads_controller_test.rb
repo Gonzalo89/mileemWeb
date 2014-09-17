@@ -48,4 +48,5 @@ class PropiedadsControllerTest < ActionController::TestCase
 
     assert_redirected_to propiedads_path
   end
+
 end

@@ -1,8 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  direccion: Direccion1
-  numero: 1
+  direccion: Murguiondo
+  numero: 449
+  latitude: -346439
+  longitude: -58.5181
   piso: PB
   departamento:
   barrio: two
@@ -51,7 +53,7 @@ validacionUS001:
   expensas: 150
   tipo_propiedad: casa
     
-validacionUS001org:
+propiedadPrecioMuyAlto:
   direccion: Rivadavia
   numero: 6598
   piso: 3
@@ -60,10 +62,44 @@ validacionUS001org:
   descripcion: descripcion3
   antiguedad: 2
   operacion: venta
-  precio: 185000
+  precio: 999999999
   moneda: dolares
   superficie: 150
   ambientes: 4
   dormitorios: 2
   expensas: 150
-  tipo_propiedad: casa 
+  tipo_propiedad: casa
+  
+propiedadPisoVacio:
+  direccion: Rivadavia
+  numero: 6598
+  piso:
+  departamento: D
+  barrio: flores
+  descripcion: descripcion3
+  antiguedad: 2
+  operacion: venta
+  precio: 130000
+  moneda: dolares
+  superficie: 150
+  ambientes: 4
+  dormitorios: 2
+  expensas: 150
+  tipo_propiedad: casa
+  
+propiedadPisoInvalido:
+  direccion: Rivadavia
+  numero: 6598
+  piso: invalido12313
+  departamento: D
+  barrio: flores
+  descripcion: descripcion3
+  antiguedad: 2
+  operacion: venta
+  precio: 150000
+  moneda: dolares
+  superficie: 150
+  ambientes: 4
+  dormitorios: 2
+  expensas: 150
+  tipo_propiedad: casa

@@ -29,12 +29,14 @@ class PropiedadsController < ApplicationController
 
     respond_to do |format|
       if @propiedad.save
-        amenities.each do |a|
-          if a[1] == '1'
-            newAmenity = Tieneamenity.new
-            newAmenity.propiedad = @propiedad
-            newAmenity.amenity = Amenity.find_by_nombre(a[0])
+        if amenities
+          amenities.each do |a|
+            if a[1] == '1'
+              newAmenity = Tieneamenity.new
+              newAmenity.propiedad = @propiedad
+              newAmenity.amenity = Amenity.find_by_nombre(a[0])
             newAmenity.save
+            end
           end
         end
 
@@ -58,12 +60,14 @@ class PropiedadsController < ApplicationController
           aprop.destroy
         end
 
-        amenities.each do |a|
-          if a[1] == '1'
-            newAmenity = Tieneamenity.new
-            newAmenity.propiedad = @propiedad
-            newAmenity.amenity = Amenity.find_by_nombre(a[0])
-          newAmenity.save
+        if amenities
+          amenities.each do |a|
+            if a[1] == '1'
+              newAmenity = Tieneamenity.new
+              newAmenity.propiedad = @propiedad
+              newAmenity.amenity = Amenity.find_by_nombre(a[0])
+            newAmenity.save
+            end
           end
         end
 
@@ -85,7 +89,7 @@ class PropiedadsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
 
   # Use callbacks to share common setup or constraints between actions.

@@ -2,12 +2,12 @@
 
 <p>
   <strong>Propiedad:</strong>
-  <%= @tieneamenity.propiedad %>
+  <%= @tieneamenity.propiedad.direccion %>
 </p>
 
 <p>
   <strong>Amenity:</strong>
-  <%= @tieneamenity.amenity %>
+  <%= @tieneamenity.amenity.nombre %>
 </p>
 
 <%= link_to 'Edit', edit_tieneamenity_path(@tieneamenity) %> |

@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 20140914182708) do
     t.integer  "dormitorios"
     t.integer  "expensas"
     t.integer  "superficie_nc"
+    t.float    "latitude",          limit: 24
+    t.float    "longitude",         limit: 24
   end
 
   add_index "propiedads", ["barrio_id"], name: "index_propiedads_on_barrio_id", using: :btree

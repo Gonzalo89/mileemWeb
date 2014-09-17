@@ -21,7 +21,7 @@ class FotosControllerTest < ActionController::TestCase
       post :create, foto: { nombre: @foto.nombre, propiedad_id: @foto.propiedad_id }
     end
 
-    assert_redirected_to foto_path(assigns(:foto))
+    assert_redirected_to propiedad_path(@foto.propiedad_id)
   end
 
   test "should show foto" do

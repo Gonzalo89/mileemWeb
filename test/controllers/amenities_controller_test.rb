@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AmenitiesControllerTest < ActionController::TestCase
   setup do
-    @amenity = amenities(:one)
+    @amenity = amenities(:balcon)
   end
 
   test "should get index" do

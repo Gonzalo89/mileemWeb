@@ -23,7 +23,7 @@ class FotosController < ApplicationController
   # POST /fotos
   # POST /fotos.json
   def create
-    @propiedad = Propiedad.find(foto_params[:propiedad_id])
+    @propiedad = Propiedad.find(params[:propiedad_id])
 
     if(@propiedad.fotos.count >= 3)
       redirect_to propiedad_path(@propiedad), notice: 'No se puede cargar mas de 3 fotos.'

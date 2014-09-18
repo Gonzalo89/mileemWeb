@@ -48,10 +48,10 @@ class PropiedadsControllerTest < ActionController::TestCase
 
     assert_redirected_to propiedads_path
   end
-  
+
   test "errores en el formulario new, debe mostrar igual amenities" do
     post :new
-    
+
     assert_select '#tieneamenities_Comedor', 1
   end
 

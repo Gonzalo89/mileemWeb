@@ -24,6 +24,15 @@ class FotosControllerTest < ActionController::TestCase
 
     assert_redirected_to propiedad_path(@propiedad)
   end
+  
+  test "no subir mas de 3 fotos" do
+    @propiedad = propiedads(:two)
+    assert_difference('Foto.count', 0) do
+      post :create, foto: { nombre: @foto.nombre }, propiedad_id: @propiedad
+    end
+
+    assert_redirected_to propiedad_path(@propiedad)
+  end
 
   test "should show foto" do
     get :show, id: @foto

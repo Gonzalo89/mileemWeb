@@ -17,11 +17,12 @@ class FotosControllerTest < ActionController::TestCase
   end
 
   test "should create foto" do
+    @propiedad = propiedads(:one)
     assert_difference('Foto.count') do
-      post :create, foto: { nombre: @foto.nombre, propiedad_id: @foto.propiedad_id }
+      post :create, foto: { nombre: @foto.nombre }, propiedad_id: @propiedad
     end
 
-    assert_redirected_to propiedad_path(@foto.propiedad_id)
+    assert_redirected_to propiedad_path(@propiedad)
   end
 
   test "should show foto" do

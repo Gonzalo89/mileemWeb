@@ -1,5 +1,6 @@
 class PropiedadsController < ApplicationController
   before_action :set_propiedad, only: [:show, :edit, :update, :destroy]
+  before_action :set_amenities, only: [:create, :new, :update, :destroy, :show, :edit]
   # GET /propiedads
   # GET /propiedads.json
   def index
@@ -14,7 +15,6 @@ class PropiedadsController < ApplicationController
   # GET /propiedads/new
   def new
     @propiedad = Propiedad.new
-    @amenities = Amenity.all
   end
 
   # GET /propiedads/1/edit
@@ -25,12 +25,12 @@ class PropiedadsController < ApplicationController
   # POST /propiedads.json
   def create
     @propiedad = Propiedad.new(propiedad_params)
-    amenities = params[:tieneamenities]
+    tieneamenities = params[:tieneamenities]
 
     respond_to do |format|
       if @propiedad.save
-        if amenities
-          amenities.each do |a|
+        if tieneamenities
+          tieneamenities.each do |a|
             if a[1] == '1'
               newAmenity = Tieneamenity.new
               newAmenity.propiedad = @propiedad
@@ -54,14 +54,14 @@ class PropiedadsController < ApplicationController
   def update
     respond_to do |format|
       if @propiedad.update(propiedad_params)
-        amenities = params[:tieneamenities]
+        tieneamenities = params[:tieneamenities]
 
         @propiedad.tieneamenities.each do |aprop|
           aprop.destroy
         end
 
-        if amenities
-          amenities.each do |a|
+        if tieneamenities
+          tieneamenities.each do |a|
             if a[1] == '1'
               newAmenity = Tieneamenity.new
               newAmenity.propiedad = @propiedad
@@ -95,6 +95,9 @@ class PropiedadsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_propiedad
     @propiedad = Propiedad.find(params[:id])
+  end
+  
+  def set_amenities
     @amenities = Amenity.all
   end
 

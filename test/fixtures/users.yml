@@ -9,6 +9,12 @@ one:
   apellido: 'Rodriguez'
   email: 'rodrif89@gmail.com'
   telefono: 46521254
+  
+two:
+  nombre: 'Gonzalo'
+  apellido: 'Rodriguez'
+  email: 'gonzalo@gmail.com'
+  telefono: 46123254 
       
 userSinNombre:
   apellido: 'Rodriguez'

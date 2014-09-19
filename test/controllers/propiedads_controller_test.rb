@@ -6,6 +6,9 @@ class PropiedadsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
+    @user = users(:one)
+    sign_in @user
+    
     get :index
     assert_response :success
     assert_not_nil assigns(:propiedads)
@@ -24,31 +27,47 @@ class PropiedadsControllerTest < ActionController::TestCase
   end
 
   test "should create propiedad" do
+    @user = users(:one)
+    sign_in @user
+    
+    assert_equal @propiedad.user.id, @user.id, "Los usuarios no son iguales"
+    
     assert_difference('Propiedad.count') do
       post :create, propiedad: { barrio_id: @propiedad.barrio_id, direccion: @propiedad.direccion,
         numero: @propiedad.numero, descripcion: @propiedad.descripcion, moneda_id: @propiedad.moneda_id,
-        precio: @propiedad.precio, operacion_id: @propiedad.operacion_id}
+        precio: @propiedad.precio, operacion_id: @propiedad.operacion_id, user_id: @user.id}
     end
 
     assert_redirected_to propiedad_path(assigns(:propiedad))
   end
 
-  test "should show propiedad" do
+  test "should show propiedad" do    
     get :show, id: @propiedad
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should get edit" do    
+    @user = users(:one)
+    sign_in @user
+    
     get :edit, id: @propiedad
     assert_response :success
   end
 
   test "should update propiedad" do
+    @user = @propiedad.user
+    sign_in @user
+    
+    assert_equal @propiedad.user.id, @user.id, "Los usuarios no son iguales"
+    
     patch :update, id: @propiedad, propiedad: { barrio_id: @propiedad.barrio_id, direccion: @propiedad.direccion }
     assert_redirected_to propiedad_path(assigns(:propiedad))
   end
 
   test "should destroy propiedad" do
+    @user = @propiedad.user
+    sign_in @user
+    
     assert_difference('Propiedad.count', -1) do
       delete :destroy, id: @propiedad
     end
@@ -62,6 +81,16 @@ class PropiedadsControllerTest < ActionController::TestCase
     post :new
     
     assert_select '#tieneamenities_Comedor', 1
+  end
+  
+  test "edicion de propiedad por usuario no dueño" do
+    @propiedad = propiedads(:one)
+    @user = users(:two)
+    sign_in @user
+    
+    assert_not_equal @propiedad.user.id, @user.id, "Los usuarios son iguales"
+    get :edit, id: @propiedad
+    assert_redirected_to propiedads_path    
   end
 
 end

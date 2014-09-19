@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919145016) do
+ActiveRecord::Schema.define(version: 20140919185324) do
 
   create_table "amenities", force: true do |t|
     t.string   "nombre"
@@ -68,12 +68,14 @@ ActiveRecord::Schema.define(version: 20140919145016) do
     t.integer  "superficie_nc"
     t.float    "latitude",          limit: 24
     t.float    "longitude",         limit: 24
+    t.integer  "user_id"
   end
 
   add_index "propiedads", ["barrio_id"], name: "index_propiedads_on_barrio_id", using: :btree
   add_index "propiedads", ["moneda_id"], name: "index_propiedads_on_moneda_id", using: :btree
   add_index "propiedads", ["operacion_id"], name: "index_propiedads_on_operacion_id", using: :btree
   add_index "propiedads", ["tipo_propiedad_id"], name: "index_propiedads_on_tipo_propiedad_id", using: :btree
+  add_index "propiedads", ["user_id"], name: "index_propiedads_on_user_id", using: :btree
 
   create_table "tieneamenities", force: true do |t|
     t.integer  "propiedad_id"

@@ -33,11 +33,15 @@ Amenity.create([{nombre: 'Balcón'}, {nombre: 'Comedor'}, {nombre: 'Dormitorio e
   {nombre: 'Hall'}, {nombre: 'Jardín'}, {nombre: 'Lavadero'}, {nombre: 'Living'},{nombre: 'Living Comedor'},
   {nombre: 'Patio'}, {nombre: 'Terraza'}, {nombre: 'Agua corriente'}, {nombre: 'Desague cloacal'},
   {nombre: 'Video cable'}, {nombre: 'Gas natural'}, {nombre: 'Internet'}, {nombre: 'Pavimento'}]) 
-  
-Propiedad.create([{direccion: 'PEDRO LOZANO', piso: 2, numero: 4100, departamento: 'A', descripcion: 'descripcio1', antiguedad: 1, operacion_id: 1, barrio_id: 2, precio: 150000, moneda_id: 2,superficie: 100, ambientes: 2, dormitorios: 2, expensas: 1200, tipo_propiedad_id: 2}, 
-  {direccion: 'Av Corrientes', piso: '', numero: 4666, departamento: '', descripcion: 'descripcio2', antiguedad: 0, operacion_id: 2, barrio: Barrio.find_by_nombre('Flores'), precio: 100000, moneda_id: 1,superficie: 60, ambientes: 1, dormitorios: 1, expensas: 200, tipo_propiedad_id: 1},
-  {direccion: 'Murguiondo', piso: '2', numero: 449, departamento: '', descripcion: 'descripcio3', antiguedad: 5, operacion_id: 3, barrio: Barrio.find_by_nombre('Liniers'), precio: 120000, moneda_id: 1, superficie: 80, ambientes: 3, dormitorios: 3, expensas: 1500, tipo_propiedad_id: 6},
-  {direccion: 'Av Paseo Colon', piso: '', numero: 850, departamento: '', descripcion: 'descripcio4', antiguedad: 10, operacion_id: 1, barrio_id: 35, precio: 115000, moneda_id: 1, superficie: 75, ambientes: 3, dormitorios: 4, expensas: 1200, tipo_propiedad_id: 1}])
+ 
+usuarios = User.create([{email: 'rodrif89@gmail.com', password: '123456789', password_confirmation: '123456789',
+  nombre: 'Facundo', apellido: 'Rodriguez', telefono: '46523215'},
+  {email: 'gonzalo@gmail.com', password: '123456789', password_confirmation: '123456789',
+  nombre: 'Gonzalo', apellido: 'Rodriguez', telefono: '46573211'} ])
+   
+Propiedad.create([{direccion: 'PEDRO LOZANO', piso: 2, numero: 4100, departamento: 'A', descripcion: 'descripcio1', antiguedad: 1, operacion_id: 1, barrio_id: 2, precio: 150000, moneda_id: 2,superficie: 100, ambientes: 2, dormitorios: 2, expensas: 1200, tipo_propiedad_id: 2, user: usuarios.first}, 
+  {direccion: 'Av Corrientes', piso: '', numero: 4666, departamento: '', descripcion: 'descripcio2', antiguedad: 0, operacion_id: 2, barrio: Barrio.find_by_nombre('Flores'), precio: 100000, moneda_id: 1,superficie: 60, ambientes: 1, dormitorios: 1, expensas: 200, tipo_propiedad_id: 1, user: usuarios.first},
+  {direccion: 'Murguiondo', piso: '2', numero: 449, departamento: '', descripcion: 'descripcio3', antiguedad: 5, operacion_id: 3, barrio: Barrio.find_by_nombre('Liniers'), precio: 120000, moneda_id: 1, superficie: 80, ambientes: 3, dormitorios: 3, expensas: 1500, tipo_propiedad_id: 6, user: usuarios.first},
+  {direccion: 'Av Paseo Colon', piso: '', numero: 850, departamento: '', descripcion: 'descripcio4', antiguedad: 10, operacion_id: 1, barrio_id: 35, precio: 115000, moneda_id: 1, superficie: 75, ambientes: 3, dormitorios: 4, expensas: 1200, tipo_propiedad_id: 1, user: usuarios.second}])
 
-User.create([{email: 'rodrif89@gmail.com', password: '123456789', password_confirmation: '123456789',
-  nombre: 'Facundo', apellido: 'Rodriguez', telefono: '46523215'}])
+

@@ -16,6 +16,7 @@ class Propiedad < ActiveRecord::Base
   validates :superficie, numericality: {only_integer: true, less_than_or_equal_to: 999999999 }, allow_blank: true
   validates :ambientes, numericality: {only_integer: true, less_than_or_equal_to: 999999999 }, allow_blank: true
   validates :superficie_nc, numericality: {only_integer: true, less_than_or_equal_to: 999999999 }, allow_blank: true
+  validates :user_id, presence: true
 
   has_many :fotos, dependent: :destroy
   has_many :tieneamenities, dependent: :destroy
@@ -25,6 +26,7 @@ class Propiedad < ActiveRecord::Base
   belongs_to :tipo_propiedad
   belongs_to :moneda
   belongs_to :operacion
+  belongs_to :user
   
   def direccion_completa
     [direccion, numero].compact.join(' ')

@@ -17,7 +17,8 @@ one:
   ambientes: 4
   dormitorios: 2
   expensas: 1250
-  tipo_propiedad: departamento   
+  tipo_propiedad: departamento
+  user: one
 
 two:
   direccion: direccion2
@@ -35,6 +36,7 @@ two:
   dormitorios: 3
   expensas: 150
   tipo_propiedad: casa
+  user: one
   
 validacionUS001:
   direccion: Rivadavia
@@ -52,6 +54,7 @@ validacionUS001:
   dormitorios: 2
   expensas: 150
   tipo_propiedad: casa
+  user: two
     
 propiedadPrecioMuyAlto:
   direccion: Rivadavia
@@ -69,6 +72,7 @@ propiedadPrecioMuyAlto:
   dormitorios: 2
   expensas: 150
   tipo_propiedad: casa
+  user: one
   
 propiedadPisoVacio:
   direccion: Rivadavia
@@ -86,6 +90,7 @@ propiedadPisoVacio:
   dormitorios: 2
   expensas: 150
   tipo_propiedad: casa
+  user: one
   
 propiedadPisoInvalido:
   direccion: Rivadavia
@@ -103,3 +108,4 @@ propiedadPisoInvalido:
   dormitorios: 2
   expensas: 150
   tipo_propiedad: casa
+  user: one

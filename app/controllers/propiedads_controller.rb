@@ -1,8 +1,8 @@
 class PropiedadsController < ApplicationController
   before_action :set_propiedad, only: [:show, :edit, :update, :destroy]
   before_action :set_amenities, only: [:create, :new, :update, :destroy, :show, :edit]
-  before_action :authenticate_user! , only: [:new]
-
+  before_action :authenticate_user! , only: [:new, :edit, :update, :create, :destroy]
+  before_action :usuarioValido , only: [:edit, :update, :destroy]
   # GET /propiedads
   # GET /propiedads.json
   def index
@@ -91,14 +91,14 @@ class PropiedadsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_propiedad
     @propiedad = Propiedad.find(params[:id])
   end
-  
+
   def set_amenities
     @amenities = Amenity.all
   end
@@ -108,6 +108,13 @@ class PropiedadsController < ApplicationController
     params.require(:propiedad).permit(:direccion, :numero, :piso, :departamento,
     :descripcion, :antiguedad, :operacion_id, :precio, :moneda_id, :superficie,
     :superficie_nc, :ambientes, :dormitorios, :expensas, :barrio_id,
-    :tipo_propiedad_id, :amenities)
+    :tipo_propiedad_id, :amenities, :user_id)
   end
+
+  def usuarioValido   
+    if @propiedad.user_id != current_user.id
+      redirect_to propiedads_url, alert: 'La propiedad no pertenece a este usuario.'
+    end
+  end
+  
 end

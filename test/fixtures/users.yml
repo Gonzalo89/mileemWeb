@@ -5,7 +5,17 @@
 # below each fixture, per the syntax in the comments below
 #
 one: 
+  nombre: 'Facundo'
+  apellido: 'Rodriguez'
   email: 'rodrif89@gmail.com'
+  telefono: 46521254
+      
+userSinNombre:
+  apellido: 'Rodriguez'
+  email: 'sinNombre@gmail.com'
+  telefono: 1235
   
-two: {}
-#  column: value
+userSinTelefono:
+  nombre: 'Facundo' 
+  apellido: 'Rodriguez'
+  email: 'sinTelefono@gmail.com'

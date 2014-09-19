@@ -39,4 +39,5 @@ Propiedad.create([{direccion: 'PEDRO LOZANO', piso: 2, numero: 4100, departament
   {direccion: 'Murguiondo', piso: '2', numero: 449, departamento: '', descripcion: 'descripcio3', antiguedad: 5, operacion_id: 3, barrio: Barrio.find_by_nombre('Liniers'), precio: 120000, moneda_id: 1, superficie: 80, ambientes: 3, dormitorios: 3, expensas: 1500, tipo_propiedad_id: 6},
   {direccion: 'Av Paseo Colon', piso: '', numero: 850, departamento: '', descripcion: 'descripcio4', antiguedad: 10, operacion_id: 1, barrio_id: 35, precio: 115000, moneda_id: 1, superficie: 75, ambientes: 3, dormitorios: 4, expensas: 1200, tipo_propiedad_id: 1}])
 
-User.create([{email: 'rodrif89@gmail.com', password: '123456789', password_confirmation: '123456789'}])
+User.create([{email: 'rodrif89@gmail.com', password: '123456789', password_confirmation: '123456789',
+  nombre: 'Facundo', apellido: 'Rodriguez', telefono: '46523215'}])

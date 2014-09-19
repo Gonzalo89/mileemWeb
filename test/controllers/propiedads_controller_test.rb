@@ -57,8 +57,10 @@ class PropiedadsControllerTest < ActionController::TestCase
   end
 
   test "errores en el formulario new, debe mostrar igual amenities" do
+    @user = users(:one)
+    sign_in @user
     post :new
-
+    
     assert_select '#tieneamenities_Comedor', 1
   end
 

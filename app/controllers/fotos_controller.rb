@@ -23,7 +23,7 @@ class FotosController < ApplicationController
   # POST /fotos
   # POST /fotos.json
   def create
-    @propiedad = Propiedad.find(foto_params[:propiedad_id])
+    @propiedad = Propiedad.find(params[:propiedad_id])
 
     if(@propiedad.fotos.count >= 3)
       redirect_to propiedad_path(@propiedad), notice: 'No se puede cargar mas de 3 fotos.'
@@ -31,18 +31,6 @@ class FotosController < ApplicationController
       @foto = @propiedad.fotos.create(foto_params)
       redirect_to propiedad_path(@propiedad)
     end
-
-  #    @foto = Foto.new(foto_params)
-
-  #    respond_to do |format|
-  #      if @foto.save
-  #        format.html { redirect_to @foto, notice: 'Foto was successfully created.' }
-  #        format.json { render :show, status: :created, location: @foto }
-  #      else
-  #        format.html { render :new }
-  #        format.json { render json: @foto.errors, status: :unprocessable_entity }
-  #      end
-  #    end
   end
 
   # PATCH/PUT /fotos/1

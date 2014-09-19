@@ -7,3 +7,15 @@ foto1:
 foto2:
   nombre: foto2
   propiedad: validacionUS001
+  
+foto3:
+  nombre: foto3
+  propiedad: two
+  
+foto4:  
+  nombre: foto4
+  propiedad: two
+  
+foto5:
+  nombre: foto5
+  propiedad: two

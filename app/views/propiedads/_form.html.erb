@@ -197,14 +197,12 @@
 <div class="field center">
 	<%= f.label "Amenities" %>
 	<br>
-	<% if @amenities %>
 	<% @amenities.each do |a| %>
 	<%= f.label a.nombre %>
 	<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
 	<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
 	<% else  %>
 	<%= check_box(:tieneamenities, a.nombre) %>
-	<% end  %>
 	<% end  %>
 	<% end  %>
 </div>

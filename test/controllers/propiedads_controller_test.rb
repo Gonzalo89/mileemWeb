@@ -12,8 +12,15 @@ class PropiedadsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
+    @user = users(:one)
+    sign_in @user
     get :new
     assert_response :success
+  end
+  
+  test "should get new sin autenticar" do
+    get :new
+    assert_response :redirect
   end
 
   test "should create propiedad" do
@@ -47,6 +54,14 @@ class PropiedadsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to propiedads_path
+  end
+
+  test "errores en el formulario new, debe mostrar igual amenities" do
+    @user = users(:one)
+    sign_in @user
+    post :new
+    
+    assert_select '#tieneamenities_Comedor', 1
   end
 
 end

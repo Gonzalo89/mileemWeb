@@ -16,14 +16,25 @@
           <%= link_to "MiLEEM", '/', id: "logo" %>
           <nav>
             <ul class="nav pull-right">
-              <li><%= link_to "Home",    '#' %></li>
+              <li><%= link_to "Home", root_path %></li>
+              <% if user_signed_in? %>
+                <li><%= link_to current_user.nombre, edit_user_registration_path %></li>             
+              	<li><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
+              <% else %>
+                <li><%= link_to "Registrarse", new_user_registration_path %></li>
+              	<li><%= link_to "Login", new_user_session_path %></li>              	
+              <% end %>
             </ul>
           </nav>
         </div>
       </div>
-    </header>
-    <div class="container">
-		<%= yield %>
+    </header>              
+      <p class="notice"><%= notice %></p>
+  	  <% if flash[:alert] %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+      <div class="container">
+	  <%= yield %>
 	</div>
 </body>
 </html>

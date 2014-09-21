@@ -80,7 +80,15 @@ p {
 
 }
 
-.camposInline select, label {
+.camposInline select, .camposInline label {
   display: inline;
 }
 
+.campoCorto {
+  width: 5em;
+}
+
+.obligatorio{
+  color: red;
+  font-size: 0.8em;
+}

@@ -28,6 +28,6 @@ class Propiedad < ActiveRecord::Base
   belongs_to :user
   
   def direccion_completa
-    [direccion, numero].compact.join(' ')
+    [direccion, numero, ',CABA', ',ARGENTINA'].compact.join(' ')
   end     
 end

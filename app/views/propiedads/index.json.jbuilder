@@ -8,4 +8,7 @@ json.array!(@propiedads) do |propiedad|
   json.operacion propiedad.operacion.tipo
   json.tipo_propiedad propiedad.tipo_propiedad.nombre
   json.fotos propiedad.fotos
+  json.amenities propiedad.amenities
+  json.superficie_nc propiedad.superficie_nc
+  
 end

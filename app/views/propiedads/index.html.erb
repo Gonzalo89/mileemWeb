@@ -25,6 +25,7 @@
 
 	<tbody>
 		<% @propiedads.each do |propiedad| %>
+		<% if !user_signed_in? || (current_user.id == propiedad.user.id) %>
 		<tr>
 			<td><%= propiedad.direccion %></td>
 			<td><%= propiedad.numero %></td>
@@ -50,12 +51,13 @@
 			<%= image_tag foto.nombre_url(:thumb) if foto.nombre? %>
 			<% end %> </td>
 			
-			<td><%= propiedad.user.nombre %></td>
+			<td class="nombreUsuario" ><%= propiedad.user.nombre %></td>
 
 			<td><%= link_to 'Ver', propiedad %></td>
 			<td><%= link_to 'Editar', edit_propiedad_path(propiedad) %></td>
 			<td><%= link_to 'Eliminar', propiedad, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
 		</tr>
+		<% end %>
 		<% end %>
 	</tbody>
 </table>

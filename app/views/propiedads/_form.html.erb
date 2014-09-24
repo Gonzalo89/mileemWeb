@@ -107,8 +107,7 @@
 <%= form_for(@propiedad) do |f| %>
 <% if @propiedad.errors.any? %>
 <div id="error_explanation">
-	<h2><%= pluralize(@propiedad.errors.count, "error") %> prohibited this propiedad from being saved:</h2>
-
+	<h2>Se encontraron los siguientes errores:</h2>
 	<ul>
 		<% @propiedad.errors.full_messages.each do |message| %>
 		<li>
@@ -119,15 +118,17 @@
 </div>
 <% end %>
 
+<p class="obligatorio center">(*)Obligatorio</p>
+
 <h2>Datos de operacion</h2>
 <hr>
-<div class="camposInline" >
-	<span> <%= f.label :tipo_propiedad_id %>
+<div class="center camposInline" >
+		<%= f.label :tipo_propiedad_id %>
 		<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id,
-    :nombre, :selected => @propiedad.tipo_propiedad_id %> </span>
-	<span> <%= f.label :operacion_id %>
+    :nombre, :selected => @propiedad.tipo_propiedad_id %>
+		<%= f.label :operacion_id %>
 		<%= f.collection_select :operacion_id, Operacion.all, :id, :tipo,
-    :selected => @propiedad.operacion_id %> </span>
+    :selected => @propiedad.operacion_id %>
 </div>
 <br>
 <h2>Ubicación</h2>
@@ -136,20 +137,20 @@
 	<%= f.label :barrio_id %>
 	<%= f.collection_select :barrio_id, Barrio.all, :id, :nombre, :selected => @propiedad.barrio_id %>
 </div>
-<div class="field center">
-	<%= f.label "Calle" %>
+<div class="field center camposInline">
+	<%= f.label :direccion %>
+	<span class="obligatorio">*</span>
 	<%= f.text_field :direccion %>
-</div>
-<div class="field center">
-	<%= f.label :numero %>
-	<%= f.text_field :numero %>
+
+	<%= f.label :numero %>	
+	<span class="obligatorio">*</span>
+	<%= f.text_field :numero, :class=>"campoCorto" %>
 
 	<%= f.label :piso %>
-	<%= f.text_field :piso %>
+	<%= f.text_field :piso, :class=>"campoCorto" %>
 
 	<%= f.label :departamento %>
-	<%= f.text_field :departamento %>
-	
+	<%= f.text_field :departamento, :class=>"campoCorto" %>
 </div>
 
 <div class="field center">
@@ -172,19 +173,19 @@
 </div>
 <div class="field center">
 	<%= f.label :descripcion %>
+	<p class="obligatorio">(10 palabras mínimo)</p>
 	<%= f.text_area :descripcion %>
 </div>
 <div class="field center" id="opc_antiguedad" style="display:none;">
 	<%= f.label :antiguedad %>
 	<%= f.text_field :antiguedad %>
 </div>
-<div class="field center">
+<div class="camposInline field center">
 	<%= f.label "Superficie cubierta"%>
-	<%= f.text_field :superficie %>
-</div>
-<div class="field center">
+	<%= f.text_field :superficie, :class=>"campoCorto" %>
+
 	<%= f.label "Superficie No Cubierta" %>
-	<%= f.text_field :superficie_nc %>
+	<%= f.text_field :superficie_nc, :class=>"campoCorto" %>
 </div>
 <div class="field center" id="opc_dormitorios" style="display:none;">
 	<%= f.label :dormitorios %>
@@ -195,25 +196,29 @@
 	<%= f.text_field :ambientes %>
 </div>
 <div class="field center">
-	<%= f.label "Amenities" %>
-	<br>
-	<% @amenities.each do |a| %>
-	<%= f.label a.nombre %>
-	<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
-	<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
-	<% else  %>
-	<%= check_box(:tieneamenities, a.nombre) %>
-	<% end  %>
-	<% end  %>
+	<h2>Amenities</h2>
+	<hr>
+	<div class="camposInline">
+		<% @amenities.each do |a| %>
+		<%= f.label a.nombre %>
+		<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
+		<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+		<% else  %>
+		<%= check_box(:tieneamenities, a.nombre) %>
+		<% end  %>
+		<% end  %>
+	</div>
 </div>
 
 <br>
 <h2>Precio</h2>
 <hr>
 <div class="field center">
-	<%= f.label :precio %>
+	<div class="camposInline">
+		<%= f.label :precio %>
+		<span class="obligatorio">*</span>
+	</div>
 	<%= f.text_field :precio %>
-
 	<%= f.label :moneda_id %>
 	<%= f.collection_select :moneda_id, Moneda.all, :id, :nombre, :selected => @propiedad.moneda_id %>
 </div>

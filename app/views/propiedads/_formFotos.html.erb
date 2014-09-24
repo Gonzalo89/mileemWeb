@@ -10,7 +10,7 @@
 <hr>
 <%= form_for([@propiedad, @propiedad.fotos.build]) do |f| %>
 <p>
-	<%= f.label "Agregar foto" %>
+	<span class="camposInline"><%= f.label "Agregar foto" %><span class="obligatorio", style:"white-space:normal;"> (Hasta 5MB)</span></span>
 	<br>
 	<%= f.file_field :nombre , :id => "archivo", :required => true %>
 </p>

@@ -10,5 +10,7 @@ json.array!(@propiedads) do |propiedad|
   json.fotos propiedad.fotos
   json.amenities propiedad.amenities
   json.superficie_nc propiedad.superficie_nc
+  json.latitude propiedad.latitude
+  json.longitude propiedad.longitude
   
 end

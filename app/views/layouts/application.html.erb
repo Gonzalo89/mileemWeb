@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MiLEEM</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
-<body>
-	<header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="navbar-inner">
-        <div class="container">
-          <%= link_to "MiLEEM", '/', id: "logo" %>
-          <nav>
-            <ul class="nav pull-right">
-              <li><%= link_to "Home", root_path %></li>
-              <% if user_signed_in? %>
-                <li><%= link_to current_user.nombre, edit_user_registration_path %></li>             
-              	<li><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
-              <% else %>
-                <li><%= link_to "Registrarse", new_user_registration_path %></li>
-              	<li><%= link_to "Login", new_user_session_path %></li>              	
-              <% end %>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>              
-      <!-- <p class="notice"><%= notice %></p> problemas de duplicados con gema devise -->
-  	  <% if flash[:alert] %>
-        <p class="alert"><%= alert %></p>
-      <% end %>
-      <div class="container">
-	  <%= yield %>
-	</div>
-</body>
+	<head>
+		<title>MiLEEM</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<header class="navbar navbar-fixed-top navbar-inverse">
+			<div class="navbar-inner">
+				<div class="container">
+					<%= link_to "MiLEEM", '/', id: "logo" %>
+					<nav>
+						<ul class="nav pull-right">
+							<li>
+								<%= link_to "Home", root_path %>
+							</li>
+							<% if user_signed_in? %>
+							<li>
+								<%= link_to current_user.nombre, edit_user_registration_path %>
+							</li>
+							<li>
+								<%= link_to "Salir", destroy_user_session_path, :method => :delete %>
+							</li>
+							<% else %>
+							<li>
+								<%= link_to "Registrarse", new_user_registration_path %>
+							</li>
+							<li>
+								<%= link_to "Login", new_user_session_path %>
+							</li>
+							<% end %>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<!-- <p class="notice"><%= notice %></p> problemas de duplicados con gema devise -->
+		<div class="container">
+
+			<% if notice %>
+			<p class="alert alert-success">
+				<%= notice %>
+			</p>
+			<% end %>
+			<% if alert %>
+			<p class="alert alert-danger">
+				<%= alert %>
+			</p>
+			<% end %>
+			<%= yield %>
+		</div>
+	</body>
 </html>

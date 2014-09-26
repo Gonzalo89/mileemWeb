@@ -65,9 +65,9 @@ ActiveRecord::Schema.define(version: 20140919185324) do
     t.integer  "antiguedad"
     t.integer  "dormitorios"
     t.integer  "expensas"
-    t.integer  "superficie_nc"
     t.float    "latitude",          limit: 24
     t.float    "longitude",         limit: 24
+    t.integer  "superficie_nc"
     t.integer  "user_id"
   end
 
@@ -104,6 +104,10 @@ ActiveRecord::Schema.define(version: 20140919185324) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "nombre"

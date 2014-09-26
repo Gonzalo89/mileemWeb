@@ -35,9 +35,9 @@ amenities = Amenity.create([{nombre: 'Balcón'}, {nombre: 'Comedor'}, {nombre: '
   {nombre: 'Video cable'}, {nombre: 'Gas natural'}, {nombre: 'Internet'}, {nombre: 'Pavimento'}]) 
  
 usuarios = User.create([{email: 'rodrif89@gmail.com', password: '123456789', password_confirmation: '123456789',
-  nombre: 'Facundo', apellido: 'Rodriguez', telefono: '46523215'},
+  nombre: 'Facundo', apellido: 'Rodriguez', telefono: '46523215', confirmed_at: '2014-09-26 15:04:35'},
   {email: 'gonzalo@gmail.com', password: '123456789', password_confirmation: '123456789',
-  nombre: 'Gonzalo', apellido: 'Rodriguez', telefono: '46573211'} ])
+  nombre: 'Gonzalo', apellido: 'Rodriguez', telefono: '46573211', confirmed_at: '2014-09-26 16:05:35'} ])
   
 propiedades = Propiedad.create([{direccion: 'PEDRO LOZANO', piso: 2, numero: 4100, departamento: 'A', descripcion: 'descripcio1', antiguedad: 1, operacion_id: 1, barrio_id: 2, precio: 150000, moneda_id: 2,superficie: 100, ambientes: 2, dormitorios: 2, expensas: 1200, tipo_propiedad_id: 2, user: usuarios.first, amenities: [amenities.first, amenities.second]}, 
   {direccion: 'Av Corrientes', piso: '', numero: 4666, departamento: '', descripcion: 'descripcio2', antiguedad: 0, operacion_id: 2, barrio: Barrio.find_by_nombre('Flores'), precio: 100000, moneda_id: 1,superficie: 60, ambientes: 1, dormitorios: 1, expensas: 200, tipo_propiedad_id: 1, user: usuarios.first, superficie_nc: 100},

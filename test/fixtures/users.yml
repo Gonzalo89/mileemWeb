@@ -9,19 +9,23 @@ one:
   apellido: 'Rodriguez'
   email: 'rodrif89@gmail.com'
   telefono: 46521254
-  
+  confirmed_at: '2014-09-26 16:05:35'  
+
 two:
   nombre: 'Gonzalo'
   apellido: 'Rodriguez'
   email: 'gonzalo@gmail.com'
   telefono: 46123254 
-      
+  confirmed_at: '2014-09-26 16:05:35'
+
 userSinNombre:
   apellido: 'Rodriguez'
   email: 'sinNombre@gmail.com'
   telefono: 1235
-  
+  confirmed_at: '2014-09-26 16:05:35'
+
 userSinTelefono:
   nombre: 'Facundo' 
   apellido: 'Rodriguez'
   email: 'sinTelefono@gmail.com'
+  confirmed_at: '2014-09-26 16:05:35'

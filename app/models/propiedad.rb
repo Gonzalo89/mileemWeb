@@ -2,7 +2,7 @@ require 'carrierwave/orm/activerecord'
 
 class Propiedad < ActiveRecord::Base
   geocoded_by :direccion_completa
-  after_validation :geocode
+  after_validation :geocode, :if => :direccion_completa_changed?
   
   validates :direccion, presence: true, length: {maximum: 50}
   validates :numero, numericality: { only_integer: true, less_than_or_equal_to: 999999999 }
@@ -29,5 +29,9 @@ class Propiedad < ActiveRecord::Base
   
   def direccion_completa
     [direccion, numero, ',CABA', ',ARGENTINA'].compact.join(' ')
-  end     
+  end
+  
+  def direccion_completa_changed?
+    :direccion_changed? || :numero_changed?        
+  end 
 end

@@ -22,6 +22,15 @@ body {
   text-align: center;
 }
 
+#tablaAmenities{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#tablaAmenities label{
+  margin-left: 15px;
+}
+
 .center h1 {
   margin-bottom: 10px;
 }
@@ -33,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
@@ -73,10 +82,18 @@ p {
 }
 
 .camposInline {  
-
 }
 
-.camposInline select, .camposInline label {
+.camposInline label {
+  position: relative;
+  left: 3px;
+  width: 100px;
+  display: inline-block;
+}
+
+.camposInline input, .camposInline select, .camposInline textarea {
+  position: relative;
+  left: 2em;
   display: inline;
 }
 
@@ -100,6 +117,9 @@ p {
 }
 
 .obligatorio{
+  position: relative;
   color: red;
   font-size: 0.8em;
+  display: inline;
+  margin-left: 19%;
 }

@@ -53,12 +53,26 @@
 			case "1":
 				//venta
 				$("#opc_expensas").hide();
+				$("#propiedad_expensas").val('');
 				break;
 			default:
 				$("#opc_expensas").show();
 			}
 		});
 	}); 
+</script>
+<script>
+	$(document).ready(function() {
+			switch ($("#propiedad_operacion_id").val()) {
+			case "1":
+				//venta
+				$("#opc_expensas").hide();
+				$("#propiedad_expensas").val('');
+				break;
+			default:
+				$("#opc_expensas").show();
+			}
+		}); 
 </script>
 <script>
 	$(document).ready(function() {

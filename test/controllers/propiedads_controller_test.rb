@@ -92,5 +92,15 @@ class PropiedadsControllerTest < ActionController::TestCase
     get :edit, id: @propiedad
     assert_redirected_to propiedads_path    
   end
+  
+  test "mostrar solo propiedades del usuario logueado" do 
+    @user = users(:one)
+    sign_in @user
+    
+    cantPropTotal = Propiedad.count
+    
+    get :index
+    assert_select '.nombreUsuario', cantPropTotal-1
+  end
 
 end

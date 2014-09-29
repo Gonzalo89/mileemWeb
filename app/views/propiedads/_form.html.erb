@@ -327,5 +327,9 @@ $(document).ready(function() {
 	<% if params[:action] == "new" 	%>
 	  $('#mapa').hide();
 	<% end %>
+	
+	<% if !@propiedad.latitude 	%>
+	  $('#mapa').hide();
+	<% end %>
 });
 </script>

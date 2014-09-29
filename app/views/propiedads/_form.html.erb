@@ -324,7 +324,7 @@ $(document).ready(function() {
 	//	$('#mapa').attr("src","http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=-34.6439%2C-58.5181");
 	});
 	
-	<% if !@propiedad.latitude 	%>
+	<% if params[:action] == "new" 	%>
 	  $('#mapa').hide();
 	<% end %>
 });

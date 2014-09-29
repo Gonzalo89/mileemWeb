@@ -228,9 +228,9 @@
 <div class="field center">
 	<h2>Amenities</h2>
 	<hr>	
-	<% r1 = @amenities.find([1,2,3,4,5,6,7]) %>
-	<% r2 = @amenities.find([8,9,10,11,12,13,14]) %>
-	<% r3 = @amenities.find([15,16,17,18,19,20,21]) %>
+	<% r1 = @amenities[0..6] %>
+	<% r2 = @amenities[7..13] %>
+	<% r3 = @amenities[14..20] %>
 	<table id="tablaAmenities">
 		<tr>
 			<% r1.each do |a| %>

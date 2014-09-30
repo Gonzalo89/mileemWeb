@@ -37,3 +37,10 @@ en:
       create: "Crear %{model}"
       update: "Modificar %{model}"
       delete: "Eliminar %{model}"
+  activerecord:
+    errors:
+      models:
+        attributes:
+          propiedad:
+            fecha_publicacion:
+              after: "La fecha de publicación debe ser posterior a la fecha de hoy"

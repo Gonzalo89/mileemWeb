@@ -2,17 +2,22 @@
 <hr>
 
 <p class="center">
-	<strong>Operacion:</strong>
-	<%= @propiedad.operacion.tipo %>
+	<strong>Tipo de publicación:</strong>
+	<%= @propiedad.tipo_publicacion.nombre %>
 </p>
 <p class="center">
-	<strong>Operacion:</strong>
-	<%= @propiedad.operacion.tipo %>
+	<strong>Fecha publicación:</strong>
+	<%= @propiedad.fecha_publicacion.strftime("%d/%m/%y") %>
 </p>
 
 <p class="center">
 	<strong>Tipo:</strong>
 	<%= @propiedad.tipo_propiedad.nombre %>
+</p>
+
+<p class="center">
+	<strong>Operacion:</strong>
+	<%= @propiedad.operacion.tipo %>
 </p>
 
 <br>

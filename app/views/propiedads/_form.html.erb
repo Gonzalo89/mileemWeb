@@ -136,17 +136,33 @@
 
 <h2>Datos de operaci&oacute;n</h2>
 <hr>
+
+	
+
 <div class="camposInline" >
 	<span class="obligatorio">&nbsp</span>
 	<%= f.label "Tipo" %>
-	<%= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
-    :nombre, :selected => @propiedad.tipo_publicacion_id %>
+	
+	<% if params[:action] == "new" %>	
+	  <%= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
+      :nombre, :selected => @propiedad.tipo_publicacion_id %>       
+    <% else %>      
+      <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled =>true %>        
+    <% end %>    
+    
 </div>
 <div class="camposInline" >
 	<span class="obligatorio">*</span>
-	<%= f.label "Fecha de publicación" %>	
-	<%= date_field :propiedad, :fecha_publicacion, :required => true %>
+	<%= f.label "Fecha de publicación" %>
+		
+	<% if params[:action] == "new" %>	
+	  <%= date_field :propiedad, :fecha_publicacion, :required => true %>
+	<% else %>
+	  <%= date_field :propiedad, :fecha_publicacion, :disabled =>true %>
+	<% end %>
 </div>
+
+
 <div class="camposInline" >
 	<span class="obligatorio">&nbsp</span>
 	<%= f.label :tipo_propiedad_id %>

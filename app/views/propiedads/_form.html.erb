@@ -138,6 +138,17 @@
 <hr>
 <div class="camposInline" >
 	<span class="obligatorio">&nbsp</span>
+	<%= f.label "Tipo" %>
+	<%= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
+    :nombre, :selected => @propiedad.tipo_publicacion_id %>
+</div>
+<div class="camposInline" >
+	<span class="obligatorio">*</span>
+	<%= f.label "Fecha de publicación" %>	
+	<%= date_field :propiedad, :fecha_publicacion, :required => true %>
+</div>
+<div class="camposInline" >
+	<span class="obligatorio">&nbsp</span>
 	<%= f.label :tipo_propiedad_id %>
 	<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id,
     :nombre, :selected => @propiedad.tipo_propiedad_id %>
@@ -148,6 +159,7 @@
 	<%= f.collection_select :operacion_id, Operacion.all, :id, :tipo,
 	:selected => @propiedad.operacion_id %>
 </div>
+
 <br>
 <h2>Ubicación</h2>
 <hr>

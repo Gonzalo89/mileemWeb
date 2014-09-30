@@ -12,5 +12,7 @@ json.array!(@propiedads) do |propiedad|
   json.superficie_nc propiedad.superficie_nc
   json.latitude propiedad.latitude
   json.longitude propiedad.longitude
+  json.tipo_publicacion propiedad.tipo_publicacion.id
+  json.fecha_publicacion propiedad.fecha_publicacion
   
 end

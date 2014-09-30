@@ -19,6 +19,9 @@
 			<th>Tipo</th>
 			<th>Fotos</th>
 			<th>Usuario</th>
+			<th>Tipo Publicación</th>
+			<th>Fecha Publicación</th>
+			<th>Fecha Finaización</th>
 			<th colspan="3"></th>
 		</tr>
 	</thead>
@@ -52,6 +55,12 @@
 			<% end %> </td>
 			
 			<td class="nombreUsuario" ><%= propiedad.user.nombre %></td>
+			
+			<td><%= propiedad.tipo_publicacion.nombre %></td>
+			
+			<td><%= propiedad.fecha_publicacion %></td>
+			
+			<td>Fecha fin </td>
 
 			<td><%= link_to 'Ver', propiedad %></td>
 			<td><%= link_to 'Editar', edit_propiedad_path(propiedad) %></td>

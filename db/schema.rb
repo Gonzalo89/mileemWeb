@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919185324) do
+ActiveRecord::Schema.define(version: 20140930131423) do
 
   create_table "amenities", force: true do |t|
     t.string   "nombre"
@@ -65,16 +65,19 @@ ActiveRecord::Schema.define(version: 20140919185324) do
     t.integer  "antiguedad"
     t.integer  "dormitorios"
     t.integer  "expensas"
-    t.float    "latitude",          limit: 24
-    t.float    "longitude",         limit: 24
+    t.float    "latitude",            limit: 24
+    t.float    "longitude",           limit: 24
     t.integer  "superficie_nc"
     t.integer  "user_id"
+    t.integer  "tipo_publicacion_id"
+    t.datetime "fecha_publicacion"
   end
 
   add_index "propiedads", ["barrio_id"], name: "index_propiedads_on_barrio_id", using: :btree
   add_index "propiedads", ["moneda_id"], name: "index_propiedads_on_moneda_id", using: :btree
   add_index "propiedads", ["operacion_id"], name: "index_propiedads_on_operacion_id", using: :btree
   add_index "propiedads", ["tipo_propiedad_id"], name: "index_propiedads_on_tipo_propiedad_id", using: :btree
+  add_index "propiedads", ["tipo_publicacion_id"], name: "index_propiedads_on_tipo_publicacion_id", using: :btree
   add_index "propiedads", ["user_id"], name: "index_propiedads_on_user_id", using: :btree
 
   create_table "tieneamenities", force: true do |t|
@@ -88,6 +91,12 @@ ActiveRecord::Schema.define(version: 20140919185324) do
   add_index "tieneamenities", ["propiedad_id"], name: "index_tieneamenities_on_propiedad_id", using: :btree
 
   create_table "tipo_propiedads", force: true do |t|
+    t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tipo_publicacions", force: true do |t|
     t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"

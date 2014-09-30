@@ -2,12 +2,63 @@
 
 balcon:
   nombre: Balcón
-  
-baulera:
-  nombre: Baulera
-  
+
 comedor:
   nombre: Comedor
-    
+  
+dormitorio_en_suite:
+  nombre: 'Dormitorio en suite'
+
+baulera:
+  nombre: Baulera
+     
+comedor_diario:
+  nombre: 'Comedor diario'
+
+escritorio:
+  nombre: Escritorio
+
 cocina:
   nombre: Cocina
+  
+dependencia_de_servicio:
+  nombre: 'Dependencia servicio'
+
+hall:
+  nombre: Hall
+  
+jardin:
+  nombre: Jardín
+  
+lavandero:
+  nombre: Lavadero
+  
+living:
+  nombre: Living
+  
+living_comedor:
+  nombre: 'Living Comedor'
+  
+patio:
+  nombre: Patio
+  
+terraza:
+  nombre: Terraza
+  
+agua_corriente:
+  nombre: 'Agua corriente'
+  
+desague_cloacal:
+  nombre: 'Desague cloacal'
+  
+video_cable:
+  nombre: 'Video cable'
+  
+gas_natural:
+  nombre: 'Gas natural'
+  
+internet:
+  nombre: Internet
+  
+pavimento:
+  nombre: Pavimento

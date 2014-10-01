@@ -143,11 +143,11 @@
 	<span class="obligatorio">&nbsp</span>
 	<%= f.label "Tipo" %>
 	
-	<% if params[:action] == "new" %>	
+	<% if params[:action] == "new" || params[:action] == "create" %>	
 	  <%= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
       :nombre, :selected => @propiedad.tipo_publicacion_id %>       
     <% else %>      
-      <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled =>true %>        
+      <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled => true %>        
     <% end %>    
     
 </div>
@@ -155,7 +155,7 @@
 	<span class="obligatorio">*</span>
 	<%= f.label "Fecha de publicación" %>
 		
-	<% if params[:action] == "new" %>	
+	<% if params[:action] == "new" || params[:action] == "create" %>	
 	  <%= date_field :propiedad, :fecha_publicacion, :required => true %>
 	<% else %>
 	  <%= date_field :propiedad, :fecha_publicacion, :disabled =>true %>
@@ -342,17 +342,8 @@
 </script>
 <script>
 $(document).ready(function() {
-	$('#propiedad_direccion').change(function() {
-	//	<% @propiedad.geocode %>
-	//	alert("<%= @propiedad.direccion %>");
-	//	$('#latitude').text(<%= @propiedad.latitude %>);
-	//	$('#longitude').text(<%= @propiedad.longitude %>);
-	//	$('#mapa').attr("src","http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=<%=@propiedad.latitude%>%2C<%=@propiedad.longitude%>");
-	//	alert("change!");
-	//	$('#mapa').attr("src","http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=-34.6439%2C-58.5181");
-	});
 	
-	<% if params[:action] == "new" 	%>
+	<% if params[:action] == "new"	|| params[:action] == "create" %>
 	  $('#mapa').hide();
 	<% end %>
 	

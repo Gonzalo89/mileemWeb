@@ -11,6 +11,15 @@
 </p>
 
 <p class="center">
+	<strong>Fecha finalización:</strong>
+	<% if @propiedad.fecha_finalizacion? %>
+	  <%= @propiedad.fecha_finalizacion.strftime("%d/%m/%y") %>
+	<% else %>
+	  - 
+	<% end %>
+</p>
+
+<p class="center">
 	<strong>Tipo:</strong>
 	<%= @propiedad.tipo_propiedad.nombre %>
 </p>

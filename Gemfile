@@ -3,8 +3,12 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
-# Use mysql as the database for Active Record
-gem 'mysql2'
+
+group :development do
+	# Use mysql as the database for Active Record
+	gem 'mysql2'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -48,3 +52,8 @@ gem 'sprockets', '~> 2.11.0'
 gem 'geocoder', '~> 1.2.5'
 gem 'devise', '~> 3.3.0'
 gem 'date_validator', '~> 0.7.0'
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end

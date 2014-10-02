@@ -44,6 +44,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    date_validator (0.7.0)
+      activemodel (>= 3)
     devise (3.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -73,7 +75,7 @@ GEM
     multi_json (1.10.1)
     mysql2 (0.3.16)
     orm_adapter (0.5.0)
-    pg (0.15.1)
+    pg (0.17.1)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -148,6 +150,7 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.2.0)
   carrierwave (~> 0.10.0)
   coffee-rails (~> 4.0.0)
+  date_validator (~> 0.7.0)
   devise (~> 3.3.0)
   geocoder (~> 1.2.5)
   jbuilder (~> 2.0)

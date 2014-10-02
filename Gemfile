@@ -51,6 +51,7 @@ gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'sprockets', '~> 2.11.0'
 gem 'geocoder', '~> 1.2.5'
 gem 'devise', '~> 3.3.0'
+gem 'date_validator', '~> 0.7.0'
 
 group :production do
   gem 'pg'

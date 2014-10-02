@@ -19,6 +19,8 @@ one:
   expensas: 1250
   tipo_propiedad: departamento
   user: one
+  tipo_publicacion: gratuita
+  fecha_publicacion: "2018-09-26 16:05:35"
 
 two:
   direccion: direccion2
@@ -37,6 +39,8 @@ two:
   expensas: 150
   tipo_propiedad: casa
   user: one
+  tipo_publicacion: basica
+  fecha_publicacion: "2018-09-26 16:05:35"
   
 validacionUS001:
   direccion: Rivadavia
@@ -55,6 +59,8 @@ validacionUS001:
   expensas: 150
   tipo_propiedad: casa
   user: two
+  tipo_publicacion: premium
+  fecha_publicacion: "2018-09-26 16:05:35"
     
 propiedadPrecioMuyAlto:
   direccion: Rivadavia
@@ -73,6 +79,8 @@ propiedadPrecioMuyAlto:
   expensas: 150
   tipo_propiedad: casa
   user: one
+  tipo_publicacion: gratuita
+  fecha_publicacion: "2018-09-26 16:05:35"
   
 propiedadPisoVacio:
   direccion: Rivadavia
@@ -91,7 +99,9 @@ propiedadPisoVacio:
   expensas: 150
   tipo_propiedad: casa
   user: one
-  
+  tipo_publicacion: basica
+  fecha_publicacion: "2018-09-26 16:05:35"
+
 propiedadPisoInvalido:
   direccion: Rivadavia
   numero: 6598
@@ -109,3 +119,5 @@ propiedadPisoInvalido:
   expensas: 150
   tipo_propiedad: casa
   user: one
+  tipo_publicacion: premium
+  fecha_publicacion: "2018-09-26 16:05:35"  

@@ -28,6 +28,15 @@ class PropiedadsController < ApplicationController
   def create
     @propiedad = Propiedad.new(propiedad_params)
     tieneamenities = params[:tieneamenities]
+    
+    case @propiedad.tipo_publicacion_id
+      when 1
+        @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(1).mesesDuracion.month
+      when 2
+        @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(2).mesesDuracion.month
+      when 3
+         @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(3).mesesDuracion.month
+    end
 
     respond_to do |format|
       if @propiedad.save
@@ -108,7 +117,8 @@ class PropiedadsController < ApplicationController
     params.require(:propiedad).permit(:direccion, :numero, :piso, :departamento,
     :descripcion, :antiguedad, :operacion_id, :precio, :moneda_id, :superficie,
     :superficie_nc, :ambientes, :dormitorios, :expensas, :barrio_id,
-    :tipo_propiedad_id, :amenities, :user_id)
+    :tipo_propiedad_id, :amenities, :user_id, :tipo_publicacion_id, :fecha_publicacion,
+    :fecha_finalizacion)
   end
 
   def usuarioValido   

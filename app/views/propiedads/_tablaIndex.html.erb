@@ -38,8 +38,24 @@
 		    <% else %>
 			  <td> - </td>
 			<% end %>
+			
+			<td><%= @propiedad.estado.nombre %></td>
 
 			<td><%= link_to 'Ver', @propiedad %></td>
 			<td><%= link_to 'Editar', edit_propiedad_path(@propiedad) %></td>
 			<td><%= link_to 'Eliminar', @propiedad, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+			
+			<% if user_signed_in? %>
+			  <% if @propiedad.estado_id == 1 %>
+			    <td class="btn inline"><%= link_to 'Pausar', pausar_path(id: @propiedad.id) %> </td>
+			  <% end %>
+			
+			  <% if @propiedad.estado_id == 2 %>
+			    <td class="btn inline"><%= link_to 'Reanudar', reanudar_path(id: @propiedad.id) %> </td>
+			  <% end %>
+			
+			  <% if @propiedad.estado_id != 3 %>
+			    <td class="btn"><%= link_to 'Finalizar', finalizar_path(id: @propiedad.id) %> </td>
+			  <% end %>
+			<% end %>
 		</tr>

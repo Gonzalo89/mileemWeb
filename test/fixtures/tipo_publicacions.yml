@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+gratuita:
+  nombre: Gratuita
+  
+basica:
+  nombre: Básica
+    
+premium:
+  nombre: Premium

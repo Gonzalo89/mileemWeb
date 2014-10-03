@@ -25,8 +25,8 @@ class FotosController < ApplicationController
   def create
     @propiedad = Propiedad.find(params[:propiedad_id])
 
-    if(@propiedad.fotos.count >= 3)
-      redirect_to propiedad_path(@propiedad), notice: 'No se puede cargar mas de 3 fotos.'
+    if(@propiedad.fotos.count >= TipoPublicacion.find(@propiedad.tipo_publicacion).maxFotos)
+      redirect_to propiedad_path(@propiedad), notice: 'No se puede cargar mas fotos.'
     else
       @foto = @propiedad.fotos.create(foto_params)
       redirect_to propiedad_path(@propiedad)

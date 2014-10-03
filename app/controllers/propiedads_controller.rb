@@ -1,8 +1,9 @@
 class PropiedadsController < ApplicationController
-  before_action :set_propiedad, only: [:show, :edit, :update, :destroy]
+  before_action :set_propiedad, only: [:show, :edit, :update, :destroy, :pausar, :reanudar, :finalizar]
   before_action :set_amenities, only: [:create, :new, :update, :destroy, :show, :edit]
   before_action :authenticate_user! , only: [:new, :edit, :update, :create, :destroy]
-  before_action :usuarioValido , only: [:edit, :update, :destroy]
+  before_action :usuarioValido , only: [:edit, :update, :destroy, :pausar, :reanudar, :finalizar]
+  
   # GET /propiedads
   # GET /propiedads.json
   def index
@@ -37,6 +38,8 @@ class PropiedadsController < ApplicationController
       when 3
          @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(3).mesesDuracion.month
     end
+    
+    @propiedad.estado_id = 1
 
     respond_to do |format|
       if @propiedad.save
@@ -59,6 +62,27 @@ class PropiedadsController < ApplicationController
       end
     end
   end
+  
+  def pausar
+    @propiedad.estado_id = 2
+    
+    @propiedad.save    
+    redirect_to propiedads_path          
+  end
+  
+  def reanudar
+    @propiedad.estado_id = 1
+    
+    @propiedad.save    
+    redirect_to propiedads_path          
+  end
+  
+  def finalizar
+    @propiedad.estado_id = 3
+    
+    @propiedad.save    
+    redirect_to propiedads_path          
+  end   
 
   # PATCH/PUT /propiedads/1
   # PATCH/PUT /propiedads/1.json
@@ -118,7 +142,7 @@ class PropiedadsController < ApplicationController
     :descripcion, :antiguedad, :operacion_id, :precio, :moneda_id, :superficie,
     :superficie_nc, :ambientes, :dormitorios, :expensas, :barrio_id,
     :tipo_propiedad_id, :amenities, :user_id, :tipo_publicacion_id, :fecha_publicacion,
-    :fecha_finalizacion)
+    :fecha_finalizacion, :estado)
   end
 
   def usuarioValido   

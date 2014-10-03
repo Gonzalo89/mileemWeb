@@ -28,6 +28,7 @@ class Propiedad < ActiveRecord::Base
   belongs_to :operacion
   belongs_to :user
   belongs_to :tipo_publicacion
+  belongs_to :estado
   
   def direccion_completa
     [direccion, numero, ',CABA', ',ARGENTINA'].compact.join(' ')

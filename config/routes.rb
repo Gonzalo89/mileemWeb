@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get 'api/mostrarjson' => 'api#mostrarJson'
   get 'propiedades' => 'api#mostrarJson'
   
+  get 'propiedads/:id/pausar' => 'propiedads#pausar', as: 'pausar'
+  get 'propiedads/:id/reanudar' => 'propiedads#reanudar', as: 'reanudar'
+  get 'propiedads/:id/finalizar' => 'propiedads#finalizar', as: 'finalizar'
+  
   resources :operacions
 
   resources :monedas

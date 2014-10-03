@@ -1,6 +1,6 @@
 json.array!(@propiedads) do |propiedad|
 
-  if ((propiedad.fecha_publicacion < Time.now) && (propiedad.fecha_finalizacion > Time.now))
+  if ((propiedad.fecha_publicacion < Time.now) && (propiedad.fecha_finalizacion > Time.now) && (propiedad.estado_id == 1))
 
   json.extract! propiedad, :id, :direccion, :numero, :piso, :departamento,
   :descripcion, :antiguedad, :precio, :superficie, :ambientes, :dormitorios,

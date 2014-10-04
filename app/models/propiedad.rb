@@ -16,7 +16,7 @@ class Propiedad < ActiveRecord::Base
   validates :superficie, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 999999999 }, allow_blank: true
   validates :ambientes, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 999999999 }, allow_blank: true
   validates :superficie_nc, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 999999999 }, allow_blank: true
-#  validates :fecha_publicacion, presence: true, :date => {:after => Proc.new { Time.now } }
+  validates :fecha_publicacion, presence: true, :date => {:after => Proc.new { Time.now } }
    
   has_many :fotos, dependent: :destroy
   has_many :tieneamenities, dependent: :destroy

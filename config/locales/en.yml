@@ -40,7 +40,7 @@ en:
   activerecord:
     errors:
       models:
-        attributes:
-          propiedad:
+        propiedad:
+          attributes:
             fecha_publicacion:
-              after: "La fecha de publicación debe ser posterior a la fecha de hoy"
+              after: "debe ser posterior a la fecha de hoy"

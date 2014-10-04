@@ -37,7 +37,9 @@ amenities = Amenity.create([{nombre: 'Balcón'}, {nombre: 'Comedor'}, {nombre: '
 usuarios = User.create([{email: 'rodrif89@gmail.com', password: '123456789', password_confirmation: '123456789',
   nombre: 'Facundo', apellido: 'Rodriguez', telefono: '46523215', confirmed_at: '2014-09-26 15:04:35'},
   {email: 'gonzalo@gmail.com', password: '123456789', password_confirmation: '123456789',
-  nombre: 'Gonzalo', apellido: 'Rodriguez', telefono: '46573211', confirmed_at: '2014-09-26 16:05:35'} ])
+  nombre: 'Gonzalo', apellido: 'Rodriguez', telefono: '46573211', confirmed_at: '2014-09-26 16:05:35'},
+  {email: 'elian1985@gmail.com', password: '123456789', password_confirmation: '123456789',
+  nombre: 'Elian', apellido: 'Pinzas', telefono: '44444444', confirmed_at: '2014-09-26 17:05:35'} ])
   
 Estado.create([{nombre: 'Activa'}, {nombre: 'Pausada'}, {nombre: 'Finalizada'}])
 

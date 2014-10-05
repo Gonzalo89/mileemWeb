@@ -54,6 +54,6 @@ gem 'devise', '~> 3.3.0'
 gem 'date_validator', '~> 0.7.0'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.15.1'
   gem 'rails_12factor'
 end

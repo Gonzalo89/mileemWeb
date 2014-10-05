@@ -120,17 +120,17 @@
 
 <p class="obligatorio center">(*)Obligatorio</p>
 
-<h2>Datos de operacion</h2>
+<h2>Datos de la operaci&oacute;n</h2>
 <hr>
 <div class="camposInline" >
 	<span class="obligatorio">&nbsp</span>
-	<%= f.label :tipo_propiedad_id %>
+	<%= f.label :tipo_propiedad_id,"tipo de propiedad" %>
 	<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id,
     :nombre, :selected => @propiedad.tipo_propiedad_id %>
 </div>
 <div class="camposInline" >
 	<span class="obligatorio">&nbsp</span>
-	<%= f.label :operacion_id %>
+	<%= f.label :operacion_id,"Operación" %>
 	<%= f.collection_select :operacion_id, Operacion.all, :id, :tipo,
 	:selected => @propiedad.operacion_id %>
 </div>
@@ -144,12 +144,12 @@
 </div>
 <div class="field camposInline">
 	<span class="obligatorio">*</span>
-	<%= f.label :direccion %>
+	<%= f.label :direccion,"Dirección" %>
 	<%= f.text_field :direccion %>
 </div>
 <div class="field camposInline">
 	<span class="obligatorio">*</span>
-	<%= f.label :numero %>	
+	<%= f.label :numero, "Número" %>	
 	<%= f.text_field :numero, :class=>"campoCorto" %>
 </div>
 <div class="field camposInline">
@@ -183,7 +183,7 @@
 </div>
 <div class="field camposInline">
 	<span class="obligatorio">*</span>
-	<%= f.label :descripcion %>
+	<%= f.label :descripcion,"Descripción" %>
 	<%= f.text_area :descripcion %>
 </div>
 <div class="field camposInline" id="opc_antiguedad" style="display:none;">

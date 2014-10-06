@@ -9,16 +9,7 @@
   <div><%= f.label :apellido %><br />
   <%= f.text_field :apellido%></div>
   
-  <div><%= f.label :telefono %><br />
-  <%= f.phone_field :telefono%></div>
-
-  <div><%= f.label :nombre %><br />
-  <%= f.text_field :nombre%></div>
-  
-  <div><%= f.label :apellido %><br />
-  <%= f.text_field :apellido%></div>
-  
-  <div><%= f.label :telefono %><br />
+  <div><%= f.label :telefono, "Teléfono" %><br />
   <%= f.phone_field :telefono%></div>
   
   <div><%= f.label :email %><br />
@@ -29,14 +20,14 @@
   <% end %>
 
 
-  <div><%= f.label :password %> <i>(Dejar el campo en blanco en caso de no querer cambiar tu contrase&ntilde;a)</i><br />  	
+  <div><%= f.label :password,"Contraseña" %> <i>(Dejar el campo en blanco en caso de no querer cambiar tu contrase&ntilde;a)</i><br />  	
 
     <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :password_confirmation,"Reingresar contraseña" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.label :current_password %> <i>(Necesitamos tu contrase&ntilde;a actual para confirmar los cambios)</i><br />
+  <div><%= f.label :current_password, "Contraseña actual" %> <i>(Necesitamos tu contrase&ntilde;a actual para confirmar los cambios)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %></div>
     
   <div><%= f.submit "Actualizar" %></div>
@@ -46,4 +37,4 @@
 
 <p>¿Descontento? <%= button_to "Cerrar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete %></p>
 
-<%= link_to "Volver", :back %>
+<%= link_to "Volver", :back, class: "btn" %>

@@ -124,7 +124,7 @@
 <hr>
 <div class="camposInline" >
 	<span class="obligatorio">&nbsp</span>
-	<%= f.label :tipo_propiedad_id,"tipo de propiedad" %>
+	<%= f.label :tipo_propiedad_id,"Tipo de propiedad" %>
 	<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id,
     :nombre, :selected => @propiedad.tipo_propiedad_id %>
 </div>
@@ -188,7 +188,7 @@
 </div>
 <div class="field camposInline" id="opc_antiguedad" style="display:none;">
 	<span class="obligatorio">&nbsp</span>
-	<%= f.label :antiguedad %>
+	<%= f.label :antiguedad,"antigüedad" %>
 	<%= f.text_field :antiguedad %>
 </div>
 <div class="camposInline field">

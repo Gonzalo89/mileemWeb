@@ -21,17 +21,17 @@ Barrio.create([{nombre: 'Agronomía'},{nombre: 'Almagro'}, {nombre: 'Balvanera'}
   
 TipoPropiedad.create([{nombre: 'Casa'},{nombre: 'Departamento'},{nombre: 'PH'},
   {nombre: 'Countries y Barrios Cerrados'},{nombre: 'Terrenos y Lotes'},{nombre: 'Quinta'},{nombre: 'Campos y Chacras'},
-  {nombre: 'Galpones, Depositos y Edificios Ind.'},{nombre: 'Cocheras'},{nombre: 'Negocios y Fondos de Comercio'},{nombre: 'Oficinas'},
+  {nombre: 'Galpones, Depósitos y Edificios Ind.'},{nombre: 'Cocheras'},{nombre: 'Negocios y Fondos de Comercio'},{nombre: 'Oficinas'},
   {nombre: 'Consultorios'},{nombre: 'Bovedas, Nichos y Parcelas'},{nombre: 'Locales Comerciales'},])
 
-Moneda.create([{nombre: 'Pesos'}, {nombre: 'Dolares'}])
+Moneda.create([{nombre: 'Pesos'}, {nombre: 'Dólares'}])
 
 Operacion.create([{tipo: 'Venta'}, {tipo: 'Alquiler'}, {tipo: 'Alquiler temporal'}])
 
 amenities = Amenity.create([{nombre: 'Balcón'}, {nombre: 'Comedor'}, {nombre: 'Dormitorio en suite'}, {nombre: 'Baulera'},
   {nombre: 'Comedor diario'}, {nombre: 'Escritorio'}, {nombre: 'Cocina'}, {nombre: 'Dependencia servicio'},
   {nombre: 'Hall'}, {nombre: 'Jardín'}, {nombre: 'Lavadero'}, {nombre: 'Living'},{nombre: 'Living Comedor'},
-  {nombre: 'Patio'}, {nombre: 'Terraza'}, {nombre: 'Agua corriente'}, {nombre: 'Desague cloacal'},
+  {nombre: 'Patio'}, {nombre: 'Terraza'}, {nombre: 'Agua corriente'}, {nombre: 'Desagüe cloacal'},
   {nombre: 'Video cable'}, {nombre: 'Gas natural'}, {nombre: 'Internet'}, {nombre: 'Pavimento'}]) 
  
 usuarios = User.create([{email: 'rodrif89@gmail.com', password: '123456789', password_confirmation: '123456789',

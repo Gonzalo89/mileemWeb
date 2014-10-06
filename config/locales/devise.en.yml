@@ -7,14 +7,14 @@ en:
       send_instructions: "Vas a recibir un email con instrucciones sobre como confirmar tu dirección de email en unos minutos."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
-      already_authenticated: "Ya iniciaste sesión."
+      already_authenticated: "Ya ingresaste."
       inactive: "Tu cuenta todavia no esta activa."
       invalid: "Email o contraseña inválida."
       locked: "Your account is locked."
       last_attempt: "You have one more attempt before your account is locked."
       not_found_in_database: "Email o contraseña inválido."
       timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "Debes iniciar sesión antes de continuar."
+      unauthenticated: "Debes ingresar antes de continuar."
       unconfirmed: "Tienes que confirmar tu dirección de email antes de continuar."
     mailer:
       confirmation_instructions:
@@ -30,7 +30,7 @@ en:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "Vas a recibir un email con instrucciones para reinicializar tu contraseña en unos minutos."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Tu contraseña se actualizo correctamente. Ya has iniciado sesión."
+      updated: "Tu contraseña se actualizo correctamente. Ya has ingresado."
       updated_not_active: "Tu contraseña se actualizo correctamente."
     registrations:
       destroyed: "Chau! Tu cuenta fue borrada correctamente."
@@ -41,16 +41,16 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
       updated: "Tu cuenta se actualizo correctamente."
     sessions:
-      signed_in: "Sesión iniciada correctamente."
-      signed_out: "Sesión cerrada correctamente."
-      already_signed_out: "Sesión cerrada correctamente."
+      signed_in: "Ingresaste correctamente."
+      signed_out: "Saliste correctamente."
+      already_signed_out: "Saliste correctamente."
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
     messages:
-      already_confirmed: "fue confirmada, por favor intente iniciar sesión"
+      already_confirmed: "fue confirmada, por favor intente ingresar"
       confirmation_period_expired: "el período de confirmación expiró. Por favor, pida una nueva"
       expired: "expiró, por favor pida una nueva"
       not_found: "no se encontró"

@@ -42,7 +42,7 @@ class PropiedadsController < ApplicationController
           end
         end
 
-        format.html { redirect_to @propiedad, notice: 'La propiedad fue creada exitosamente.' }
+        format.html { redirect_to @propiedad, notice: 'La propiedad fue publicada exitosamente.' }
         format.json { render :show, status: :created, location: @propiedad }
       else
         format.html { render :new }

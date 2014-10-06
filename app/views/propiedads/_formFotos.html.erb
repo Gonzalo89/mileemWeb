@@ -12,10 +12,10 @@
 <p>
 	<span class="camposInline"><%= f.label "Agregar foto" %><span style:"color: red; font-size: 0.8em; white-space:normal;"> (Hasta 5MB)</span></span>
 	<br>
-	<%= f.file_field :nombre , :id => "archivo", :required => true %>
+	<%= f.file_field :nombre ,:value=>"Buscar",:id => "archivo", :required => true %>
 </p>
 <p>
-	<%= f.submit %>
+	<%= f.submit "Subir Foto"%>
 </p>
 <% end %>
 <hr>

@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
 
@@ -40,8 +39,8 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-#gem 'debugger', '~> 1.6.8', group: [:development, :test]
-#gem 'debugger-ruby_core_source', '~> 1.3.5', group: [:development, :test]
+# gem 'debugger', '~> 1.6.8', group: [:development, :test]
+# gem 'debugger-ruby_core_source', '~> 1.3.5', group: [:development, :test]
 
 gem 'therubyracer', '~> 0.12.1'
 gem 'carrierwave', '~> 0.10.0'
@@ -54,6 +53,6 @@ gem 'devise', '~> 3.3.0'
 gem 'date_validator', '~> 0.7.0'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.15.1'
   gem 'rails_12factor'
 end

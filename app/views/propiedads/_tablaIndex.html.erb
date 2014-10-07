@@ -3,6 +3,7 @@
 			<td><%= @propiedad.numero %></td>
 			<td><%= @propiedad.piso %></td>
 			<td><%= @propiedad.departamento %></td>
+			<td><%= @propiedad.tipo_propiedad.nombre %></td>
 			<td><%= @propiedad.operacion.tipo %></td>
 
 			<td> <% @propiedad.amenities.each do |a| %>

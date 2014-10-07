@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  nombre: MyString
+activa:
+  nombre: Activa
 
-two:
-  nombre: MyString
+pausada:
+  nombre: Pausada
+  
+finalizada:
+  nombre: Finalizada

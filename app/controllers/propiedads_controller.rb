@@ -124,6 +124,20 @@ class PropiedadsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def filtroInicial
+    @propiedades = Propiedad.all
+    
+    @propiedades = @propiedades.select { |propiedad|        
+       (propiedad.fecha_publicacion < Time.now) && (propiedad.fecha_finalizacion > Time.now) && (propiedad.estado_id == 1)           
+    }
+    
+    @propiedades = @propiedades.select { |propiedad| propiedad.barrio_id == 2 }
+    
+    @propiedades = @propiedades.select { |propiedad| propiedad.tipo_propiedad_id == 2 }
+    
+    render :json => @propiedades 
+  end
 
   private
 

@@ -37,6 +37,13 @@ class PropiedadTest < ActiveSupport::TestCase
 
     assert_not @propiedad.save
   end
+  
+  test "propiedad fecha dia actual" do
+  
+    @propiedad = propiedads(:propiedadFecha)
+
+    assert @propiedad.save, @propiedad.errors.inspect
+  end
 
 end
 

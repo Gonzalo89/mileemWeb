@@ -132,11 +132,18 @@ class PropiedadsController < ApplicationController
        (propiedad.fecha_publicacion < Time.now) && (propiedad.fecha_finalizacion > Time.now) && (propiedad.estado_id == 1)           
     }
     
-    @propiedades = @propiedades.select { |propiedad| propiedad.barrio_id == 2 }
+    if params["barrio_id"]
+      @propiedades = @propiedades.select { |propiedad| propiedad.barrio_id == params["barrio_id"].to_i }
+    end
     
-    @propiedades = @propiedades.select { |propiedad| propiedad.tipo_propiedad_id == 2 }
+    if params["tipo_propiedad_id"]
+      @propiedades = @propiedades.select { |propiedad| propiedad.tipo_propiedad_id == params["tipo_propiedad_id"].to_i }
+    end
     
-    render :json => @propiedades 
+    if params["operacion_id"]
+      @propiedades = @propiedades.select { |propiedad| propiedad.operacion_id == params["operacion_id"].to_i }
+    end
+    
   end
 
   private
@@ -158,7 +165,7 @@ class PropiedadsController < ApplicationController
     :tipo_propiedad_id, :amenities, :user_id, :tipo_publicacion_id, :fecha_publicacion,
     :fecha_finalizacion, :estado)
   end
-
+  
   def usuarioValido   
     if @propiedad.user_id != current_user.id
       redirect_to propiedads_url, alert: 'La propiedad no pertenece a este usuario.'

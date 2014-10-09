@@ -6,8 +6,8 @@ propValidas = Array.new
 
   propValidas.push(propiedad)
   
-  end 
-  
+  end
+      
 end
 
 json.array!(propValidas) do |propiedad| 

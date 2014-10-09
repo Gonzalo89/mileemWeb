@@ -125,24 +125,26 @@ class PropiedadsController < ApplicationController
     end
   end
   
-  def filtroInicial
+  def filtro
     @propiedades = Propiedad.all
     
     @propiedades = @propiedades.select { |propiedad|        
        (propiedad.fecha_publicacion < Time.now) && (propiedad.fecha_finalizacion > Time.now) && (propiedad.estado_id == 1)           
     }
     
-    if params["barrio_id"]
-      @propiedades = @propiedades.select { |propiedad| propiedad.barrio_id == params["barrio_id"].to_i }
+    if params["barrioId"]
+      @propiedades = @propiedades.select { |propiedad| propiedad.barrio_id == params["barrioId"].to_i }
     end
     
-    if params["tipo_propiedad_id"]
-      @propiedades = @propiedades.select { |propiedad| propiedad.tipo_propiedad_id == params["tipo_propiedad_id"].to_i }
+    if params["tipoPropiedadId"]
+      @propiedades = @propiedades.select { |propiedad| propiedad.tipo_propiedad_id == params["tipoPropiedadId"].to_i }
     end
     
-    if params["operacion_id"]
-      @propiedades = @propiedades.select { |propiedad| propiedad.operacion_id == params["operacion_id"].to_i }
+    if params["operacionId"]
+      @propiedades = @propiedades.select { |propiedad| propiedad.operacion_id == params["operacionId"].to_i }
     end
+    
+    @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.fecha_publicacion] }    
     
   end
 

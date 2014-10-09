@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'propiedads/:id/reanudar' => 'propiedads#reanudar', as: 'reanudar'
   get 'propiedads/:id/finalizar' => 'propiedads#finalizar', as: 'finalizar'
   
-  get 'propiedads/filtroInicial'
+  get 'propiedads/filtro'
   
   resources :operacions
 

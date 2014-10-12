@@ -1,37 +1,59 @@
+<h1>Datos de la publicaci&oacute;n</h1>
+
 <h2>Datos de operación</h2>
 <hr>
-<p class="center">
-	<strong>Operacion:</strong>
-	<%= @propiedad.operacion.tipo %>
-</p>
 
-<p class="center">
-	<strong>Tipo:</strong>
-	<%= @propiedad.tipo_propiedad.nombre %>
-</p>
+<table align="center">
+	<tbody>
+		<tr>
+			<td align="right" ><strong>Operaci&oacute;n	</strong></td>
+			<td width="10px"></td>
+			<td align="left"><%= @propiedad.operacion.tipo %></td>			
+		</tr>
+		<tr>
+			<td align="right"><strong>Tipo	</strong></td>
+			<td width="10px"></td>
+			<td align="left"><%= @propiedad.tipo_propiedad.nombre %></td>
+			
+		</tr>
+	</tbody>
+	
+</table>
 
 <br>
 <h2>Ubicación</h2>
 <hr>
-<p class="center">
-	<strong>Barrio:</strong>
-	<%= @propiedad.barrio.nombre %>
-</p>
+<table align="center">
+	<tbody>
+		<tr>
+			<td align="right"><strong>Barrio</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.barrio.nombre %></td>
+		</tr>
+		<tr>
+			<td align="right"><strong>Calle</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.direccion %></td>	
+			
+		</tr>
+		<tr>
+			<td align="right"><strong>N&uacute;mero</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.numero %></td>
+		</tr>
+		<tr>
+			<td align="right"><strong>Piso</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.piso %></td>
+		</tr>
+		<tr>
+			<td align="right"><strong>Departamento</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.departamento %></td>
+		</tr>
 
-<p class="center">
-	<strong>Calle:</strong>
-	<%= @propiedad.direccion %>
-</p>
-
-<p>
-<p class="center">
-	<strong>Numero:</strong>
-	<%= @propiedad.numero %>
-	<strong>Piso:</strong>
-	<%= @propiedad.piso %>
-	<strong>Departamento:</strong>
-	<%= @propiedad.departamento %>
-</p>
+	</tbody>
+</table>
 <p class="center">
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@propiedad.latitude}%2C#{@propiedad.longitude}",
  :id => "mapa" %>
@@ -39,66 +61,84 @@
 <br>
 <h2>Datos del inmueble</h2>
 <hr>
-<p class="center">
-	<strong>Descripcion:</strong>
-	<%= @propiedad.descripcion %>
-</p>
+<table align="center">
+	<tbody>
+		<tr>
+			<td align="right"><strong>Descripci&oacute;n</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.descripcion %></td>
+		</tr>
+		<tr>
+			<td align="right"><strong>Antig&uuml;edad</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.antiguedad %> años</td>
+		</tr>
 
-<p class="center">
-	<strong>Antiguedad:</strong>
-	<%= @propiedad.antiguedad %> años
-</p>
+		<tr>
+			<td align="right"><strong>Superficie</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.superficie %> m2</td>
+		</tr>
 
-<p class="center">
-	<strong>Superficie:</strong>
-	<%= @propiedad.superficie %> m2
-</p>
+		<tr>
+			<td align="right"><strong>Superficie no cubierta</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.superficie_nc %> m2</td>
+		</tr>
+		
+		<tr>
+			<td align="right"><strong>Ambientes</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.ambientes %></td>
+		</tr>
+		
+		<tr>
+			<td align="right"><strong>Dormitorios</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.dormitorios %></td>
+		</tr>
+		
+		<tr>
+			<td align="right" valign="top" >
+				<strong>Amenities</strong>
+			</td>
+			<td width="10px"></td>
+			<td width="200px">
+				<% @propiedad.amenities.each do |a| %>
+				<%= a.nombre %>
+				<% if a != @propiedad.amenities.last %>
+				<%= ", " %>
+				<% end %>
+				<% end %>
+			</td>
+		</tr>
+		
+		<tr>
+			<td align="right"><strong>Moneda</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.moneda.nombre %></td>
+		</tr>
+		
+		<tr>
+			<td align="right"><strong>Precio</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.precio %></td>
+		</tr>
+		
+		<tr>
+			<td align="right"><strong>Expensas</strong></td>
+			<td width="10px"></td>
+			<td><%= @propiedad.expensas %></td>
+		</tr>
+	</tbody>
+</table>
 
-<p class="center">
-	<strong>Superficie no cubierta:</strong>
-	<%= @propiedad.superficie_nc %> m2
-</p>
-
-<p class="center">
-	<strong>Ambientes:</strong>
-	<%= @propiedad.ambientes %>
-</p>
-
-<p class="center">
-	<strong>Dormitorios:</strong>
-	<%= @propiedad.dormitorios %>
-</p>
-
-<p class="center">
-	<strong>Amenities:</strong>
-	<% @propiedad.amenities.each do |a| %>
-	<%= a.nombre %>
-	<% if a != @propiedad.amenities.last %>
-	<%= ", " %>
-	<% end %>
-	<% end %>
-</p>
-
-<p class="center">
-	<strong>Moneda:</strong>
-	<%= @propiedad.moneda.nombre %>
-</p>
-
-<p class="center">
-	<strong>Precio:</strong>
-	<%= @propiedad.precio %>
-</p>
-
-<p class="center">
-	<strong>Expensas:</strong>
-	<%= @propiedad.expensas %>
-</p>
-
-<p>
-	<%= image_tag @propiedad.foto if @propiedad.foto? %>
-</p>
-<br>
-<%= render 'formFotos' %>
-
-<%= link_to 'Editar publicación', edit_propiedad_path(@propiedad), class: "btn" %>
-<%= link_to 'Volver', propiedads_path, class: "btn" %>
+<div align="center">
+	<p>
+		<%= image_tag @propiedad.foto if @propiedad.foto? %>
+	</p>
+	<br>
+	
+	<p><%= link_to 'Editar publicación', edit_propiedad_path(@propiedad), class: "btn" %></p>
+	<%= link_to 'Volver', propiedads_path, class: "btn" %>
+</div>

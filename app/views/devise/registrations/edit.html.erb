@@ -1,18 +1,20 @@
-<h2>Edita tus datos</h2>
+<h1>Edita tus datos</h1>
+<hr>
 
+<div class="center">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
   
-  <div><%= f.label :nombre %><br />
+  <div class="camposInline"><%= f.label :nombre %>
   <%= f.text_field :nombre%></div>
   
-  <div><%= f.label :apellido %><br />
+  <div class="camposInline"><%= f.label :apellido %>
   <%= f.text_field :apellido%></div>
   
-  <div><%= f.label :telefono, "Teléfono" %><br />
+  <div class="camposInline"><%= f.label :telefono, "Teléfono" %>
   <%= f.phone_field :telefono%></div>
   
-  <div><%= f.label :email %><br />
+  <div class="camposInline"><%= f.label :email %>
   <%= f.email_field :email, autofocus: true %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -20,21 +22,24 @@
   <% end %>
 
 
-  <div><%= f.label :password,"Contraseña" %> <i>(Dejar el campo en blanco en caso de no querer cambiar tu contrase&ntilde;a)</i><br />  	
+  <div class="camposInline"><%= f.label :password,"Contraseña" %> 
+  	<!-- <i>(Dejar el campo en blanco en caso de no querer cambiar tu contrase&ntilde;a)</i>-->	
 
     <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <div><%= f.label :password_confirmation,"Reingresar contraseña" %><br />
+  <div  class="camposInline"><%= f.label :password_confirmation,"Reingresar contraseña" %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.label :current_password, "Contraseña actual" %> <i>(Necesitamos tu contrase&ntilde;a actual para confirmar los cambios)</i><br />
+  <div  class="camposInline"><%= f.label :current_password, "Contraseña actual" %> 
+  	<!-- <i>(Necesitamos tu contrase&ntilde;a actual para confirmar los cambios)</i> -->
     <%= f.password_field :current_password, autocomplete: "off" %></div>
     
   <div><%= f.submit "Actualizar" %></div>
 <% end %>
 
 <h3>Cerrar mi cuenta</h3>
-
+<hr>
 <p>¿Descontento? <%= button_to "Cerrar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete %></p>
 
 <%= link_to "Volver", :back, class: "btn" %>
+</div>

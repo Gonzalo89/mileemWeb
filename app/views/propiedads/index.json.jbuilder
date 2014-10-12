@@ -29,5 +29,6 @@ json.array!(propValidas) do |propiedad|
   json.tipo_publicacion_id propiedad.tipo_publicacion.id
   json.fecha_publicacion propiedad.fecha_publicacion
   json.fecha_finalizacion propiedad.fecha_finalizacion
+  json.user propiedad.user
   
 end

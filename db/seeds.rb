@@ -43,9 +43,9 @@ usuarios = User.create([{email: 'rodrif89@gmail.com', password: '123456789', pas
   
 Estado.create([{nombre: 'Activa'}, {nombre: 'Pausada'}, {nombre: 'Finalizada'}])
 
-tipoPublicaciones = TipoPublicacion.create([{nombre: 'Gratuita', maxFotos: 3, maxVideos: 0, mesesDuracion: 1},
-  {nombre: 'Básica', maxFotos: 5, maxVideos: 1, mesesDuracion: 3},
-  {nombre: 'Premium', maxFotos: 10, maxVideos: 3, mesesDuracion: 12} ])
+tipoPublicaciones = TipoPublicacion.create([{nombre: 'Gratuita', maxFotos: 3, maxVideos: 0, mesesDuracion: 1, importe: 0},
+  {nombre: 'Básica', maxFotos: 5, maxVideos: 1, mesesDuracion: 3, importe: 100},
+  {nombre: 'Premium', maxFotos: 10, maxVideos: 3, mesesDuracion: 12, importe: 300} ])
   
 Propiedad.new({direccion: 'PEDRO LOZANO', piso: 2, numero: 4100, departamento: 'A', descripcion: 'descripcio1', antiguedad: 1, operacion_id: 1, barrio_id: 2, precio: 150000, moneda_id: 2, superficie: 100, ambientes: 2, dormitorios: 2, expensas: 1200, tipo_propiedad_id: 2, user: usuarios.first, amenities: [amenities.first, amenities.second], tipo_publicacion_id: 1, fecha_publicacion: '2014-10-02 16:05:35', fecha_finalizacion: '2014-11-02 16:05:35', estado_id: 1, latitude: -34.6073, longitude: -58.5051}).save(validate: false)
 Propiedad.new({direccion: 'Av Corrientes', piso: '', numero: 4666, departamento: '', descripcion: 'descripcio2', antiguedad: 0, operacion_id: 2, barrio: Barrio.find_by_nombre('Flores'), precio: 100000, moneda_id: 1, superficie: 60, ambientes: 1, dormitorios: 1, expensas: 200, tipo_propiedad_id: 1, user: usuarios.first, superficie_nc: 100, tipo_publicacion_id: 2, fecha_publicacion: '2014-09-22 16:05:35', fecha_finalizacion: '2014-12-22 16:05:35', estado_id: 1, latitude: -34.6021, longitude: -58.4313}).save(validate: false)

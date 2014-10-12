@@ -70,6 +70,14 @@
 				break;
 			default:
 				$("#datosTarjeta").show();
+				var tipoPublicacionId = $(this).val();
+				
+				if(tipoPublicacionId == 2) {
+				  $("#importe").text("$<%= TipoPublicacion.find(2).importe %>");
+				}
+				else {
+				  $("#importe").text("$<%= TipoPublicacion.find(3).importe %>");
+				}
 			}
 		});
 	}); 

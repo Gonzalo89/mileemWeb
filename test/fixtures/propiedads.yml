@@ -19,6 +19,9 @@ one:
   expensas: 1250
   tipo_propiedad: departamento
   user: one
+  tipo_publicacion: gratuita
+  fecha_publicacion: "2018-09-26 16:05:35"
+  estado: activa
 
 two:
   direccion: direccion2
@@ -37,6 +40,9 @@ two:
   expensas: 150
   tipo_propiedad: casa
   user: one
+  tipo_publicacion: basica
+  fecha_publicacion: "2018-09-26 16:05:35"
+  estado: activa
   
 validacionUS001:
   direccion: Rivadavia
@@ -55,6 +61,9 @@ validacionUS001:
   expensas: 150
   tipo_propiedad: casa
   user: two
+  tipo_publicacion: premium
+  fecha_publicacion: "2018-09-26 16:05:35"
+  estado: activa
     
 propiedadPrecioMuyAlto:
   direccion: Rivadavia
@@ -73,6 +82,9 @@ propiedadPrecioMuyAlto:
   expensas: 150
   tipo_propiedad: casa
   user: one
+  tipo_publicacion: gratuita
+  fecha_publicacion: "2018-09-26 16:05:35"
+  estado: activa
   
 propiedadPisoVacio:
   direccion: Rivadavia
@@ -91,7 +103,10 @@ propiedadPisoVacio:
   expensas: 150
   tipo_propiedad: casa
   user: one
-  
+  tipo_publicacion: basica
+  fecha_publicacion: "2018-09-26 16:05:35"
+  estado: activa
+
 propiedadPisoInvalido:
   direccion: Rivadavia
   numero: 6598
@@ -109,3 +124,27 @@ propiedadPisoInvalido:
   expensas: 150
   tipo_propiedad: casa
   user: one
+  tipo_publicacion: premium
+  fecha_publicacion: "2018-09-26 16:05:35"
+  estado: activa
+
+propiedadFecha:
+  direccion: Rivadavia
+  numero: 6598
+  piso: 1
+  departamento: D
+  barrio: flores
+  descripcion: descripcion3
+  antiguedad: 2
+  operacion: venta
+  precio: 150000
+  moneda: dolares
+  superficie: 150
+  ambientes: 4
+  dormitorios: 2
+  expensas: 150
+  tipo_propiedad: casa
+  user: one
+  tipo_publicacion: premium
+  fecha_publicacion: "2018-09-26 16:05:35"
+  estado: activa

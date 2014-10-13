@@ -35,7 +35,8 @@ class PropiedadsControllerTest < ActionController::TestCase
     assert_difference('Propiedad.count') do
       post :create, propiedad: { barrio_id: @propiedad.barrio_id, direccion: @propiedad.direccion,
         numero: @propiedad.numero, descripcion: @propiedad.descripcion, moneda_id: @propiedad.moneda_id,
-        precio: @propiedad.precio, operacion_id: @propiedad.operacion_id, user_id: @user.id}
+        precio: @propiedad.precio, operacion_id: @propiedad.operacion_id, user_id: @user.id,
+        tipo_publicacion_id: @propiedad.tipo_publicacion_id, fecha_publicacion: @propiedad.fecha_publicacion}
     end
 
     assert_redirected_to propiedad_path(assigns(:propiedad))
@@ -102,5 +103,33 @@ class PropiedadsControllerTest < ActionController::TestCase
     get :index
     assert_select '.nombreUsuario', cantPropTotal-1
   end
-
+  
+  test "control fecha finalizacion tipo gratuita" do
+    @propiedad = propiedads(:one)
+    @user = users(:one)
+    sign_in @user
+    
+    assert_difference('Propiedad.count', 1) do
+      post :create, propiedad: { barrio_id: @propiedad.barrio_id, direccion: @propiedad.direccion,
+        numero: @propiedad.numero, descripcion: @propiedad.descripcion, moneda_id: @propiedad.moneda_id,
+        precio: @propiedad.precio, operacion_id: @propiedad.operacion_id, user_id: @user.id,
+        tipo_publicacion_id: @propiedad.tipo_publicacion_id, fecha_publicacion: "2017-01-17 16:05:35"}
+    end
+    
+  end
+  
+  test "create propiedad fecha pasada" do
+    @propiedad = propiedads(:one)
+    @user = users(:one)
+    sign_in @user
+    
+    assert_difference('Propiedad.count', 0) do
+      post :create, propiedad: { barrio_id: @propiedad.barrio_id, direccion: @propiedad.direccion,
+        numero: @propiedad.numero, descripcion: @propiedad.descripcion, moneda_id: @propiedad.moneda_id,
+        precio: @propiedad.precio, operacion_id: @propiedad.operacion_id, user_id: @user.id,
+        tipo_publicacion_id: @propiedad.tipo_publicacion_id, fecha_publicacion: "2010-10-06 16:05:35"}
+    end
+    
+  end
+  
 end

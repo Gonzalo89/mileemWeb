@@ -1,0 +1,42 @@
+<div id = "datosTarjeta" hidden="hidden">
+
+<h2>Tarjeta</h2>
+<hr>
+
+<div class="field camposInline"">
+	<span class="obligatorio">&nbsp</span>
+	<%= f.label "Nombre Titular" %>
+	<%= text_field "nombreTitular", :id => "nombreTitular" %>
+</div>
+
+<div class="field camposInline";">
+	<span class="obligatorio">&nbsp</span>
+	<%= f.label "Apellido Titular" %>
+	<%= text_field "apellidoTitular", :id => "apellidoTitular" %>
+</div>
+
+<div class="field camposInline"">
+	<span class="obligatorio">&nbsp</span>
+	<%= f.label "Número de tarjeta" %>
+	<%= text_field "numeroTarjeta", :id =>  "numeroTarjeta"%>
+</div>
+
+<div class="field camposInline"">
+	<span class="obligatorio">&nbsp</span>
+	<%= f.label "Código de seguridad" %>
+	<%= text_field "codigoSeguridad", :id =>  "codigoSeguridad"%>
+</div>
+
+<div class="field camposInline"">
+	<span class="obligatorio">&nbsp</span>
+	<%= f.label "Vencimiento Tarjeta" %>
+	<%= date_field "vencimientoTarjeta", :id => "vencimientoTarjeta"%>
+</div>
+
+<div class="field camposInline"">
+	<span class="obligatorio">&nbsp</span>
+	<%= f.label "Importe" %>
+	<span id = "importe"></span>
+</div>
+
+</div>

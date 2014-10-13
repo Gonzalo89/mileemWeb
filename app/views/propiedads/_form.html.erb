@@ -11,8 +11,7 @@
 			case "6":
 				//quinta
 				$("#opc_antiguedad").show();
-				$("#propiedad_ambientes").val('');
-				$("#opc_ambientes").hide();
+				$("#opc_ambientes").show();
 				$("#opc_dormitorios").show();
 				break;
 			case "2":
@@ -53,12 +52,48 @@
 			case "1":
 				//venta
 				$("#opc_expensas").hide();
+				$("#propiedad_expensas").val('');
 				break;
 			default:
 				$("#opc_expensas").show();
 			}
 		});
 	}); 
+</script>
+<script>
+	$(document).ready(function() {
+		$("#propiedad_tipo_publicacion_id").change(function() {
+			switch ($(this).val()) {
+			case "1":
+				//gratuita
+				$("#datosTarjeta").hide();		    
+				break;
+			default:
+				$("#datosTarjeta").show();
+				var tipoPublicacionId = $(this).val();
+				
+				if(tipoPublicacionId == 2) {
+				  $("#importe").text("$<%= TipoPublicacion.find(2).importe %>");
+				}
+				else {
+				  $("#importe").text("$<%= TipoPublicacion.find(3).importe %>");
+				}
+			}
+		});
+	}); 
+</script>
+<script>
+	$(document).ready(function() {
+			switch ($("#propiedad_operacion_id").val()) {
+			case "1":
+				//venta
+				$("#opc_expensas").hide();
+				$("#propiedad_expensas").val('');
+				break;
+			default:
+				$("#opc_expensas").show();
+			}			
+		}); 
 </script>
 <script>
 	$(document).ready(function() {
@@ -70,8 +105,7 @@
 		case "6":
 			//quinta
 			$("#opc_antiguedad").show();
-			$("#propiedad_ambientes").val('');
-			$("#opc_ambientes").hide();
+			$("#opc_ambientes").show();
 			$("#opc_dormitorios").show();
 			break;
 		case "2":
@@ -102,7 +136,7 @@
 			$("#propiedad_dormitorios").val('');
 			$("#opc_dormitorios").hide();
 		}
-	}); 
+	}); 	
 </script>
 <%= form_for(@propiedad) do |f| %>
 <% if @propiedad.errors.any? %>
@@ -120,9 +154,33 @@
 
 <p class="obligatorio center">(*)Obligatorio</p>
 
-<h2>Datos de la operaci&oacute;n</h2>
+<h2>Datos de operaci&oacute;n</h2>
 <hr>
-<div class="camposInline">
+<div class="camposInline" >
+	<span class="obligatorio">&nbsp</span>
+	<%= f.label "Tipo" %>
+	
+	<% if params[:action] == "new" || params[:action] == "create" %>	
+	  <%= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
+      :nombre, :selected => @propiedad.tipo_publicacion_id %>       
+    <% else %>      
+      <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled => true %>        
+    <% end %>    
+    
+</div>
+<div class="camposInline" >
+	<span class="obligatorio">*</span>
+	<%= f.label "Fecha de publicación" %>
+		
+	<% if params[:action] == "new" || params[:action] == "create" %>	
+	  <%= date_field :propiedad, :fecha_publicacion, :required => true %>
+	<% else %>
+	  <%= date_field :propiedad, :fecha_publicacion, :disabled =>true %>
+	<% end %>
+</div>
+
+
+<div class="camposInline" >
 	<span class="obligatorio">&nbsp</span>
 	<%= f.label :tipo_propiedad_id,"Tipo de propiedad" %>
 	<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id,
@@ -134,6 +192,7 @@
 	<%= f.collection_select :operacion_id, Operacion.all, :id, :tipo,
 	:selected => @propiedad.operacion_id %>
 </div>
+
 <br>
 <h2>Ubicación</h2>
 <hr>
@@ -214,9 +273,9 @@
 <div class="field center">
 	<h2>Amenities</h2>
 	<hr>	
-	<% r1 = @amenities.find([1,2,3,4,5,6,7]) %>
-	<% r2 = @amenities.find([8,9,10,11,12,13,14]) %>
-	<% r3 = @amenities.find([15,16,17,18,19,20,21]) %>
+	<% r1 = @amenities[0..6] %>
+	<% r2 = @amenities[7..13] %>
+	<% r3 = @amenities[14..20] %>
 	<table id="tablaAmenities">
 		<tr>
 			<% r1.each do |a| %>
@@ -285,6 +344,10 @@
 	<%= f.text_field :expensas %>
 </div>
 
+<br>
+<%= render :partial => "formTarjeta", :locals => { :f => f } %>
+<br>
+	
 <div class="field">
 <%= f.hidden_field :user_id, :value => current_user.id %>
 </div>
@@ -300,18 +363,17 @@
 </script>
 <script>
 $(document).ready(function() {
-	$('#propiedad_direccion').change(function() {
-	//	<% @propiedad.geocode %>
-	//	alert("<%= @propiedad.direccion %>");
-	//	$('#latitude').text(<%= @propiedad.latitude %>);
-	//	$('#longitude').text(<%= @propiedad.longitude %>);
-	//	$('#mapa').attr("src","http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=<%=@propiedad.latitude%>%2C<%=@propiedad.longitude%>");
-	//	alert("change!");
-	//	$('#mapa').attr("src","http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=-34.6439%2C-58.5181");
-	});
+	
+	<% if params[:action] == "new"	|| params[:action] == "create" %>
+	  $('#mapa').hide();
+	<% end %>
+	
+ 	<% if params[:action] != "new"	&& params[:action] != "create" %>
+	  $('#datosTarjeta').hide();
+	<% end %>	
 	
 	<% if !@propiedad.latitude 	%>
 	  $('#mapa').hide();
-	<% end %>
+	<% end %>	
 });
 </script>

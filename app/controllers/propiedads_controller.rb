@@ -1,8 +1,9 @@
 class PropiedadsController < ApplicationController
-  before_action :set_propiedad, only: [:show, :edit, :update, :destroy]
+  before_action :set_propiedad, only: [:show, :edit, :update, :destroy, :pausar, :reanudar, :finalizar]
   before_action :set_amenities, only: [:create, :new, :update, :destroy, :show, :edit]
   before_action :authenticate_user! , only: [:new, :edit, :update, :create, :destroy]
-  before_action :usuarioValido , only: [:edit, :update, :destroy]
+  before_action :usuarioValido , only: [:edit, :update, :destroy, :pausar, :reanudar, :finalizar]
+  
   # GET /propiedads
   # GET /propiedads.json
   def index
@@ -28,6 +29,17 @@ class PropiedadsController < ApplicationController
   def create
     @propiedad = Propiedad.new(propiedad_params)
     tieneamenities = params[:tieneamenities]
+    
+    case @propiedad.tipo_publicacion_id
+      when 1
+        @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(1).mesesDuracion.month
+      when 2
+        @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(2).mesesDuracion.month
+      when 3
+         @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(3).mesesDuracion.month
+    end
+    
+    @propiedad.estado_id = 1
 
     respond_to do |format|
       if @propiedad.save
@@ -50,6 +62,27 @@ class PropiedadsController < ApplicationController
       end
     end
   end
+  
+  def pausar
+    @propiedad.estado_id = 2
+    
+    @propiedad.save    
+    redirect_to propiedads_path          
+  end
+  
+  def reanudar
+    @propiedad.estado_id = 1
+    
+    @propiedad.save    
+    redirect_to propiedads_path          
+  end
+  
+  def finalizar
+    @propiedad.estado_id = 3
+    
+    @propiedad.save    
+    redirect_to propiedads_path          
+  end   
 
   # PATCH/PUT /propiedads/1
   # PATCH/PUT /propiedads/1.json
@@ -91,6 +124,29 @@ class PropiedadsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def filtro
+    @propiedades = Propiedad.all
+    
+    @propiedades = @propiedades.select { |propiedad|        
+       (propiedad.fecha_publicacion < Time.now) && (propiedad.fecha_finalizacion > Time.now) && (propiedad.estado_id == 1)           
+    }
+    
+    if params["barrioId"]
+      @propiedades = @propiedades.select { |propiedad| propiedad.barrio_id == params["barrioId"].to_i }
+    end
+    
+    if params["tipoPropiedadId"]
+      @propiedades = @propiedades.select { |propiedad| propiedad.tipo_propiedad_id == params["tipoPropiedadId"].to_i }
+    end
+    
+    if params["operacionId"]
+      @propiedades = @propiedades.select { |propiedad| propiedad.operacion_id == params["operacionId"].to_i }
+    end
+    
+    @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.fecha_publicacion] }    
+    
+  end
 
   private
 
@@ -108,9 +164,10 @@ class PropiedadsController < ApplicationController
     params.require(:propiedad).permit(:direccion, :numero, :piso, :departamento,
     :descripcion, :antiguedad, :operacion_id, :precio, :moneda_id, :superficie,
     :superficie_nc, :ambientes, :dormitorios, :expensas, :barrio_id,
-    :tipo_propiedad_id, :amenities, :user_id)
+    :tipo_propiedad_id, :amenities, :user_id, :tipo_publicacion_id, :fecha_publicacion,
+    :fecha_finalizacion, :estado)
   end
-
+  
   def usuarioValido   
     if @propiedad.user_id != current_user.id
       redirect_to propiedads_url, alert: 'La propiedad no pertenece a este usuario.'

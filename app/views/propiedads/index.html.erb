@@ -9,6 +9,7 @@
 			<th>Número</th>
 			<th>Piso</th>
 			<th>Depto</th>
+			<th>Tipo de Propiedad</th>
 			<th>Operación</th>
 			<th>Amenities</th>
 			<th>Precio</th>
@@ -19,47 +20,31 @@
 			<th>Tipo</th>
 			<th>Fotos</th>
 			<th>Usuario</th>
+			<th>Tipo Publicación</th>
+			<th>Fecha Publicación</th>
+			<th>Fecha Finalización</th>
+			<th>Estado</th>
 			<th colspan="3"></th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<% @propiedads.each do |propiedad| %>
-		<% if !user_signed_in? || (current_user.id == propiedad.user.id) %>
-		<tr>
-			<td><%= propiedad.direccion %></td>
-			<td><%= propiedad.numero %></td>
-			<td><%= propiedad.piso %></td>
-			<td><%= propiedad.departamento %></td>
-			<td><%= propiedad.operacion.tipo %></td>
-
-			<td> <% propiedad.amenities.each do |a| %>
-			<%= a.nombre %>
-			<% if a != propiedad.amenities.last %>
-			<%= ", " %>
-			<% end %>
-			<% end %> </td>
-
-			<td><%= propiedad.precio %></td>
-			<td><%= propiedad.moneda.nombre %></td>
-			<td><%= propiedad.superficie %></td>
-			<td><%= propiedad.superficie_nc %></td>
-			<td><%= propiedad.barrio.nombre %></td>
-			<td><%= propiedad.tipo_propiedad.nombre %></td>
-
-			<td> <% propiedad.fotos.each do |foto| %>
-			<%= image_tag foto.nombre_url(:thumb) if foto.nombre? %>
-			<% end %> </td>
+		
+		<% @propiedad = propiedad %>
+		
+		<% if (!user_signed_in? && (@propiedad.fecha_publicacion < Time.now) && (@propiedad.fecha_finalizacion > Time.now)) %>			
 			
-			<td class="nombreUsuario" ><%= propiedad.user.nombre %></td>
+		  <% if @propiedad.estado_id == 1 %>
+	        <%= render 'tablaIndex' %>
+	      <% end %>
+	      
+	    <% else if (user_signed_in? && (current_user.id == @propiedad.user.id)) %>
+	    
+	      <%= render 'tablaIndex' %>
 
-			<td><%= link_to 'Ver', propiedad %></td>
-			<td><%= link_to 'Editar', edit_propiedad_path(propiedad) %></td>
-			<td><%= link_to 'Eliminar', propiedad, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
-		</tr>
+		<% end %>
 		<% end %>
 		<% end %>
 	</tbody>
 </table>
-
-<br>

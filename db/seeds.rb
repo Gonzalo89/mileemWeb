@@ -37,9 +37,17 @@ amenities = Amenity.create([{nombre: 'Balcón'}, {nombre: 'Comedor'}, {nombre: '
 usuarios = User.create([{email: 'rodrif89@gmail.com', password: '123456789', password_confirmation: '123456789',
   nombre: 'Facundo', apellido: 'Rodriguez', telefono: '46523215', confirmed_at: '2014-09-26 15:04:35'},
   {email: 'gonzalo@gmail.com', password: '123456789', password_confirmation: '123456789',
-  nombre: 'Gonzalo', apellido: 'Rodriguez', telefono: '46573211', confirmed_at: '2014-09-26 16:05:35'} ])
+  nombre: 'Gonzalo', apellido: 'Rodriguez', telefono: '46573211', confirmed_at: '2014-09-26 16:05:35'},
+  {email: 'elian1985@gmail.com', password: '123456789', password_confirmation: '123456789',
+  nombre: 'Elian', apellido: 'Pinzas', telefono: '44444444', confirmed_at: '2014-09-26 17:05:35'} ])
   
-propiedades = Propiedad.create([{direccion: 'PEDRO LOZANO', piso: 2, numero: 4100, departamento: 'A', descripcion: 'descripcio1', antiguedad: 1, operacion_id: 1, barrio_id: 2, precio: 150000, moneda_id: 2,superficie: 100, ambientes: 2, dormitorios: 2, expensas: 1200, tipo_propiedad_id: 2, user: usuarios.first, amenities: [amenities.first, amenities.second]}, 
-  {direccion: 'Av Corrientes', piso: '', numero: 4666, departamento: '', descripcion: 'descripcio2', antiguedad: 0, operacion_id: 2, barrio: Barrio.find_by_nombre('Flores'), precio: 100000, moneda_id: 1,superficie: 60, ambientes: 1, dormitorios: 1, expensas: 200, tipo_propiedad_id: 1, user: usuarios.first, superficie_nc: 100},
-  {direccion: 'Murguiondo', piso: '2', numero: 449, departamento: '', descripcion: 'descripcio3', antiguedad: 5, operacion_id: 3, barrio: Barrio.find_by_nombre('Liniers'), precio: 120000, moneda_id: 1, superficie: 80, ambientes: 3, dormitorios: 3, expensas: 1500, tipo_propiedad_id: 6, user: usuarios.first},
-  {direccion: 'Av Paseo Colon', piso: '', numero: 850, departamento: '', descripcion: 'descripcio4', antiguedad: 10, operacion_id: 1, barrio_id: 35, precio: 115000, moneda_id: 1, superficie: 75, ambientes: 3, dormitorios: 4, expensas: 1200, tipo_propiedad_id: 1, user: usuarios.second, superficie_nc: 20}])
+Estado.create([{nombre: 'Activa'}, {nombre: 'Pausada'}, {nombre: 'Finalizada'}])
+
+tipoPublicaciones = TipoPublicacion.create([{nombre: 'Gratuita', maxFotos: 3, maxVideos: 0, mesesDuracion: 1, importe: 0},
+  {nombre: 'Básica', maxFotos: 5, maxVideos: 1, mesesDuracion: 3, importe: 100},
+  {nombre: 'Premium', maxFotos: 10, maxVideos: 3, mesesDuracion: 12, importe: 300} ])
+  
+Propiedad.new({direccion: 'PEDRO LOZANO', piso: 2, numero: 4100, departamento: 'A', descripcion: 'descripcio1', antiguedad: 1, operacion_id: 1, barrio_id: 2, precio: 150000, moneda_id: 2, superficie: 100, ambientes: 2, dormitorios: 2, expensas: 1200, tipo_propiedad_id: 2, user: usuarios.first, amenities: [amenities.first, amenities.second], tipo_publicacion_id: 1, fecha_publicacion: '2014-10-02 16:05:35', fecha_finalizacion: '2014-11-02 16:05:35', estado_id: 1, latitude: -34.6073, longitude: -58.5051}).save(validate: false)
+Propiedad.new({direccion: 'Av Corrientes', piso: '', numero: 4666, departamento: '', descripcion: 'descripcio2', antiguedad: 0, operacion_id: 2, barrio: Barrio.find_by_nombre('Flores'), precio: 100000, moneda_id: 1, superficie: 60, ambientes: 1, dormitorios: 1, expensas: 200, tipo_propiedad_id: 1, user: usuarios.first, superficie_nc: 100, tipo_publicacion_id: 2, fecha_publicacion: '2014-09-22 16:05:35', fecha_finalizacion: '2014-12-22 16:05:35', estado_id: 1, latitude: -34.6021, longitude: -58.4313}).save(validate: false)
+Propiedad.new({direccion: 'Murguiondo', piso: '2', numero: 449, departamento: '', descripcion: 'descripcio3', antiguedad: 5, operacion_id: 3, barrio: Barrio.find_by_nombre('Liniers'), precio: 120000, moneda_id: 1, superficie: 80, ambientes: 3, dormitorios: 3, expensas: 1500, tipo_propiedad_id: 6, user: usuarios.first, tipo_publicacion_id: 3, fecha_publicacion: '2014-08-26 12:15:10', fecha_finalizacion: '2015-08-26 12:15:10', estado_id: 1, latitude: -34.6439, longitude: -58.5181}).save(validate: false)
+Propiedad.new({direccion: 'Av Paseo Colon', piso: '', numero: 850, departamento: '', descripcion: 'descripcio4', antiguedad: 10, operacion_id: 1, barrio_id: 35, precio: 115000, moneda_id: 1, superficie: 75, ambientes: 3, dormitorios: 4, expensas: 1200, tipo_propiedad_id: 1, user: usuarios.second, superficie_nc: 20, tipo_publicacion_id: 1, fecha_publicacion: '2014-10-06 10:26:45', fecha_finalizacion: '2014-11-06 10:26:45', estado_id: 1, latitude: -34.6177, longitude: -58.3679}).save(validate: false)

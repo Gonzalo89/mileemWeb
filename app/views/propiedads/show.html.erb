@@ -3,6 +3,24 @@
 <h2>Datos de operación</h2>
 <hr>
 
+<p class="center">
+	<strong>Tipo de publicación:</strong>
+	<%= @propiedad.tipo_publicacion.nombre %>
+</p>
+<p class="center">
+	<strong>Fecha publicación:</strong>
+	<%= @propiedad.fecha_publicacion.strftime("%d/%m/%y") %>
+</p>
+
+<p class="center">
+	<strong>Fecha finalización:</strong>
+	<% if @propiedad.fecha_finalizacion? %>
+	  <%= @propiedad.fecha_finalizacion.strftime("%d/%m/%y") %>
+	<% else %>
+	  - 
+	<% end %>
+</p>
+
 <table align="center">
 	<tbody>
 		<tr>
@@ -19,6 +37,11 @@
 	</tbody>
 	
 </table>
+
+<p class="center">
+	<strong>Operacion:</strong>
+	<%= @propiedad.operacion.tipo %>
+</p>
 
 <br>
 <h2>Ubicación</h2>

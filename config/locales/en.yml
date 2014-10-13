@@ -34,6 +34,14 @@ en:
       less_than_or_equal_to: "debe ser menor o igual a %{count}"
   helpers:
     submit:
-      create: "Publicar %{model}"
-      update: "Actualizar %{model}"
+      create: "Crear %{model}"
+      update: "Modificar %{model}"
       delete: "Eliminar %{model}"
+  activerecord:
+    errors:
+      models:
+        propiedad:
+          attributes:
+            fecha_publicacion:
+              after: "debe ser posterior a la fecha de hoy"
+

@@ -5,28 +5,29 @@
   <%= devise_error_messages! %>
   
 <div class="center">
-  <div class="field camposInline">
+  <div class="camposInline">
   		<%= f.label :nombre,"Nombre" %><%= f.text_field :nombre, autofocus: true%>
   </div>
   
-  <div class="field camposInline">
+  <div class="camposInline">
   		<%= f.label :apellido, "Apellido" %>
   <%= f.text_field :apellido%></div>
   
-  <div class="field camposInline">
+  <div class="camposInline">
   		<%= f.label :telefono, "Teléfono" %>
   <%= f.phone_field :telefono%></div>
   
-  <div class="field camposInline">
+  <div class="camposInline">
   		<%= f.label :email, "Email" %>
+
   <%= f.email_field :email%></div>
   
-  <div class="field camposInline">
+  <div class="camposInline">
   	<%= f.label :password,"Contraseña" %> 
   	<!--<% if @validatable %><i>(<%= @minimum_password_length %> caracteres como mínimo)</i><% end %> -->
     <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <div class="field camposInline">
+  <div class="camposInline">
   	<%= f.label :password_confirmation,"Reingresá tu contraseña" %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 

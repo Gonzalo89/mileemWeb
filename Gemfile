@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
-# Use mysql as the database for Active Record
-gem 'mysql2'
+
+group :development do
+	# Use mysql as the database for Active Record
+	gem 'mysql2'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -36,8 +39,8 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-#gem 'debugger', '~> 1.6.8', group: [:development, :test]
-#gem 'debugger-ruby_core_source', '~> 1.3.5', group: [:development, :test]
+# gem 'debugger', '~> 1.6.8', group: [:development, :test]
+# gem 'debugger-ruby_core_source', '~> 1.3.5', group: [:development, :test]
 
 gem 'therubyracer', '~> 0.12.1'
 gem 'carrierwave', '~> 0.10.0'
@@ -47,3 +50,9 @@ gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'sprockets', '~> 2.11.0'
 gem 'geocoder', '~> 1.2.5'
 gem 'devise', '~> 3.3.0'
+gem 'date_validator', '~> 0.7.0'
+
+group :production do
+  gem 'pg', '~> 0.15.1'
+  gem 'rails_12factor'
+end

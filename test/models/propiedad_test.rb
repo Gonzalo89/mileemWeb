@@ -17,7 +17,7 @@ class PropiedadTest < ActiveSupport::TestCase
 
   test "validacion US001" do
     propiedad = propiedads(:validacionUS001)
-    assert propiedad.save, "Fallo al guardar una propiedad"
+    assert propiedad.save, @propiedad.inspect
   end
   
   test "propiedad con precio muy alto" do
@@ -36,6 +36,13 @@ class PropiedadTest < ActiveSupport::TestCase
     @propiedad = propiedads(:propiedadPisoInvalido)
 
     assert_not @propiedad.save
+  end
+  
+  test "propiedad fecha dia actual" do
+  
+    @propiedad = propiedads(:propiedadFecha)
+
+    assert @propiedad.save, @propiedad.errors.inspect
   end
 
 end

@@ -3,26 +3,30 @@
 <h2>Datos de operación</h2>
 <hr>
 
-<p class="center">
-	<strong>Tipo de publicación:</strong>
-	<%= @propiedad.tipo_publicacion.nombre %>
-</p>
-<p class="center">
-	<strong>Fecha publicación:</strong>
-	<%= @propiedad.fecha_publicacion.strftime("%d/%m/%y") %>
-</p>
 
-<p class="center">
-	<strong>Fecha finalización:</strong>
-	<% if @propiedad.fecha_finalizacion? %>
-	  <%= @propiedad.fecha_finalizacion.strftime("%d/%m/%y") %>
-	<% else %>
-	  - 
-	<% end %>
-</p>
 
 <table align="center">
 	<tbody>
+		<tr>
+			<td align="right" ><strong>Tipo de publicaci&oacute;n</strong>
+			<td width="10px"></td>
+			<td align="left"><%= @propiedad.tipo_publicacion.nombre %></td>
+		</tr>
+		<tr>
+			<td align="right" ><strong>Fecha publicaci&oacute;n</strong>
+			<td width="10px"></td>
+			<td align="left"><%= @propiedad.fecha_publicacion.strftime("%d/%m/%y") %></td>
+		</tr>
+		
+		<tr>
+			<td align="right" ><strong>Fecha finalizaci&oacute;n</strong></td>
+			<td width="10px"></td>
+			<td align="left"><% if @propiedad.fecha_finalizacion? %>
+			  <%= @propiedad.fecha_finalizacion.strftime("%d/%m/%y") %>
+			<% else %>
+			  - 
+			<% end %></td>
+		</tr>
 		<tr>
 			<td align="right" ><strong>Operaci&oacute;n	</strong></td>
 			<td width="10px"></td>
@@ -37,11 +41,6 @@
 	</tbody>
 	
 </table>
-
-<p class="center">
-	<strong>Operacion:</strong>
-	<%= @propiedad.operacion.tipo %>
-</p>
 
 <br>
 <h2>Ubicación</h2>

@@ -23,7 +23,7 @@ en:
   hello: "Hello world"
   errors:
     messages:
-      wrong_size: "tamaño erroneo (debe ser %{file_size})"
+      wrong_size: "tamaño erróneo (debe ser %{file_size})"
       size_too_small: "es muy pequeño (debe ser de al menos %{file_size})"
       size_too_big: "es muy grande (debe ser como mucho %{file_size})"
       not_a_number: "no es numérico"
@@ -44,3 +44,4 @@ en:
           attributes:
             fecha_publicacion:
               after: "debe ser posterior a la fecha de hoy"
+

@@ -20,9 +20,9 @@ Barrio.create([{nombre: 'Agronomía'},{nombre: 'Almagro'}, {nombre: 'Balvanera'}
   {nombre: 'Villa Riachuelo'},{nombre: 'Villa Santa Rita'},{nombre: 'Villa Soldati'},{nombre: 'Villa Urquiza'},])
   
 TipoPropiedad.create([{nombre: 'Casa'},{nombre: 'Departamento'},{nombre: 'PH'},
-  {nombre: 'Countries y Barrios Cerrados'},{nombre: 'Terrenos y Lotes'},{nombre: 'Quinta'},{nombre: 'Campos y Chacras'},
-  {nombre: 'Galpones, Depósitos y Edificios Ind.'},{nombre: 'Cocheras'},{nombre: 'Negocios y Fondos de Comercio'},{nombre: 'Oficinas'},
-  {nombre: 'Consultorios'},{nombre: 'Bovedas, Nichos y Parcelas'},{nombre: 'Locales Comerciales'},])
+  {nombre: 'Countries y barrios cerrados'},{nombre: 'Terrenos y lotes'},{nombre: 'Quinta'},{nombre: 'Campos y chacras'},
+  {nombre: 'Galpones, depósitos y edificios ind.'},{nombre: 'Cocheras'},{nombre: 'Negocios y fondos de comercio'},{nombre: 'Oficinas'},
+  {nombre: 'Consultorios'},{nombre: 'Bóvedas, nichos y parcelas'},{nombre: 'Locales comerciales'},])
 
 Moneda.create([{nombre: 'Pesos'}, {nombre: 'Dólares'}])
 

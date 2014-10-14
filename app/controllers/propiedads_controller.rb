@@ -144,6 +144,19 @@ class PropiedadsController < ApplicationController
       @propiedades = @propiedades.select { |propiedad| propiedad.operacion_id == params["operacionId"].to_i }
     end
     
+    if params["codAmb"]
+      case params["codAmb"].to_i
+      when 1
+        @propiedades = @propiedades.select { |propiedad| propiedad.ambientes == params["codAmb"].to_i }
+      when 2
+        @propiedades = @propiedades.select { |propiedad| propiedad.ambientes == params["codAmb"].to_i }
+      when 3
+        @propiedades = @propiedades.select { |propiedad| propiedad.ambientes == params["codAmb"].to_i }
+      when 4
+        @propiedades = @propiedades.select { |propiedad| propiedad.ambientes >= params["codAmb"].to_i }
+      end      
+    end  
+      
     @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.fecha_publicacion] }    
     
   end

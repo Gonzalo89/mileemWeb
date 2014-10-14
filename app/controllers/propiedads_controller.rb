@@ -155,13 +155,60 @@ class PropiedadsController < ApplicationController
       when 4
         @propiedades = @propiedades.select { |propiedad| propiedad.ambientes >= params["codAmb"].to_i }
       end      
-    end  
-      
-    @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.fecha_publicacion] }    
+    end
     
+    if params["codPrecio"] # corregir pesos/dolares
+      case params["codPrecio"].to_i
+      when 1
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio <= 100000 }        
+      when 2
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio > 100000 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio <= 500000 }
+      when 3
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio > 500000 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio <= 900000 }
+      when 4
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio > 900000 }
+      end      
+    end
+    
+    if params["codSup"] # corregir pesos/dolares
+      case params["codSup"].to_i
+      when 1
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie <= 50 }
+      when 2
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie > 50 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie <= 100 }
+      when 3
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie > 100}
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie <= 200 }
+      when 4
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie > 200 }
+      end      
+    end
+      
+    if params["codOrd"]
+      case params["codOrd"].to_i
+      when 1
+        @propiedades.sort_by! { |prop| [prop.precio, -prop.tipo_publicacion_id] }        
+      when 2
+        @propiedades.sort_by! { |prop| [prop.fecha_publicacion, -prop.tipo_publicacion_id] }
+      else 
+        @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.fecha_publicacion] }
+      end      
+    else 
+      @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.fecha_publicacion] }    
+    end
   end
 
   private
+  
+  def precio_pesos
+    if @propiedad.moneda_id == 1 
+      @propiedad.pesos
+    else
+      @propiedad.pesos * 15
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_propiedad

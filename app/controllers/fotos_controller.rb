@@ -1,5 +1,8 @@
 class FotosController < ApplicationController
   before_action :set_foto, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user! , only: [:new, :edit, :update, :create, :destroy]
+  before_action :usuarioValido , only: [:edit, :update, :destroy]
+
   # GET /fotos
   # GET /fotos.json
   def index
@@ -69,5 +72,11 @@ class FotosController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def foto_params
     params.require(:foto).permit(:nombre, :propiedad_id)
+  end
+  
+  def usuarioValido   
+    if @foto.propiedad.user_id != current_user.id
+      redirect_to propiedads_url, alert: 'La propiedad no pertenece a este usuario.'
+    end
   end
 end

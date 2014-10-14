@@ -172,7 +172,7 @@ class PropiedadsController < ApplicationController
       end      
     end
     
-    if params["codSup"] # corregir pesos/dolares
+    if params["codSup"]
       case params["codSup"].to_i
       when 1
         @propiedades = @propiedades.select { |propiedad| propiedad.superficie <= 50 }

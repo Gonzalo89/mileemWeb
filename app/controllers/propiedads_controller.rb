@@ -157,33 +157,46 @@ class PropiedadsController < ApplicationController
       end      
     end
     
-    if params["codPrecio"] # corregir pesos/dolares
+    if params["codPrecio"]
       case params["codPrecio"].to_i
       when 1
-        @propiedades = @propiedades.select { |propiedad| propiedad.precio <= 100000 }        
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos < 100000 }        
       when 2
-        @propiedades = @propiedades.select { |propiedad| propiedad.precio > 100000 }
-        @propiedades = @propiedades.select { |propiedad| propiedad.precio <= 500000 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos >= 100000 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos < 500000 }
       when 3
-        @propiedades = @propiedades.select { |propiedad| propiedad.precio > 500000 }
-        @propiedades = @propiedades.select { |propiedad| propiedad.precio <= 900000 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos >= 500000 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos < 900000 }
       when 4
-        @propiedades = @propiedades.select { |propiedad| propiedad.precio > 900000 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos >= 900000 }
       end      
     end
     
     if params["codSup"]
       case params["codSup"].to_i
       when 1
-        @propiedades = @propiedades.select { |propiedad| propiedad.superficie <= 50 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie < 50 }
       when 2
-        @propiedades = @propiedades.select { |propiedad| propiedad.superficie > 50 }
-        @propiedades = @propiedades.select { |propiedad| propiedad.superficie <= 100 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie >= 50 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie < 100 }
       when 3
-        @propiedades = @propiedades.select { |propiedad| propiedad.superficie > 100}
-        @propiedades = @propiedades.select { |propiedad| propiedad.superficie <= 200 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie >= 100}
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie < 200 }
       when 4
-        @propiedades = @propiedades.select { |propiedad| propiedad.superficie > 200 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie >= 200 }
+      end      
+    end
+    
+    if params["codFecha"]
+      case params["codFecha"].to_i
+      when 1
+        @propiedades = @propiedades.select { |propiedad| propiedad.fecha_publicacion >= (Time.now - 1.week) }
+      when 2
+        @propiedades = @propiedades.select { |propiedad| propiedad.fecha_publicacion >= (Time.now - 1.month) }
+      when 3
+        @propiedades = @propiedades.select { |propiedad| propiedad.fecha_publicacion >= (Time.now - 3.month) }
+      when 4
+        @propiedades = @propiedades.select { |propiedad| propiedad.fecha_publicacion >= (Time.now - 6.month) }
       end      
     end
       
@@ -192,24 +205,20 @@ class PropiedadsController < ApplicationController
       when 1
         @propiedades.sort_by! { |prop| [prop.precio, -prop.tipo_publicacion_id] }        
       when 2
-        @propiedades.sort_by! { |prop| [prop.fecha_publicacion, -prop.tipo_publicacion_id] }
+        @propiedades.sort! do |a,b|
+          [b[:fecha_publicacion], b[:tipo_publicacion_id]] <=> [a[:fecha_publicacion], a[:tipo_publicacion_id]]
+        end
       else 
-        @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.fecha_publicacion] }
+        @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.precio] }
       end      
     else 
-      @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.fecha_publicacion] }    
-    end
-  end
+      @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.precio] }  
+    end    
+    
+  end  
 
   private
   
-  def precio_pesos
-    if @propiedad.moneda_id == 1 
-      @propiedad.pesos
-    else
-      @propiedad.pesos * 15
-  end
-
   # Use callbacks to share common setup or constraints between actions.
   def set_propiedad
     @propiedad = Propiedad.find(params[:id])

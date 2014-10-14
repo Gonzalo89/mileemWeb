@@ -144,12 +144,81 @@ class PropiedadsController < ApplicationController
       @propiedades = @propiedades.select { |propiedad| propiedad.operacion_id == params["operacionId"].to_i }
     end
     
-    @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.fecha_publicacion] }    
+    if params["codAmb"]
+      case params["codAmb"].to_i
+      when 1
+        @propiedades = @propiedades.select { |propiedad| propiedad.ambientes == params["codAmb"].to_i }
+      when 2
+        @propiedades = @propiedades.select { |propiedad| propiedad.ambientes == params["codAmb"].to_i }
+      when 3
+        @propiedades = @propiedades.select { |propiedad| propiedad.ambientes == params["codAmb"].to_i }
+      when 4
+        @propiedades = @propiedades.select { |propiedad| propiedad.ambientes >= params["codAmb"].to_i }
+      end      
+    end
     
-  end
+    if params["codPrecio"]
+      case params["codPrecio"].to_i
+      when 1
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos < 100000 }        
+      when 2
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos >= 100000 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos < 500000 }
+      when 3
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos >= 500000 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos < 900000 }
+      when 4
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos >= 900000 }
+      end      
+    end
+    
+    if params["codSup"]
+      case params["codSup"].to_i
+      when 1
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie < 50 }
+      when 2
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie >= 50 }
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie < 100 }
+      when 3
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie >= 100}
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie < 200 }
+      when 4
+        @propiedades = @propiedades.select { |propiedad| propiedad.superficie >= 200 }
+      end      
+    end
+    
+    if params["codFecha"]
+      case params["codFecha"].to_i
+      when 1
+        @propiedades = @propiedades.select { |propiedad| propiedad.fecha_publicacion >= (Time.now - 1.week) }
+      when 2
+        @propiedades = @propiedades.select { |propiedad| propiedad.fecha_publicacion >= (Time.now - 1.month) }
+      when 3
+        @propiedades = @propiedades.select { |propiedad| propiedad.fecha_publicacion >= (Time.now - 3.month) }
+      when 4
+        @propiedades = @propiedades.select { |propiedad| propiedad.fecha_publicacion >= (Time.now - 6.month) }
+      end      
+    end
+      
+    if params["codOrd"]
+      case params["codOrd"].to_i
+      when 1
+        @propiedades.sort_by! { |prop| [prop.precio, -prop.tipo_publicacion_id] }        
+      when 2
+        @propiedades.sort! do |a,b|
+          [b[:fecha_publicacion], b[:tipo_publicacion_id]] <=> [a[:fecha_publicacion], a[:tipo_publicacion_id]]
+        end
+      else 
+        @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.precio] }
+      end      
+    else 
+      @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.precio] }  
+    end    
+    
+  end  
 
   private
-
+  
   # Use callbacks to share common setup or constraints between actions.
   def set_propiedad
     @propiedad = Propiedad.find(params[:id])

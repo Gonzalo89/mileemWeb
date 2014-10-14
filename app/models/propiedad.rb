@@ -36,5 +36,14 @@ class Propiedad < ActiveRecord::Base
   
   def direccion_completa_changed?
     :direccion_changed? || :numero_changed?        
-  end 
+  end
+  
+  def precio_pesos
+    if self.moneda_id == 1 
+      self.precio
+    else
+      self.precio * 15
+    end
+  end
+   
 end

@@ -1,9 +1,8 @@
 <h1>¿Olvidaste tu contrase&ntilde;a?</h1>
 <hr>
-
+	<%= devise_error_messages! %>
+<div class="center">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
- 	<%= devise_error_messages! %>
- 	<div class="center">
 
 		<div class="field camposInline"><%= f.label :email %>
   		<%= f.email_field :email, autofocus: true %></div>

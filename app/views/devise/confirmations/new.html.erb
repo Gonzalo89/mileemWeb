@@ -1,11 +1,9 @@
 <h1>Reenviar instrucciones de confirmaci&oacute;n</h1>
 <hr>
-
+<%= devise_error_messages! %>
+<div class="center">
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-	<%= devise_error_messages! %>
 
-	<div class="center">
-		
 	<div class="field camposInline"><%= f.label :email %>
 	<%= f.email_field :email, autofocus: true %></div>
 

@@ -1,9 +1,9 @@
 <h1>Cambi&aacute; tu contrase&ntilde;a</h1>
 <hr>
-
+<%= devise_error_messages! %>
+<div class="center">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-	<%= devise_error_messages! %>
-	<div class="center">
+	
 	<%= f.hidden_field :reset_password_token %>
 
 	<div class="field camposInline"><%= f.label :password, "Nueva contraseña" %>

@@ -32,14 +32,27 @@ en:
       greater_than: "debe ser mayor a %{count}"
       greater_than_or_equal_to: "debe ser mayor o igual a %{count}"
       less_than_or_equal_to: "debe ser menor o igual a %{count}"
+      invalid_token: "asd"
   helpers:
     submit:
       create: "Crear %{model}"
       update: "Modificar %{model}"
       delete: "Eliminar %{model}"
   activerecord:
+    attributes:
+      user:
+        password_confirmation: "Confirmación de contraseña"
+        password: "Contraseña"
     errors:
       models:
+        user:
+          attributes:
+            password:
+              too_short: "es muy corta. Debe tener al menos %{count} caracteres"
+            password_confirmation:
+              confirmation: "no coincide con la contraseña original"
+            email:
+              invalid: "es inválido"
         propiedad:
           attributes:
             fecha_publicacion:

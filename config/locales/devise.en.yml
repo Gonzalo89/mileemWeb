@@ -6,7 +6,7 @@ en:
       send_instructions: "Vas a recibir un email con instrucciones sobre como confirmar tu dirección de email en unos minutos."
       send_paranoid_instructions: "Si tu dirección de email existe en nuestra base de datos, vas a recibir un email con instrucciones sobre como confirmar tu dirección de email en unos minutos."      
     failure:
-      already_authenticated: "Ya ingresaste."
+      already_authenticated: "Ya habías ingresado con otro usuario."
       inactive: "Tu cuenta todavía no está activa."
       invalid: "Email o contraseña inválida."
       locked: "Tu cuenta está bloqueada."

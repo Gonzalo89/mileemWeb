@@ -40,8 +40,28 @@ en:
   activerecord:
     attributes:
       user:
-        password_confirmation: "Confirmación de contraseña"
+        nombre: "Nombre"
+        apellido: "Apellido"
+        telefono: "Teléfono"
+        # Fix horrible para que no diga "'Reingresa tu contraseña
+        # no coincide con el valor de contraseña'"
+        password_confirmation: "El valor en 'Reingresá tu contraseña'"
         password: "Contraseña"
+        current_password: "Contraseña actual"
+      propiedad:
+        direccion: "Dirección"
+        numero: "Número"
+        piso: "Piso"
+        departamento: "Departamento"
+        descripcion: "Descripción"
+        precio: "Precio"
+        antiguedad: "Antigüedad"
+        dormitorios: "Dormitorios"
+        expensas: "Expensas"
+        superficie: "Superficie"
+        ambientes: "Ambientes"
+        superficie_nc: "Superficie no cubierta"
+        fecha_publicacion: "Fecha de publicación"
     errors:
       models:
         user:
@@ -49,6 +69,7 @@ en:
             password:
               too_short: "es muy corta. Debe tener al menos %{count} caracteres"
             password_confirmation:
+              # Parte del fix horrible
               confirmation: "no coincide con la contraseña original"
             email:
               invalid: "es inválido"

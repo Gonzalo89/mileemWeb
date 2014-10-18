@@ -1,11 +1,11 @@
 <h1>Ingreso</h1>
 <hr>
-
+<%= devise_error_messages! %>
 <div class="center">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <div class="field camposInline"><%= f.label :email,"Email"%>
-  <%= f.email_field :email, autofocus: true %></div>
+  <%= f.text_field :email, autofocus: true %></div>
 
   <div class="field camposInline"><%= f.label :password,"Contraseña"%>
     <%= f.password_field :password, autocomplete: "off" %></div>

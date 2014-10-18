@@ -14,7 +14,7 @@
   <%= f.phone_field :telefono%></div>
   
   <div class="camposInline"><%= f.label :email %>
-  <%= f.email_field :email%></div>
+  <%= f.text_field :email%></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

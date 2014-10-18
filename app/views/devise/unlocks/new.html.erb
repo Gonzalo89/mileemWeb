@@ -5,7 +5,7 @@
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   
   <div class="camposInline"><%= f.label :email %>
-  <%= f.email_field :email, autofocus: true %></div>
+  <%= f.text_field :email, autofocus: true %></div>
 
   <div><%= f.submit "Reenviar instrucciones de desbloqueo" %></div>
 <% end %>

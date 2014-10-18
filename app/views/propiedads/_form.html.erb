@@ -159,7 +159,7 @@
 	<hr>
 	<div class="camposInline" >
 		<span class="obligatorio">&nbsp</span>
-		<%= f.label "Tipo" %>
+		<%= f.label "Tipo de publicación" %>
 		
 		<% if params[:action] == "new" || params[:action] == "create" %>	
 		  <%= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
@@ -174,7 +174,7 @@
 		<%= f.label "Fecha de publicación" %>
 			
 		<% if params[:action] == "new" || params[:action] == "create" %>	
-		  <%= date_field :propiedad, :fecha_publicacion, :required => true %>
+		  <%= date_field :propiedad, :fecha_publicacion, :min => Date.today, :value => Date.today%>
 		<% else %>
 		  <%= date_field :propiedad, :fecha_publicacion, :disabled =>true %>
 		<% end %>

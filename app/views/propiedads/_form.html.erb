@@ -138,7 +138,7 @@
 		}
 	}); 	
 </script>
-<div class="container">
+<div class="container" style="width:400px">
 	<%= form_for(@propiedad) do |f| %>
 	<% if @propiedad.errors.any? %>
 	<div id="error_explanation">
@@ -274,9 +274,12 @@
 	<div class="field center">
 		<h2>Amenities</h2>
 		<hr>	
-		<% r1 = @amenities[0..6] %>
-		<% r2 = @amenities[7..13] %>
-		<% r3 = @amenities[14..20] %>
+		<% r1 = @amenities[0..3] %>
+		<% r2 = @amenities[4..7] %>
+		<% r3 = @amenities[8..11] %>
+		<% r4 = @amenities[12..15] %>
+		<% r5 = @amenities[16..19] %>
+		<% r6 = @amenities[20..20] %>
 		<table id="tablaAmenities">
 			<tr>
 				<% r1.each do |a| %>
@@ -320,6 +323,49 @@
 				</td>
 				<% end  %>
 			</tr>
+			<tr>
+				<% r4.each do |a| %>
+				<td>
+					<%= f.label a.nombre %>
+				</td>
+				<td>
+					<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
+					<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+					<% else  %>
+					<%= check_box(:tieneamenities, a.nombre) %>
+					<% end  %>
+				</td>
+				<% end  %>
+			</tr>
+			<tr>
+				<% r5.each do |a| %>
+				<td>
+					<%= f.label a.nombre %>
+				</td>
+				<td>
+					<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
+					<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+					<% else  %>
+					<%= check_box(:tieneamenities, a.nombre) %>
+					<% end  %>
+				</td>
+				<% end  %>
+			</tr>
+			<tr>
+				<% r6.each do |a| %>
+				<td>
+					<%= f.label a.nombre %>
+				</td>
+				<td>
+					<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
+					<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+					<% else  %>
+					<%= check_box(:tieneamenities, a.nombre) %>
+					<% end  %>
+				</td>
+				<% end  %>
+			</tr>
+
 		</table>
 	</div>
 

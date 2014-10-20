@@ -1,0 +1,125 @@
+@import "bootstrap";
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+/*section {
+  overflow: auto;
+}*/
+
+/*textarea {
+  resize: vertical;
+}*/
+
+.center {
+  text-align: center;
+}
+
+#tablaAmenities{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#tablaAmenities label{
+  margin-left: 15px;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 2em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #999;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.camposInline {  
+}
+
+.camposInline label {
+  position: relative;
+  left: 3px;
+  width: 100px;
+  display: inline-block;
+}
+
+.camposInline input, .camposInline select, .camposInline textarea {
+  position: relative;
+  left: 2em;
+  display: inline;
+}
+
+#mapa {
+  height: 80%;
+  margin: 10px 10px 10px 10px;
+  padding: 0px;
+  width: auto;
+}
+
+.notice {
+  color: green;
+}
+
+#noticeRed {
+  color: red;
+}
+
+.campoCorto {
+  width: 5em;
+}
+
+.obligatorio{
+  position: relative;
+  color: red;
+  font-size: 0.8em;
+  display: inline;
+  /*margin-left: 19%;*/
+}

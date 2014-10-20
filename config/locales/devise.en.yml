@@ -15,6 +15,7 @@ en:
       timeout: "Tu sesión expiró. Por favor, ingresá otra vez para continuar."
       unauthenticated: "Debés ingresar antes de continuar."
       unconfirmed: "Tenés que confirmar tu dirección de email antes de continuar."
+      #No funca invalid_token: 'asdfsadf' 
     mailer:
       confirmation_instructions:
         subject: "Instrucciones de confirmación"

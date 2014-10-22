@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'propiedads/:id/pausar' => 'propiedads#pausar', as: 'pausar'
   get 'propiedads/:id/reanudar' => 'propiedads#reanudar', as: 'reanudar'
   get 'propiedads/:id/finalizar' => 'propiedads#finalizar', as: 'finalizar'
+  get 'propiedads/:id/republicar' => 'propiedads#republicar', as: 'republicar'
   
   get 'propiedads/filtro'
   

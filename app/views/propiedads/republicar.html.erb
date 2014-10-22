@@ -1,0 +1,95 @@
+<h1>Republicando propiedad</h1>
+
+<div class="center">
+	
+<div class="container" style="width:400px">
+	<%= form_for(@propiedad) do |f| %>
+	<% if @propiedad.errors.any? %>
+	<div id="error_explanation">
+		<h2>Se encontraron los siguientes errores:</h2>
+		<ul>
+			<% @propiedad.errors.full_messages.each do |message| %>
+			<li>
+				<%= message %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<h2>Datos de operaci&oacute;n</h2>
+	<hr>
+	<div class="camposInline" >
+		<span class="obligatorio">&nbsp</span>
+		<%= f.label "Tipo de publicación" %>
+		
+	    <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled => true %>        
+  	</div>
+  	
+	<div class="camposInline" >
+		<span class="obligatorio">*</span>
+		<%= f.label "Fecha de publicación" %>
+			
+		<%= date_field :propiedad, :fecha_publicacion, :min => Date.today, :value => Date.today%>
+	</div>
+
+	<br>
+	<h2>Ubicación</h2>
+	<hr>
+	<div class="field camposInline">
+		<span class="obligatorio">&nbsp</span>
+		<%= f.label :barrio_id %>
+		<%= f.text_field :barrio_id, :value => @propiedad.barrio.nombre, :disabled => true %> 
+	</div>
+	<div class="field camposInline">
+		<%= f.label :direccion,"Dirección" %>
+		<%= f.text_field :direccion, :disabled => true %>
+	</div>
+	<div class="field camposInline">
+		<%= f.label :numero, "Número" %>	
+		<%= f.text_field :numero, :class=>"campoCorto", :disabled => true%>
+	</div>
+	<div class="field camposInline">
+		<%= f.label :piso %>
+		<%= f.text_field :piso, :class=>"campoCorto", :disabled => true %>
+	</div>
+	<div class="field camposInline">
+		<%= f.label :departamento %>
+		<%= f.text_field :departamento, :class=>"campoCorto", :disabled => true %>
+	</div>
+	
+	<br>
+	<h2>Precio</h2>
+	<hr>
+	<div class="field">
+		<div class="camposInline">
+			<span class="obligatorio">*</span>
+			<%= f.label :precio %>
+			<%= f.text_field :precio %>
+		</div>
+		<div class="camposInline">
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label :moneda_id %>
+			<%= f.collection_select :moneda_id, Moneda.all, :id, :nombre, :selected => @propiedad.moneda_id %>
+		</div>
+	</div>
+
+
+	<br>
+	<%= render :partial => "formTarjeta", :locals => { :f => f } %>
+	<br>
+		
+	<div class="field">
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	</div>
+
+	<div class="actions center">
+		<%= f.submit %>
+	</div>
+	<% end %>
+</div>
+
+<p><%= link_to 'Ver publicación', @propiedad, class: "btn" %></p>
+<%= link_to 'Volver', propiedads_path, class: "btn" %>
+
+</div> 

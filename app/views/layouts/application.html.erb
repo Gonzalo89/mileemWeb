@@ -11,36 +11,24 @@
 	</head>
 	<body>
 		<header class="navbar navbar-fixed-top navbar-inverse">
-			<div class="navbar-inner">
-				<div class="container">
-					<%= link_to "MiLEEM", '/', id: "logo" %>
-					<nav>
-						<ul class="nav pull-right">
-							<li>
-								<%= link_to "Inicio", root_path %>
-							</li>
-							<% if user_signed_in? %>
-							<li>
-								<%= link_to current_user.nombre, edit_user_registration_path %>
-							</li>
-							<li>
-								<%= link_to "Salir", destroy_user_session_path, :method => :delete %>
-							</li>
-							<% else %>
-							<li>
-								<%= link_to "Registrate", new_user_registration_path %>
-							</li>
-							<li>
-								<%= link_to "Ingresá", new_user_session_path %>
-							</li>
-							<% end %>
-						</ul>
-					</nav>
-				</div>
+			<div class="container">
+				<%= link_to "MiLEEM", '/', id: "logo" %>
+				<nav>
+					<ul class="nav navbar-nav pull-right">
+						<li><%= link_to "Inicio", root_path %></li>
+						<% if user_signed_in? %>
+						<li><%= link_to current_user.nombre, edit_user_registration_path %></li>
+						<li><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
+						<% else %>
+						<li><%= link_to "Registrate", new_user_registration_path %></li>
+						<li><%= link_to "Ingresá", new_user_session_path %></li>
+						<% end %>
+					</ul>
+				</nav>
 			</div>
 		</header>
 		<!-- <p class="notice"><%= notice %></p> problemas de duplicados con gema devise -->
-		
+		<div class="container">
 			<% if notice %>
 			<p class="alert alert-success center">
 				<%= notice %>
@@ -52,5 +40,6 @@
 			</p>
 			<% end %>
 			<%= yield %>
+		</div>
 	</body>
 </html>

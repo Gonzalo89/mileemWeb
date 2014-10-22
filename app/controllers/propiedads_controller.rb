@@ -22,6 +22,7 @@ class PropiedadsController < ApplicationController
 
   # GET /propiedads/1/edit
   def edit
+    redirect_to propiedads_path
   end
 
   # POST /propiedads

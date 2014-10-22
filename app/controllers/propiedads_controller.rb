@@ -1,6 +1,7 @@
 class PropiedadsController < ApplicationController
   before_action :set_propiedad, only: [:show, :edit, :update, :destroy, :pausar, :reanudar, :finalizar]
   before_action :set_amenities, only: [:create, :new, :update, :destroy, :show, :edit]
+  before_action :set_new_video, only: [:show, :edit]
   before_action :authenticate_user! , only: [:new, :edit, :update, :create, :destroy]
   before_action :usuarioValido , only: [:edit, :update, :destroy, :pausar, :reanudar, :finalizar]
   
@@ -21,7 +22,7 @@ class PropiedadsController < ApplicationController
   end
 
   # GET /propiedads/1/edit
-  def edit
+  def edit   
   end
 
   # POST /propiedads
@@ -227,6 +228,10 @@ class PropiedadsController < ApplicationController
   def set_amenities
     @amenities = Amenity.all
   end
+  
+  def set_new_video
+     @video = Video.new
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def propiedad_params
@@ -234,7 +239,7 @@ class PropiedadsController < ApplicationController
     :descripcion, :antiguedad, :operacion_id, :precio, :moneda_id, :superficie,
     :superficie_nc, :ambientes, :dormitorios, :expensas, :barrio_id,
     :tipo_propiedad_id, :amenities, :user_id, :tipo_publicacion_id, :fecha_publicacion,
-    :fecha_finalizacion, :estado)
+    :fecha_finalizacion, :estado, :videos)
   end
   
   def usuarioValido   

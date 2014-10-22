@@ -21,6 +21,7 @@ class Propiedad < ActiveRecord::Base
   has_many :fotos, dependent: :destroy
   has_many :tieneamenities, dependent: :destroy
   has_many :amenities, :through => :tieneamenities
+  has_many :videos, dependent: :destroy
 
   belongs_to :barrio
   belongs_to :tipo_propiedad

@@ -63,42 +63,34 @@
 <script>
 	$(document).ready(function() {
 		$("#propiedad_tipo_publicacion_id").change(function() {
-			switch ($(this).val()) {
-			case "1":
-				//gratuita
-				$("#datosTarjeta").hide();		    
-				break;
-			default:
-				$("#datosTarjeta").show();
-				var tipoPublicacionId = $(this).val();
-				
-				if(tipoPublicacionId == 2) {
-				  $("#importe").text("$<%= TipoPublicacion.find(2).importe %>");
-				}
-				else {
-				  $("#importe").text("$<%= TipoPublicacion.find(3).importe %>");
-				}
-			}
+		switch ($(this).val()) {
+		case "2":
+			$("#importe").text("$<%= TipoPublicacion.find(2).importe %>");
+			break;
+		case "3":
+			$("#importe").text("$<%= TipoPublicacion.find(3).importe %>");
+			break;
+		default:			
+			//gratuita
+			$("#datosTarjeta").hide();		    
+			break;		
+		}
 		});
 	}); 
 </script>
 <script>
 	$(document).ready(function() {
  		switch ($("#propiedad_tipo_publicacion_id").val()) {
-		case "1":
+		case "2":
+			$("#importe").text("$<%= TipoPublicacion.find(2).importe %>");
+			break;
+		case "3":
+			$("#importe").text("$<%= TipoPublicacion.find(3).importe %>");
+			break;
+		default:			
 			//gratuita
 			$("#datosTarjeta").hide();		    
-			break;
-		default:
-			$("#datosTarjeta").show();
-			var tipoPublicacionId = $(this).val();
-			
-			if(tipoPublicacionId == 2) {
-			  $("#importe").text("$<%= TipoPublicacion.find(2).importe %>");
-			}
-			else {
-			  $("#importe").text("$<%= TipoPublicacion.find(3).importe %>");
-			}
+			break;		
 		}
 	}); 
 </script>

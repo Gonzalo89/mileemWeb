@@ -43,9 +43,9 @@ usuarios = User.create([{email: 'rodrif89@gmail.com', password: '123456789', pas
   
 Estado.create([{nombre: 'Activa'}, {nombre: 'Pausada'}, {nombre: 'Finalizada'}])
 
-tipoPublicaciones = TipoPublicacion.create([{nombre: 'Gratuita', maxFotos: 3, maxVideos: 0, mesesDuracion: 1, importe: 0},
-  {nombre: 'Básica', maxFotos: 5, maxVideos: 1, mesesDuracion: 3, importe: 100},
-  {nombre: 'Premium', maxFotos: 10, maxVideos: 3, mesesDuracion: 12, importe: 300} ])
+tipoPublicaciones = TipoPublicacion.create([{nombre: 'Gratuita', maxFotos: 3, maxVideos: 0, mesesDuracion: 1, importe: 0, importePromo: 0},
+  {nombre: 'Básica', maxFotos: 5, maxVideos: 1, mesesDuracion: 3, importe: 100, importePromo: 80},
+  {nombre: 'Premium', maxFotos: 10, maxVideos: 3, mesesDuracion: 12, importe: 300, importePromo: 200} ])
   
 Video.create([{url: 'https://www.youtube.com/watch?v=ZK0kbq6UUwM', propiedad_id: 2 } ])
   

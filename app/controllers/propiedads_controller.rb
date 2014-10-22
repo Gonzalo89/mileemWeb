@@ -4,7 +4,6 @@ class PropiedadsController < ApplicationController
   before_action :set_new_video, only: [:show, :edit]
   before_action :authenticate_user! , only: [:new, :edit, :update, :create, :destroy, :republicar]
   before_action :usuarioValido , only: [:edit, :update, :destroy, :pausar, :reanudar, :finalizar, :republicar]
-  
   # GET /propiedads
   # GET /propiedads.json
   def index
@@ -22,7 +21,7 @@ class PropiedadsController < ApplicationController
   end
 
   # GET /propiedads/1/edit
-  def edit   
+  def edit
   end
 
   # POST /propiedads
@@ -30,16 +29,16 @@ class PropiedadsController < ApplicationController
   def create
     @propiedad = Propiedad.new(propiedad_params)
     tieneamenities = params[:tieneamenities]
-    
+
     case @propiedad.tipo_publicacion_id
-      when 1
-        @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(1).mesesDuracion.month
-      when 2
-        @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(2).mesesDuracion.month
-      when 3
-         @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(3).mesesDuracion.month
+    when 1
+      @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(1).mesesDuracion.month
+    when 2
+      @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(2).mesesDuracion.month
+    when 3
+      @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(3).mesesDuracion.month
     end
-    
+
     @propiedad.estado_id = 1
 
     respond_to do |format|
@@ -63,40 +62,49 @@ class PropiedadsController < ApplicationController
       end
     end
   end
-  
+
   def pausar
     @propiedad.estado_id = 2
-    
-    @propiedad.save    
-    redirect_to propiedads_path          
+
+    @propiedad.save
+    redirect_to propiedads_path
   end
-  
+
   def reanudar
     @propiedad.estado_id = 1
-    
-    @propiedad.save    
-    redirect_to propiedads_path          
+
+    @propiedad.save
+    redirect_to propiedads_path
   end
-  
+
   def finalizar
     @propiedad.estado_id = 3
-    
-    @propiedad.save    
-    redirect_to propiedads_path          
+
+    @propiedad.save
+    redirect_to propiedads_path
   end
-  
+
   def republicar
+    if (@propiedad.estado_id != 3)
+      redirect_to propiedads_path, notice: "No se pueden republicar publicaciones no finalizadas"
+    end
+        
+    if (@propiedad.tipo_publicacion_id == 1)
+      redirect_to propiedads_path, notice: "No se pueden republicar publicaciones gratuitas"
+    end
+
     @enPromo = false;
-    
+
     if (@propiedad.fecha_finalizacion + 1.month > Time.now)
       @enPromo = true;
     end
-  end  
+  end
 
   # PATCH/PUT /propiedads/1
   # PATCH/PUT /propiedads/1.json
   def update
     respond_to do |format|
+
       if @propiedad.update(propiedad_params)
         tieneamenities = params[:tieneamenities]
 
@@ -114,6 +122,21 @@ class PropiedadsController < ApplicationController
             end
           end
         end
+
+        if @propiedad.estado_id = 3
+          case @propiedad.tipo_publicacion_id
+          when 1
+            @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(1).mesesDuracion.month
+          when 2
+            @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(2).mesesDuracion.month
+          when 3
+            @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(3).mesesDuracion.month
+          end
+
+          @propiedad.estado_id = 1
+        end
+
+        @propiedad.save
 
         format.html { redirect_to @propiedad, notice: 'La propiedad fue actualizada exitosamente.' }
         format.json { render :show, status: :ok, location: @propiedad }
@@ -133,26 +156,26 @@ class PropiedadsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def filtro
     @propiedades = Propiedad.all
-    
-    @propiedades = @propiedades.select { |propiedad|        
-       (propiedad.fecha_publicacion < Time.now) && (propiedad.fecha_finalizacion > Time.now) && (propiedad.estado_id == 1)           
+
+    @propiedades = @propiedades.select { |propiedad|
+       (propiedad.fecha_publicacion < Time.now) && (propiedad.fecha_finalizacion > Time.now) && (propiedad.estado_id == 1)
     }
-    
+
     if params["barrioId"]
       @propiedades = @propiedades.select { |propiedad| propiedad.barrio_id == params["barrioId"].to_i }
     end
-    
+
     if params["tipoPropiedadId"]
       @propiedades = @propiedades.select { |propiedad| propiedad.tipo_propiedad_id == params["tipoPropiedadId"].to_i }
     end
-    
+
     if params["operacionId"]
       @propiedades = @propiedades.select { |propiedad| propiedad.operacion_id == params["operacionId"].to_i }
     end
-    
+
     if params["codAmb"]
       case params["codAmb"].to_i
       when 1
@@ -163,13 +186,13 @@ class PropiedadsController < ApplicationController
         @propiedades = @propiedades.select { |propiedad| propiedad.ambientes == params["codAmb"].to_i }
       when 4
         @propiedades = @propiedades.select { |propiedad| propiedad.ambientes >= params["codAmb"].to_i }
-      end      
+      end
     end
-    
+
     if params["codPrecio"]
       case params["codPrecio"].to_i
       when 1
-        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos < 100000 }        
+        @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos < 100000 }
       when 2
         @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos >= 100000 }
         @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos < 500000 }
@@ -178,9 +201,9 @@ class PropiedadsController < ApplicationController
         @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos < 900000 }
       when 4
         @propiedades = @propiedades.select { |propiedad| propiedad.precio_pesos >= 900000 }
-      end      
+      end
     end
-    
+
     if params["codSup"]
       case params["codSup"].to_i
       when 1
@@ -193,9 +216,9 @@ class PropiedadsController < ApplicationController
         @propiedades = @propiedades.select { |propiedad| propiedad.superficie < 200 }
       when 4
         @propiedades = @propiedades.select { |propiedad| propiedad.superficie >= 200 }
-      end      
+      end
     end
-    
+
     if params["codFecha"]
       case params["codFecha"].to_i
       when 1
@@ -206,28 +229,28 @@ class PropiedadsController < ApplicationController
         @propiedades = @propiedades.select { |propiedad| propiedad.fecha_publicacion >= (Time.now - 3.month) }
       when 4
         @propiedades = @propiedades.select { |propiedad| propiedad.fecha_publicacion >= (Time.now - 6.month) }
-      end      
+      end
     end
-      
+
     if params["codOrd"]
       case params["codOrd"].to_i
       when 1
-        @propiedades.sort_by! { |prop| [prop.precio, -prop.tipo_publicacion_id] }        
+        @propiedades.sort_by! { |prop| [prop.precio, -prop.tipo_publicacion_id] }
       when 2
         @propiedades.sort! do |a,b|
           [b[:fecha_publicacion], b[:tipo_publicacion_id]] <=> [a[:fecha_publicacion], a[:tipo_publicacion_id]]
         end
-      else 
-        @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.precio] }
-      end      
-    else 
-      @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.precio] }  
-    end    
-    
-  end  
+      else
+      @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.precio] }
+      end
+    else
+      @propiedades.sort_by! { |prop| [-prop.tipo_publicacion_id, prop.precio] }
+    end
+
+  end
 
   private
-  
+
   # Use callbacks to share common setup or constraints between actions.
   def set_propiedad
     @propiedad = Propiedad.find(params[:id])
@@ -236,9 +259,9 @@ class PropiedadsController < ApplicationController
   def set_amenities
     @amenities = Amenity.all
   end
-  
+
   def set_new_video
-     @video = Video.new
+    @video = Video.new
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -249,11 +272,11 @@ class PropiedadsController < ApplicationController
     :tipo_propiedad_id, :amenities, :user_id, :tipo_publicacion_id, :fecha_publicacion,
     :fecha_finalizacion, :estado, :videos)
   end
-  
-  def usuarioValido   
+
+  def usuarioValido
     if @propiedad.user_id != current_user.id
       redirect_to propiedads_url, alert: 'La propiedad no pertenece a este usuario.'
     end
   end
-  
+
 end

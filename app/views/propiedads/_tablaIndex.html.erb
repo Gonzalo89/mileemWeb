@@ -47,5 +47,8 @@
 			    <td class="btn"><%= link_to 'Finalizar', finalizar_path(id: @propiedad.id) %> </td>
 			  <% end %>	  
 			  
+			  <% if @propiedad.tipo_publicacion_id != 1 && @propiedad.estado_id == 3 %>
+			    <td class="btn"><%= link_to 'Republicar', republicar_path(id: @propiedad.id) %> </td>
+			  <% end %>	
 			<% end %>
 		</tr>

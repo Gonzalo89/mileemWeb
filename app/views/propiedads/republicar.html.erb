@@ -23,7 +23,8 @@
 		<span class="obligatorio">&nbsp</span>
 		<%= f.label "Tipo de publicación" %>
 		
-	    <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled => true %>        
+	    <%= f.text_field :tipo_publicacion, :value => @propiedad.tipo_publicacion.nombre, :disabled => true %>
+	    <%= f.hidden_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion_id %>       
   	</div>
   	
 	<div class="camposInline" >
@@ -84,7 +85,7 @@
 	</div>
 
 	<div class="actions center">
-		<%= f.submit %>
+		<%= f.submit "Republicar propiedad"%>
 	</div>
 	<% end %>
 </div>
@@ -92,4 +93,50 @@
 <p><%= link_to 'Ver publicación', @propiedad, class: "btn" %></p>
 <%= link_to 'Volver', propiedads_path, class: "btn" %>
 
-</div> 
+</div>
+
+<script>
+	$(document).ready(function() {
+		$("#propiedad_tipo_publicacion_id").change(function() {
+		switch ($(this).val()) {
+		case "2":
+		  	if (<%= @enPromo %>) {
+				$("#importe").text("$<%= TipoPublicacion.find(2).importePromo %>");
+			}
+			else {
+				$("#importe").text("$<%= TipoPublicacion.find(2).importe %>");	
+			}			  
+			break;
+		case "3":
+		  	if (<%= @enPromo %>) {
+				$("#importe").text("$<%= TipoPublicacion.find(3).importePromo %>");
+			}
+			else {
+				$("#importe").text("$<%= TipoPublicacion.find(3).importe %>");	
+			}			  
+			break;
+		}
+	}); 
+</script>
+<script>
+	$(document).ready(function() {
+ 		switch ($("#propiedad_tipo_publicacion_id").val()) {
+		case "2":
+		  	if (<%= @enPromo %>) {
+				$("#importe").text("$<%= TipoPublicacion.find(2).importePromo %>");
+			}
+			else {
+				$("#importe").text("$<%= TipoPublicacion.find(2).importe %>");	
+			}			  
+			break;
+		case "3":
+		  	if (<%= @enPromo %>) {
+				$("#importe").text("$<%= TipoPublicacion.find(3).importePromo %>");
+			}
+			else {
+				$("#importe").text("$<%= TipoPublicacion.find(3).importe %>");	
+			}			  
+			break;
+		}
+	}); 
+</script>

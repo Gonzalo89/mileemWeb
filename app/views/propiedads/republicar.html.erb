@@ -99,13 +99,14 @@
 	$(document).ready(function() {
 		$("#propiedad_tipo_publicacion_id").change(function() {
 		switch ($(this).val()) {
-		case "2":
+		case "2":		
 		  	if (<%= @enPromo %>) {
 				$("#importe").text("$<%= TipoPublicacion.find(2).importePromo %>");
 			}
 			else {
 				$("#importe").text("$<%= TipoPublicacion.find(2).importe %>");	
-			}			  
+			}
+			$("#datosTarjeta").show();		  
 			break;
 		case "3":
 		  	if (<%= @enPromo %>) {
@@ -113,9 +114,11 @@
 			}
 			else {
 				$("#importe").text("$<%= TipoPublicacion.find(3).importe %>");	
-			}			  
+			}
+			$("#datosTarjeta").show();			  
 			break;
 		}
+		})
 	}); 
 </script>
 <script>

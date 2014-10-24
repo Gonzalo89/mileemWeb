@@ -65,9 +65,11 @@
 		$("#propiedad_tipo_publicacion_id").change(function() {
 		switch ($(this).val()) {
 		case "2":
+			$("#datosTarjeta").show();
 			$("#importe").text("$<%= TipoPublicacion.find(2).importe %>");
 			break;
 		case "3":
+			$("#datosTarjeta").show();
 			$("#importe").text("$<%= TipoPublicacion.find(3).importe %>");
 			break;
 		default:			
@@ -75,7 +77,7 @@
 			$("#datosTarjeta").hide();		    
 			break;		
 		}
-		});
+		})
 	}); 
 </script>
 <script>
@@ -88,7 +90,7 @@
 			$("#importe").text("$<%= TipoPublicacion.find(3).importe %>");
 			break;
 		default:			
-			//gratuita
+			//gratuita			
 			$("#datosTarjeta").hide();		    
 			break;		
 		}

@@ -1,5 +1,6 @@
 class PropiedadsController < ApplicationController
   before_action :set_propiedad, only: [:show, :edit, :update, :destroy, :pausar, :reanudar, :finalizar, :republicar]
+  before_action :set_enPromo, only: [:update, :republicar]
   before_action :set_amenities, only: [:create, :new, :update, :destroy, :show, :edit]
   before_action :set_new_video, only: [:show, :edit, :update]
   before_action :authenticate_user! , only: [:new, :edit, :update, :create, :destroy, :republicar]
@@ -93,12 +94,7 @@ class PropiedadsController < ApplicationController
     if (@propiedad.tipo_publicacion_id == 1)
       redirect_to propiedads_path, notice: "No se pueden republicar publicaciones gratuitas"
     end
-
-    @enPromo = false;
-
-    if (@propiedad.fecha_finalizacion + 1.month > Time.now)
-      @enPromo = true;
-    end
+    
   end
 
   # PATCH/PUT /propiedads/1
@@ -142,7 +138,7 @@ class PropiedadsController < ApplicationController
         format.html { redirect_to @propiedad, notice: 'La propiedad fue actualizada exitosamente.' }
         format.json { render :show, status: :ok, location: @propiedad }
       else
-        format.html { redirect_to :republicar, :propiedad => @propiedad }
+        format.html { render :republicar}
         format.json { render json: @propiedad.errors, status: :unprocessable_entity }
       end
     end
@@ -255,6 +251,14 @@ class PropiedadsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_propiedad
     @propiedad = Propiedad.find(params[:id])
+  end
+  
+  def set_enPromo
+    @enPromo = false;
+
+    if (@propiedad.fecha_finalizacion + 1.month > Time.now)
+      @enPromo = true;
+    end
   end
   
   def set_amenities

@@ -17,6 +17,11 @@ class Propiedad < ActiveRecord::Base
   validates :ambientes, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 999999999 }, allow_blank: true
   validates :superficie_nc, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 999999999 }, allow_blank: true
   validates :fecha_publicacion, presence: true, :date => {:after => Time.new(Time.now.year, Time.now.month, Time.now.day-1)  }, :on => :create
+  validates :nombre_titular, presence: true, :if => :no_gratuita;
+  validates :apellido_titular, presence: true, :if => :no_gratuita;
+  validates :numero_tarjeta, presence: true, length: { minimum: 16, maximum: 16 }, numericality: {only_integer: true} , :if => :no_gratuita;
+  validates :codigo_seguridad, presence: true, length: { minimum: 3, maximum: 3 }, numericality: {only_integer: true}, :if => :no_gratuita;
+  validates :vencimiento_tarjeta, presence: true, :if => :no_gratuita;
    
   has_many :fotos, dependent: :destroy
   has_many :tieneamenities, dependent: :destroy
@@ -45,6 +50,10 @@ class Propiedad < ActiveRecord::Base
     else
       self.precio * 15
     end
+  end
+  
+  def no_gratuita
+    tipo_publicacion_id != 1
   end
    
 end

@@ -271,7 +271,8 @@ class PropiedadsController < ApplicationController
     :descripcion, :antiguedad, :operacion_id, :precio, :moneda_id, :superficie,
     :superficie_nc, :ambientes, :dormitorios, :expensas, :barrio_id,
     :tipo_propiedad_id, :amenities, :user_id, :tipo_publicacion_id, :fecha_publicacion,
-    :fecha_finalizacion, :estado, :videos)
+    :fecha_finalizacion, :estado, :videos, :nombre_titular, :apellido_titular,
+    :numero_tarjeta, :codigo_seguridad, :vencimiento_tarjeta)
   end
 
   def usuarioValido

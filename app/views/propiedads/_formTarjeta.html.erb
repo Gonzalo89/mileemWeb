@@ -4,33 +4,33 @@
 <hr>
 
 <div class="field camposInline"">
-	<span class="obligatorio">&nbsp</span>
+	<span class="obligatorio">*</span>
 	<%= f.label "Nombre Titular" %>
-	<%= text_field "nombreTitular", :id => "nombreTitular" %>
+	<%= f.text_field :nombre_titular %>
 </div>
 
 <div class="field camposInline";">
-	<span class="obligatorio">&nbsp</span>
+	<span class="obligatorio">*</span>
 	<%= f.label "Apellido Titular" %>
-	<%= text_field "apellidoTitular", :id => "apellidoTitular" %>
+	<%= f.text_field :apellido_titular %>
 </div>
 
 <div class="field camposInline"">
-	<span class="obligatorio">&nbsp</span>
+	<span class="obligatorio">*</span>
 	<%= f.label "Número de tarjeta" %>
-	<%= text_field "numeroTarjeta", :id =>  "numeroTarjeta"%>
+	<%= f.text_field :numero_tarjeta %>
 </div>
 
 <div class="field camposInline"">
-	<span class="obligatorio">&nbsp</span>
+	<span class="obligatorio">*</span>
 	<%= f.label "Código de seguridad" %>
-	<%= text_field "codigoSeguridad", :id =>  "codigoSeguridad"%>
+	<%= f.text_field :codigo_seguridad %>
 </div>
 
 <div class="field camposInline"">
-	<span class="obligatorio">&nbsp</span>
+	<span class="obligatorio">*</span>
 	<%= f.label "Vencimiento Tarjeta" %>
-	<%= date_field "vencimientoTarjeta", :id => "vencimientoTarjeta"%>
+	<%= f.date_field :vencimiento_tarjeta %>
 </div>
 
 <div class="field camposInline"">

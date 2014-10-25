@@ -62,6 +62,11 @@ en:
         ambientes: "Ambientes"
         superficie_nc: "Superficie no cubierta"
         fecha_publicacion: "Fecha de publicación"
+        nombre_titular: "Nombre del titular"
+        apellido_titular: "Apellido del titular"
+        numero_tarjeta: "Número de tarjeta"
+        codigo_seguridad: "Código de seguridad"
+        vencimiento_tarjeta: "Fecha de vencimiento de la tarjeta"
     errors:
       models:
         user:

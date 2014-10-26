@@ -38,6 +38,10 @@ class FotoUploader < CarrierWave::Uploader::Base
   
   #process :resize_to_fit => [800, 600]
 
+  version :preview do
+    process :resize_to_fit => [200,200]
+  end
+
   version :thumb do
     process :resize_to_fit => [100,100]
   end

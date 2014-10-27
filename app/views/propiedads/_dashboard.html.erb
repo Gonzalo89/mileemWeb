@@ -19,7 +19,7 @@
               <% end %>
               <%= propiedad.precio %>
             </p>
-            <p><%= propiedad.fecha_finalizacion.strftime("%d/%m/%y") %></p>
+            <p>Vence: <%= propiedad.fecha_finalizacion.strftime("%d/%m/%y") %></p>
             
             <div id="botonera">
               <%= link_to raw("<span class=\"glyphicon glyphicon-eye-open\">"), 
@@ -45,8 +45,12 @@
                 propiedad, 
                 class: "btn btn-default" %>
               <% end %>
+            <%= link_to raw("<span class=\"glyphicon glyphicon-remove\">"), 
+                propiedad,
+                method: :delete,
+                data: { confirm: '¿Estás seguro?' },
+                class: "btn btn-default" %>
             </div>
-
             <% if propiedad.estado_id == 1 %>
               <p class="btn btn-success">Activa</p>
             <% end %>
@@ -56,7 +60,6 @@
             <% if propiedad.estado_id == 3 %>
               <p class="btn btn-danger">Finalizada</p>
             <% end %>
-
           </div>
         </div>
       </div>

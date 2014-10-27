@@ -51,15 +51,20 @@ h1 {
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #999;
+  color: #6D6D6D;
 }
 
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+}
+
+.linea{
+  margin-bottom: 10px;
+  margin-top: 0;
+  border­-top: 1px solid #eeeeee;
 }
 
 /* header */
@@ -121,5 +126,4 @@ p {
   color: red;
   font-size: 0.8em;
   display: inline;
-  /*margin-left: 19%;*/
 }

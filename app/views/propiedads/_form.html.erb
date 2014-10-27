@@ -152,7 +152,7 @@
 		}
 	}); 	
 </script>
-<div class="container" style="width:400px">
+
 	<%= form_for(@propiedad) do |f| %>
 	<% if @propiedad.errors.any? %>
 	<div id="error_explanation">
@@ -166,128 +166,130 @@
 		</ul>
 	</div>
 	<% end %>
-
-	<p class="obligatorio center">(*)Obligatorio</p>
-
+	<div class="center">
+		<p class="obligatorio center">(*)Obligatorio</p>
+	</div>
 	<h2>Datos de operaci&oacute;n</h2>
-	<hr>
-	<div class="camposInline" >
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label "Tipo de publicación" %>
-		
-		<% if params[:action] == "new" || params[:action] == "create" %>	
-		  <%= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
-	      :nombre, :selected => @propiedad.tipo_publicacion_id %>       
-	    <% else %>      
-	      <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled => true %>        
-	    <% end %>    
-	    
-	</div>
-	<div class="camposInline" >
-		<span class="obligatorio">*</span>
-		<%= f.label "Fecha de publicación" %>
+	<hr class="linea">
+	<div class="container" style="width:410px">
+		<div class="camposInline" >
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label "Tipo de publicación" %>
 			
-		<% if params[:action] == "new" || params[:action] == "create" %>	
-		  <%= date_field :propiedad, :fecha_publicacion, :min => Date.today, :value => Date.today%>
-		<% else %>
-		  <%= date_field :propiedad, :fecha_publicacion, :disabled =>true %>
-		<% end %>
+			<% if params[:action] == "new" || params[:action] == "create" %>	
+			  <%= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
+		      :nombre, :selected => @propiedad.tipo_publicacion_id %>       
+		    <% else %>      
+		      <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled => true %>        
+		    <% end %>    
+		    
+		</div>
+		<div class="camposInline" >
+			<span class="obligatorio">*</span>
+			<%= f.label "Fecha de publicación" %>
+				
+			<% if params[:action] == "new" || params[:action] == "create" %>	
+			  <%= date_field :propiedad, :fecha_publicacion, :min => Date.today, :value => Date.today%>
+			<% else %>
+			  <%= date_field :propiedad, :fecha_publicacion, :disabled =>true %>
+			<% end %>
+		</div>
+	
+	
+		<div class="camposInline" >
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label :tipo_propiedad_id,"Tipo de propiedad" %>
+			<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id,
+		    :nombre, :selected => @propiedad.tipo_propiedad_id %>
+		</div>
+		<div class="camposInline" >
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label :operacion_id,"Operación" %>
+			<%= f.collection_select :operacion_id, Operacion.all, :id, :tipo,
+			:selected => @propiedad.operacion_id %>
+		</div>
 	</div>
-
-
-	<div class="camposInline" >
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label :tipo_propiedad_id,"Tipo de propiedad" %>
-		<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id,
-	    :nombre, :selected => @propiedad.tipo_propiedad_id %>
-	</div>
-	<div class="camposInline" >
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label :operacion_id,"Operación" %>
-		<%= f.collection_select :operacion_id, Operacion.all, :id, :tipo,
-		:selected => @propiedad.operacion_id %>
-	</div>
-
 	<br>
 	<h2>Ubicación</h2>
-	<hr>
-	<div class="field camposInline">
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label :barrio_id %>
-		<%= f.collection_select :barrio_id, Barrio.all, :id, :nombre, :selected => @propiedad.barrio_id %>
+	<hr class="linea">
+	<div class="container" style="width:410px">
+		<div class="field camposInline">
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label :barrio_id %>
+			<%= f.collection_select :barrio_id, Barrio.all, :id, :nombre, :selected => @propiedad.barrio_id %>
+		</div>
+		<div class="field camposInline">
+			<span class="obligatorio">*</span>
+			<%= f.label :direccion,"Dirección" %>
+			<%= f.text_field :direccion %>
+		</div>
+		<div class="field camposInline">
+			<span class="obligatorio">*</span>
+			<%= f.label :numero, "Número" %>	
+			<%= f.text_field :numero, :class=>"campoCorto" %>
+		</div>
+		<div class="field camposInline">
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label :piso %>
+			<%= f.text_field :piso, :class=>"campoCorto" %>
+		</div>
+		<div class="field camposInline">
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label :departamento %>
+			<%= f.text_field :departamento, :class=>"campoCorto" %>
+		</div>
+	
+		<div class="field center">
+		<p>  
+		  <strong hidden="true" >Latitude:</strong>  
+		  <span id="latitude" hidden="true" ><%= @propiedad.latitude %> </span> 
+		</p>  
+		<p>  
+		  <strong hidden="true" >>Longitude:</strong>  
+		  <span id="longitude" hidden="true" ><%= @propiedad.longitude %> </span> 
+		</p>
+		<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@propiedad.latitude}%2C#{@propiedad.longitude}",
+		 :id => "mapa" %>
+		</div> 
+	
 	</div>
-	<div class="field camposInline">
-		<span class="obligatorio">*</span>
-		<%= f.label :direccion,"Dirección" %>
-		<%= f.text_field :direccion %>
-	</div>
-	<div class="field camposInline">
-		<span class="obligatorio">*</span>
-		<%= f.label :numero, "Número" %>	
-		<%= f.text_field :numero, :class=>"campoCorto" %>
-	</div>
-	<div class="field camposInline">
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label :piso %>
-		<%= f.text_field :piso, :class=>"campoCorto" %>
-	</div>
-	<div class="field camposInline">
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label :departamento %>
-		<%= f.text_field :departamento, :class=>"campoCorto" %>
-	</div>
-
-	<div class="field center">
-	<p>  
-	  <strong hidden="true" >Latitude:</strong>  
-	  <span id="latitude" hidden="true" ><%= @propiedad.latitude %> </span> 
-	</p>  
-	<p>  
-	  <strong hidden="true" >>Longitude:</strong>  
-	  <span id="longitude" hidden="true" ><%= @propiedad.longitude %> </span> 
-	</p>
-	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@propiedad.latitude}%2C#{@propiedad.longitude}",
-	 :id => "mapa" %>
-	</div> 
-
-	<div class="field">
-	<br>
 	<h2>Datos del inmueble</h2>
-	<hr>
+	<hr class="linea">
+	<div class="container" style="width:410px">
+		<div class="field camposInline">
+			<span class="obligatorio">*</span>
+			<%= f.label :descripcion,"Descripción" %>
+			<%= f.text_area :descripcion %>
+		</div>
+		<div class="field camposInline" id="opc_antiguedad" style="display:none;">
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label :antiguedad,"Antigüedad" %>
+			<%= f.text_field :antiguedad %>
+		</div>
+		<div class="camposInline field">
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label "Superficie cubierta"%>
+			<%= f.text_field :superficie, :class=>"campoCorto" %>
+		</div>
+		<div class="field camposInline">
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label "Superficie No Cubierta" %>
+			<%= f.text_field :superficie_nc, :class=>"campoCorto" %>
+		</div>
+		<div class="field camposInline" id="opc_dormitorios" style="display:none;">
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label :dormitorios %>
+			<%= f.text_field :dormitorios %>
+		</div>
+		<div class="field camposInline" id="opc_ambientes" style="display:none;">
+			<span class="obligatorio">&nbsp</span>
+			<%= f.label :ambientes %>
+			<%= f.text_field :ambientes %>
+		</div>
 	</div>
-	<div class="field camposInline">
-		<span class="obligatorio">*</span>
-		<%= f.label :descripcion,"Descripción" %>
-		<%= f.text_area :descripcion %>
-	</div>
-	<div class="field camposInline" id="opc_antiguedad" style="display:none;">
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label :antiguedad,"Antigüedad" %>
-		<%= f.text_field :antiguedad %>
-	</div>
-	<div class="camposInline field">
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label "Superficie cubierta"%>
-		<%= f.text_field :superficie, :class=>"campoCorto" %>
-	</div>
-	<div class="field camposInline">
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label "Superficie No Cubierta" %>
-		<%= f.text_field :superficie_nc, :class=>"campoCorto" %>
-	</div>
-	<div class="field camposInline" id="opc_dormitorios" style="display:none;">
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label :dormitorios %>
-		<%= f.text_field :dormitorios %>
-	</div>
-	<div class="field camposInline" id="opc_ambientes" style="display:none;">
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label :ambientes %>
-		<%= f.text_field :ambientes %>
-	</div>
-	<div class="field center">
+
 		<h2>Amenities</h2>
-		<hr>	
+		<hr class="linea">	
 		<% r1 = @amenities[0..3] %>
 		<% r2 = @amenities[4..7] %>
 		<% r3 = @amenities[8..11] %>
@@ -381,30 +383,32 @@
 			</tr>
 
 		</table>
+		</div>
+	
+		<br>
 	</div>
-
-	<br>
 	<h2>Precio</h2>
-	<hr>
-	<div class="field">
-		<div class="camposInline">
-			<span class="obligatorio">*</span>
-			<%= f.label :precio %>
-			<%= f.text_field :precio %>
+	<hr class="linea">
+		<div class="container" style="width:410px">
+		<div class="field">
+			<div class="camposInline">
+				<span class="obligatorio">*</span>
+				<%= f.label :precio %>
+				<%= f.text_field :precio %>
+			</div>
+			<div class="camposInline">
+				<span class="obligatorio">&nbsp</span>
+				<%= f.label :moneda_id %>
+				<%= f.collection_select :moneda_id, Moneda.all, :id, :nombre, :selected => @propiedad.moneda_id %>
+			</div>
 		</div>
-		<div class="camposInline">
+	
+		<div class="field camposInline" id="opc_expensas" style="display:none;">
 			<span class="obligatorio">&nbsp</span>
-			<%= f.label :moneda_id %>
-			<%= f.collection_select :moneda_id, Moneda.all, :id, :nombre, :selected => @propiedad.moneda_id %>
+			<%= f.label :expensas %>
+			<%= f.text_field :expensas %>
 		</div>
 	</div>
-
-	<div class="field camposInline" id="opc_expensas" style="display:none;">
-		<span class="obligatorio">&nbsp</span>
-		<%= f.label :expensas %>
-		<%= f.text_field :expensas %>
-	</div>
-
 	<br>
 	<%= render :partial => "formTarjeta", :locals => { :f => f } %>
 	<br>
@@ -417,7 +421,6 @@
 		<%= f.submit %>
 	</div>
 	<% end %>
-</div>
 <script type="text/javascript">
 	function myFunction() {
 		window.location.reload(false);

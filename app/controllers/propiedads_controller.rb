@@ -3,8 +3,9 @@ class PropiedadsController < ApplicationController
   before_action :set_enPromo, only: [:update, :republicar]
   before_action :set_amenities, only: [:create, :new, :update, :destroy, :show, :edit]
   before_action :set_new_video, only: [:show, :edit, :update]
-  before_action :authenticate_user! , only: [:new, :edit, :update, :create, :destroy, :republicar]
+  before_action :authenticate_user! , only: [:new, :edit, :update, :create, :destroy, :index, :republicar]
   before_action :usuarioValido , only: [:edit, :update, :destroy, :pausar, :reanudar, :finalizar, :republicar]
+
   # GET /propiedads
   # GET /propiedads.json
   def index

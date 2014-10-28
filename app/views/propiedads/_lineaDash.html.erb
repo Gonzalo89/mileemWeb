@@ -1,0 +1,72 @@
+<% if (@count % 3) == 0 %>
+<div class="row">
+	<% end %>
+	<div class="col-sm-6 col-md-4">
+		<div class="thumbnail">
+			<div class="image-container">
+				<%= image_tag @propiedad.fotos.first.nombre_url(:preview) if @propiedad.fotos.count != 0 %>
+			</div>
+			<div class="caption">
+				<h3><%= @propiedad.direccion + " " %> <%= @propiedad.numero %></h3>
+				<p>
+					<%= @propiedad.tipo_publicacion.nombre %>
+				</p>
+
+				<p>
+					<% if @propiedad.moneda_id == 1 %>
+					$
+					<% else %>
+					US$
+					<% end %>
+					<%= @propiedad.precio %>
+				</p>
+
+				<p>Vence: <%= @propiedad.fecha_finalizacion.strftime("%d/%m/%y") %></p>
+
+				<div id="botonera">
+					<%= link_to raw("<span class=\"glyphicon glyphicon-eye-open\">"),
+					@propiedad,
+					class: "btn btn-default" %> <% if @propiedad.estado_id == 2 %>
+					<%= link_to raw("<span class=\"glyphicon glyphicon-play\">"),
+					reanudar_path(id: @propiedad.id),
+					class: "btn btn-default" %> <% end %>
+
+					<% if @propiedad.estado_id == 1 %>
+					<%= link_to raw("<span class=\"glyphicon glyphicon-pause\">"),
+					pausar_path(id: @propiedad.id),
+					class: "btn btn-default" %>
+					<% end %>
+					<% if @propiedad.estado_id != 3 %>
+					<%= link_to raw("<span class=\"glyphicon glyphicon-stop\">"),
+					finalizar_path(id: @propiedad.id),
+					class: "btn btn-default" %>
+					<% end %>
+					<% if @propiedad.estado_id == 3 %>
+					<%= link_to raw("<span class=\"glyphicon glyphicon-forward\">"),
+					republicar_path(id: @propiedad.id),
+					class: "btn btn-default" %>
+					<% end %>
+					<%= link_to raw("<span class=\"glyphicon glyphicon-remove\">"),
+					@propiedad,
+					method: :delete,
+					data: { confirm: '¿Estás seguro?' },
+					class: "btn btn-default" %>
+				</div>
+				<div>
+	          		<% if @propiedad.estado_id == 1 %>
+	            	<span class="estado activa">Activa</span>
+	          		<% end %>
+	          		<% if @propiedad.estado_id == 2 %>
+	            	<span class="estado pausada">Pausada</span>
+	          		<% end %>
+	          		<% if @propiedad.estado_id == 3 %>
+	            	<span class="estado finalizada">Finalizada</span>
+	          		<% end %>
+	        	</div>
+            	<p>&nbsp;</p>
+			</div>
+		</div>
+	</div>
+	<% if (@count % 3) == 2 %>
+</div>
+<% end %>

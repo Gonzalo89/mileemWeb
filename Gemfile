@@ -46,7 +46,7 @@ gem 'therubyracer', '~> 0.12.1'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 3.8.0'
 
-gem 'bootstrap-sass', '~> 2.3.2.0'
+gem 'bootstrap-sass', '~> 3.2.0.0'
 gem 'sprockets', '~> 2.11.0'
 gem 'geocoder', '~> 1.2.5'
 gem 'devise', '~> 3.3.0'

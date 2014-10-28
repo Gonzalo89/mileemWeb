@@ -1,0 +1,12 @@
+<% @count = 0 %>
+<% @propiedads.each do |propiedad| %>
+
+  <% @propiedad = propiedad %>
+
+  <% if (user_signed_in? && (current_user.id == @propiedad.user.id)) %>
+  
+    <%= render 'lineaDash' %>
+    <% @count += 1 %>
+    
+  <% end %>
+<% end %>

@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* universal */
@@ -10,25 +11,16 @@ body {
   padding-top: 60px;
 }
 
-/*section {
+section {
   overflow: auto;
-}*/
+}
 
-/*textarea {
+textarea {
   resize: vertical;
-}*/
+}
 
 .center {
   text-align: center;
-}
-
-#tablaAmenities{
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#tablaAmenities label{
-  margin-left: 15px;
 }
 
 .center h1 {
@@ -42,14 +34,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 3em;
   letter-spacing: -2px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
+  font-weight: bold;
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.8em;
   letter-spacing: -1px;
   text-align: center;
   font-weight: normal;
@@ -76,14 +69,24 @@ p {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 15px;
   font-weight: bold;
-  line-height: 1;
 }
 
 #logo:hover {
   color: #fff;
   text-decoration: none;
+}
+
+/* Estilos propios */
+
+#tablaAmenities{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#tablaAmenities label{
+  margin-left: 15px;
 }
 
 .camposInline {  
@@ -126,4 +129,48 @@ p {
   color: red;
   font-size: 0.8em;
   display: inline;
+}
+
+.image-container {
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.estado{
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  border-radius: 4px;
+  float: right;
+}
+
+.activa{
+  background-color: green;
+  color: white;
+}
+
+.pausada{
+  background-color: #cc9933;
+  color: white;
+}
+
+.finalizada{
+  background-color: red;
+  color: white;
+}
+
+#botonera{
+  float:left;
 }

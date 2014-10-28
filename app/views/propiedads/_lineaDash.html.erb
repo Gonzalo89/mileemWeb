@@ -11,6 +11,7 @@
 				<p>
 					<%= @propiedad.tipo_publicacion.nombre %>
 				</p>
+
 				<p>
 					<% if @propiedad.moneda_id == 1 %>
 					$
@@ -19,50 +20,50 @@
 					<% end %>
 					<%= @propiedad.precio %>
 				</p>
-				<p>
-					Vence: <%= @propiedad.fecha_finalizacion.strftime("%d/%m/%y") %>
-				</p>
+
+				<p>Vence: <%= @propiedad.fecha_finalizacion.strftime("%d/%m/%y") %></p>
 
 				<div id="botonera">
 					<%= link_to raw("<span class=\"glyphicon glyphicon-eye-open\">"),
 					@propiedad,
 					class: "btn btn-default" %> <% if @propiedad.estado_id == 2 %>
-						<%= link_to raw("<span class=\"glyphicon glyphicon-play\">"),
-						reanudar_path(id: @propiedad.id),
-						class: "btn btn-default" %> <% end %>
-							<% if @propiedad.estado_id == 1 %>
-							<%= link_to raw("<span class=\"glyphicon glyphicon-pause\">"),
-							pausar_path(id: @propiedad.id),
-							class: "btn btn-default" %> <% end %>
-								<% if @propiedad.estado_id != 3 %>
-								<%= link_to raw("<span class=\"glyphicon glyphicon-stop\">"),
-								finalizar_path(id: @propiedad.id),
-								class: "btn btn-default" %> <% end %>
-									<% if @propiedad.estado_id == 3 %>
-									<%= link_to raw("<span class=\"glyphicon glyphicon-forward\">"),
-									@propiedad,
-									class: "btn btn-default" %> <% end %>
-										<%= link_to raw("<span class=\"glyphicon glyphicon-remove\">"),
-										@propiedad,
-										method: :delete,
-										data: { confirm: '¿Estás seguro?' },
-										class: "btn btn-default" %>
+					<%= link_to raw("<span class=\"glyphicon glyphicon-play\">"),
+					reanudar_path(id: @propiedad.id),
+					class: "btn btn-default" %> <% end %>
+
+					<% if @propiedad.estado_id == 1 %>
+					<%= link_to raw("<span class=\"glyphicon glyphicon-pause\">"),
+					pausar_path(id: @propiedad.id),
+					class: "btn btn-default" %>
+					<% end %>
+					<% if @propiedad.estado_id != 3 %>
+					<%= link_to raw("<span class=\"glyphicon glyphicon-stop\">"),
+					finalizar_path(id: @propiedad.id),
+					class: "btn btn-default" %>
+					<% end %>
+					<% if @propiedad.estado_id == 3 %>
+					<%= link_to raw("<span class=\"glyphicon glyphicon-forward\">"),
+					@propiedad,
+					class: "btn btn-default" %>
+					<% end %>
+					<%= link_to raw("<span class=\"glyphicon glyphicon-remove\">"),
+					@propiedad,
+					method: :delete,
+					data: { confirm: '¿Estás seguro?' },
+					class: "btn btn-default" %>
 				</div>
-				<% if @propiedad.estado_id == 1 %>
-				<p class="btn btn-success">
-					Activa
-				</p>
-				<% end %>
-				<% if @propiedad.estado_id == 2 %>
-				<p class="btn btn-warning">
-					Pausada
-				</p>
-				<% end %>
-				<% if @propiedad.estado_id == 3 %>
-				<p class="btn btn-danger">
-					Finalizada
-				</p>
-				<% end %>
+				<div>
+	          		<% if @propiedad.estado_id == 1 %>
+	            	<span class="estado activa">Activa</span>
+	          		<% end %>
+	          		<% if @propiedad.estado_id == 2 %>
+	            	<span class="estado pausada">Pausada</span>
+	          		<% end %>
+	          		<% if @propiedad.estado_id == 3 %>
+	            	<span class="estado finalizada">Finalizada</span>
+	          		<% end %>
+	        	</div>
+            	<p>&nbsp;</p>
 			</div>
 		</div>
 	</div>

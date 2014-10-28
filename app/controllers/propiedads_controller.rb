@@ -1,7 +1,7 @@
 class PropiedadsController < ApplicationController
   before_action :set_propiedad, only: [:show, :edit, :update, :destroy, :pausar, :reanudar, :finalizar]
   before_action :set_amenities, only: [:create, :new, :update, :destroy, :show, :edit]
-  before_action :authenticate_user! , only: [:new, :edit, :update, :create, :destroy]
+  before_action :authenticate_user! , only: [:new, :edit, :update, :create, :destroy, :index]
   before_action :usuarioValido , only: [:edit, :update, :destroy, :pausar, :reanudar, :finalizar]
   
   # GET /propiedads

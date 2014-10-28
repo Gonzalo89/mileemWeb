@@ -51,15 +51,17 @@
                 data: { confirm: '¿Estás seguro?' },
                 class: "btn btn-default" %>
             </div>
-            <% if propiedad.estado_id == 1 %>
-              <p class="btn btn-success">Activa</p>
-            <% end %>
-            <% if propiedad.estado_id == 2 %>
-              <p class="btn btn-warning">Pausada</p>
-            <% end %>
-            <% if propiedad.estado_id == 3 %>
-              <p class="btn btn-danger">Finalizada</p>
-            <% end %>
+            <div>
+              <% if propiedad.estado_id == 1 %>
+                <span class="estado-activa">Activa</span>
+              <% end %>
+              <% if propiedad.estado_id == 2 %>
+                <p class="estado-pausada">Pausada</p>
+              <% end %>
+              <% if propiedad.estado_id == 3 %>
+                <p class="estado-finalizada">Finalizada</p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

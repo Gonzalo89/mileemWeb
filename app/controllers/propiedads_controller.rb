@@ -11,6 +11,17 @@ class PropiedadsController < ApplicationController
   def index
     @propiedads = Propiedad.all
   end
+  
+  def estadisticasBarrio
+    @barrio = Barrio.find_by_nombre("Almagro") # TODO a pasar por parametro
+
+    @promedioM2 = @barrio.promedioM2
+    @promedioM2Dolares = @promedioM2 / Propiedad.convPesos
+    
+    render json: {nombreBarrio: @barrio.nombre, barrio_id: @barrio.id, promedioM2: @promedioM2,
+      promedioM2Dolares: @promedioM2Dolares, cantCodAmb1: @barrio.cantCodAmb1,
+      cantCodAmb2: @barrio.cantCodAmb2, cantCodAmb3: @barrio.cantCodAmb3, cantCodAmb4: @barrio.cantCodAmb4}
+  end
 
   # GET /propiedads/1
   # GET /propiedads/1.json
@@ -96,7 +107,7 @@ class PropiedadsController < ApplicationController
       redirect_to propiedads_path, notice: "No se pueden republicar publicaciones gratuitas"
     end
     
-  end
+  end  
 
   # PATCH/PUT /propiedads/1
   # PATCH/PUT /propiedads/1.json

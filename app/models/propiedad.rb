@@ -48,12 +48,16 @@ class Propiedad < ActiveRecord::Base
     if self.moneda_id == 1 
       self.precio
     else
-      self.precio * 15
+      self.precio * Propiedad.convPesos
     end
   end
   
   def no_gratuita
     tipo_publicacion_id != 1
+  end
+
+  def self.convPesos
+    15
   end
    
 end

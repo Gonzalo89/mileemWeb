@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   
   get 'propiedads/filtro'
   
+  get 'propiedads/estadisticasBarrio'
+  
   resources :operacions
 
   resources :monedas

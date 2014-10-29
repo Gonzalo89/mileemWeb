@@ -19,12 +19,19 @@
 
 	<h2>Datos de operaci&oacute;n</h2>
 	<hr>
+	
 	<div class="camposInline" >
 		<span class="obligatorio">&nbsp</span>
 		<%= f.label "Tipo de publicación" %>
 		
-	    <%= f.text_field :tipo_publicacion, :value => @propiedad.tipo_publicacion.nombre, :disabled => true %>
-	    <%= f.hidden_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion_id %>       
+		<% if @propiedad.tipo_publicacion_id == 3 %>
+	      <%= f.text_field :tipo_publicacion, :value => @propiedad.tipo_publicacion.nombre, :disabled => true %>
+	      <%= f.hidden_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion_id %>
+	    <% else %>
+	      <%= f.collection_select :tipo_publicacion_id, TipoPublicacion.find(2, 3), :id,
+		      :nombre, :selected => @propiedad.tipo_publicacion_id %>
+	    <% end %> 
+	          
   	</div>
   	
 	<div class="camposInline" >

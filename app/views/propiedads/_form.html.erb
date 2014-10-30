@@ -153,7 +153,7 @@
 	}); 	
 </script>
 
-	<%= form_for(@propiedad) do |f| %>
+<%= form_for @propiedad, :html => {:class => "form-horizontal"} do |f| %>
 	<% if @propiedad.errors.any? %>
 	<div id="error_explanation">
 		<h2>Se encontraron los siguientes errores:</h2>
@@ -171,72 +171,84 @@
 	</div>
 	<h2>Datos de operaci&oacute;n</h2>
 	<hr class="linea">
-	<div class="container" style="width:410px">
-		<div class="camposInline" >
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label "Tipo de publicación" %>
-			
-			<% if params[:action] == "new" || params[:action] == "create" %>	
-			  <%= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
-		      :nombre, :selected => @propiedad.tipo_publicacion_id %>       
-		    <% else %>      
-		      <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled => true %>        
-		    <% end %>    
-		    
+		<div class="form-group">
+				<%= f.label "Tipo de publicación", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<% if params[:action] == "new" || params[:action] == "create" %>	
+				  <%= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
+			      :nombre, {:selected => @propiedad.tipo_publicacion_id}, {:class=>"form-control"} %>       
+			    <% else %>      
+			      <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled => true, :class=>"form-control" %>        
+			    <% end %> 
+			</div>
 		</div>
-		<div class="camposInline" >
-			<span class="obligatorio">*</span>
-			<%= f.label "Fecha de publicación" %>
-				
-			<% if params[:action] == "new" || params[:action] == "create" %>	
-			  <%= date_field :propiedad, :fecha_publicacion, :min => Date.today, :value => Date.today%>
-			<% else %>
-			  <%= date_field :propiedad, :fecha_publicacion, :disabled =>true %>
-			<% end %>
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-2 control-label">
+				<%= f.label "Fecha de publicación" %>
+				<span style="color: red">*</span>
+			</div>
+			<div class="col-sm-3">
+				<% if params[:action] == "new" || params[:action] == "create" %>	
+				  <%= date_field :propiedad, :fecha_publicacion, :min => Date.today, :value => Date.today, :class=>"form-control" %>
+				<% else %>
+				  <%= date_field :propiedad, :fecha_publicacion, :disabled =>true, :class=>"form-control" %>
+				<% end %>
+			</div>
 		</div>
 	
 	
-		<div class="camposInline" >
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label :tipo_propiedad_id,"Tipo de propiedad" %>
-			<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id,
-		    :nombre, :selected => @propiedad.tipo_propiedad_id %>
+		<div class="form-group">
+			<%= f.label :tipo_propiedad_id,"Tipo de propiedad", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.collection_select :tipo_propiedad_id, TipoPropiedad.all, :id,
+					:nombre, {:selected => @propiedad.tipo_propiedad_id}, {:class=>"form-control"} %>
+			</div>
 		</div>
-		<div class="camposInline" >
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label :operacion_id,"Operación" %>
-			<%= f.collection_select :operacion_id, Operacion.all, :id, :tipo,
-			:selected => @propiedad.operacion_id %>
+		<div class="form-group" >
+			<%= f.label :operacion_id,"Operación", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.collection_select :operacion_id, Operacion.all, :id, :tipo, 
+					{:selected => @propiedad.operacion_id}, {:class=>"form-control"} %>
+			</div>
 		</div>
-	</div>
 	<br>
 	<h2>Ubicación</h2>
 	<hr class="linea">
-	<div class="container" style="width:410px">
-		<div class="field camposInline">
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label :barrio_id %>
-			<%= f.collection_select :barrio_id, Barrio.all, :id, :nombre, :selected => @propiedad.barrio_id %>
+		<div class="form-group">
+			<%= f.label :barrio_id, :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.collection_select :barrio_id, Barrio.all, :id, :nombre, {:selected => @propiedad.barrio_id}, {:class=>"form-control"} %>
+			</div>
 		</div>
-		<div class="field camposInline">
-			<span class="obligatorio">*</span>
-			<%= f.label :direccion,"Dirección" %>
-			<%= f.text_field :direccion %>
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-2 control-label">
+				<%= f.label :direccion,"Dirección" %>
+				<span style="color: red">*</span>
+			</div>
+			<div class="col-sm-3">
+				<%= f.text_field :direccion, :class=>"form-control" %>
+			</div>
 		</div>
-		<div class="field camposInline">
-			<span class="obligatorio">*</span>
-			<%= f.label :numero, "Número" %>	
-			<%= f.text_field :numero, :class=>"campoCorto" %>
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-2 control-label">
+				<%= f.label :numero, "Número" %>
+				<span style="color: red">*</span>
+			</div>
+			<div class="col-sm-3">
+				<%= f.text_field :numero, :class=>"form-control" %>
+			</div>
 		</div>
-		<div class="field camposInline">
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label :piso %>
-			<%= f.text_field :piso, :class=>"campoCorto" %>
+		<div class="form-group">
+			<%= f.label :piso, :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.text_field :piso, :class=>"form-control" %>
+			</div>
 		</div>
-		<div class="field camposInline">
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label :departamento %>
-			<%= f.text_field :departamento, :class=>"campoCorto" %>
+		<div class="form-group">
+			<%= f.label :departamento, :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.text_field :departamento, :class=>"form-control" %>
+			</div>
 		</div>
 	
 		<div class="field center">
@@ -252,41 +264,47 @@
 		 :id => "mapa" %>
 		</div> 
 	
-	</div>
 	<h2>Datos del inmueble</h2>
 	<hr class="linea">
-	<div class="container" style="width:410px">
-		<div class="field camposInline">
-			<span class="obligatorio">*</span>
-			<%= f.label :descripcion,"Descripción" %>
-			<%= f.text_area :descripcion %>
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-2 control-label">
+				<%= f.label :descripcion,"Descripción" %>
+				<span style="color: red">*</span>
+			</div>
+			<div class="col-sm-3">
+				<%= f.text_area :descripcion, :class=>"form-control" %>
+			</div>
 		</div>
-		<div class="field camposInline" id="opc_antiguedad" style="display:none;">
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label :antiguedad,"Antigüedad" %>
-			<%= f.text_field :antiguedad %>
+		<div class="form-group" id="opc_antiguedad" style="display:none;">
+			<%= f.label :antiguedad,"Antigüedad", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.text_field :antiguedad, :class=>"form-control" %>
+			</div>
 		</div>
-		<div class="camposInline field">
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label "Superficie cubierta"%>
-			<%= f.text_field :superficie, :class=>"campoCorto" %>
+		<div class="form-group">
+			<%= f.label "Superficie cubierta", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.text_field :superficie, :class=>"form-control" %>
+			</div>
 		</div>
-		<div class="field camposInline">
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label "Superficie No Cubierta" %>
-			<%= f.text_field :superficie_nc, :class=>"campoCorto" %>
+		<div class="form-group">
+			<%= f.label "Superficie No Cubierta", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.text_field :superficie_nc, :class=>"form-control" %>
+			</div>
 		</div>
-		<div class="field camposInline" id="opc_dormitorios" style="display:none;">
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label :dormitorios %>
-			<%= f.text_field :dormitorios %>
+		<div class="form-group" id="opc_dormitorios" style="display:none;">
+			<%= f.label :dormitorios, :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.text_field :dormitorios, :class=>"form-control" %>
+			</div>
 		</div>
-		<div class="field camposInline" id="opc_ambientes" style="display:none;">
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label :ambientes %>
-			<%= f.text_field :ambientes %>
+		<div class="form-group" id="opc_ambientes" style="display:none;">
+			<%= f.label :ambientes, :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.text_field :ambientes, :class=>"form-control" %>
+			</div>
 		</div>
-	</div>
 
 		<h2>Amenities</h2>
 		<hr class="linea">	
@@ -296,6 +314,7 @@
 		<% r4 = @amenities[12..15] %>
 		<% r5 = @amenities[16..19] %>
 		<% r6 = @amenities[20..20] %>
+
 		<table id="tablaAmenities">
 			<tr>
 				<% r1.each do |a| %>
@@ -381,35 +400,37 @@
 				</td>
 				<% end  %>
 			</tr>
-
 		</table>
-		</div>
 	
 		<br>
-	</div>
+
 	<h2>Precio</h2>
 	<hr class="linea">
-		<div class="container" style="width:410px">
-		<div class="field">
-			<div class="camposInline">
-				<span class="obligatorio">*</span>
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-2 control-label">
 				<%= f.label :precio %>
-				<%= f.text_field :precio %>
+				<span style="color: red">*</span>
 			</div>
-			<div class="camposInline">
-				<span class="obligatorio">&nbsp</span>
-				<%= f.label :moneda_id %>
-				<%= f.collection_select :moneda_id, Moneda.all, :id, :nombre, :selected => @propiedad.moneda_id %>
+			<div class="col-sm-3">
+				<%= f.text_field :precio, :class=>"form-control" %>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label :moneda_id, :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.collection_select :moneda_id, Moneda.all, :id, :nombre, {:selected => @propiedad.moneda_id}, {:class=>"form-control"} %>
 			</div>
 		</div>
 	
-		<div class="field camposInline" id="opc_expensas" style="display:none;">
-			<span class="obligatorio">&nbsp</span>
-			<%= f.label :expensas %>
-			<%= f.text_field :expensas %>
+		<div class="form-group" id="opc_expensas" style="display:none;">
+			<%= f.label :expensas, :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-3">
+				<%= f.text_field :expensas, :class=>"form-control" %>
+			</div>
 		</div>
-	</div>
+		
 	<br>
+
 	<%= render :partial => "formTarjeta", :locals => { :f => f } %>
 	<br>
 		
@@ -417,8 +438,8 @@
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	</div>
 
-	<div class="actions center">
-		<%= f.submit %>
+	<div class="form-group center">
+		<%= f.submit class: "btn btn-default" %>
 	</div>
 	<% end %>
 <script type="text/javascript">

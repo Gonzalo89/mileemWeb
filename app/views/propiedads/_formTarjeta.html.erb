@@ -3,40 +3,61 @@
 <h2>Tarjeta</h2>
 <hr>
 
-<div class="field camposInline"">
-	<span class="obligatorio">*</span>
-	<%= f.label "Nombre del titular" %>
-	<%= f.text_field :nombre_titular %>
+<div class="form-group">
+	<div class="col-sm-offset-3 col-sm-2 control-label">
+		<%= f.label "Nombre del titular" %>
+		<span style="color: red">*</span>
+	</div>
+	<div class="col-sm-3">
+		<%= f.text_field :nombre_titular, :class=>"form-control" %>
+	</div>
 </div>
 
-<div class="field camposInline";">
-	<span class="obligatorio">*</span>
-	<%= f.label "Apellido del titular" %>
-	<%= f.text_field :apellido_titular %>
+<div class="form-group">
+	<div class="col-sm-offset-3 col-sm-2 control-label">
+		<%= f.label "Apellido del titular" %>
+		<span style="color: red">*</span>
+	</div>
+	<div class="col-sm-3">
+		<%= f.text_field :apellido_titular, :class=>"form-control" %>
+	</div>
 </div>
 
-<div class="field camposInline"">
-	<span class="obligatorio">*</span>
-	<%= f.label "Número de tarjeta" %>
-	<%= f.text_field :numero_tarjeta %>
+<div class="form-group">
+	<div class="col-sm-offset-3 col-sm-2 control-label">
+		<%= f.label "Número de tarjeta" %>
+		<span style="color: red">*</span>
+	</div>
+	<div class="col-sm-3">
+		<%= f.text_field :numero_tarjeta, :class=>"form-control" %>
+	</div>
 </div>
 
-<div class="field camposInline"">
-	<span class="obligatorio">*</span>
-	<%= f.label "Código de seguridad" %>
-	<%= f.text_field :codigo_seguridad %>
+<div class="form-group">
+	<div class="col-sm-offset-3 col-sm-2 control-label">
+		<%= f.label "Código de seguridad" %>
+		<span style="color: red">*</span>
+	</div>
+	<div class="col-sm-3">
+		<%= f.text_field :codigo_seguridad, :class=>"form-control" %>
+	</div>
 </div>
 
-<div class="field camposInline"">
-	<span class="obligatorio">*</span>
-	<%= f.label "Fecha de vencimiento de la tarjeta" %>
-	<%= f.date_field :vencimiento_tarjeta %>
+<div class="form-group">
+	<div class="col-sm-offset-3 col-sm-2 control-label">
+		<%= f.label "Fecha de vencimiento" %>
+		<span style="color: red">*</span>
+	</div>
+	<div class="col-sm-3">
+		<%= f.date_field :vencimiento_tarjeta, :class=>"form-control" %>
+	</div>
 </div>
 
-<div class="field camposInline"">
-	<span class="obligatorio">&nbsp</span>
-	<%= f.label "Importe" %>
-	<span id = "importe"></span>
+<div class="form-group">
+	<%= f.label "Importe", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+	<div class="col-sm-3">
+		<p class="form-control-static" id = "importe"></p>
+	</div>
 </div>
 
 </div>

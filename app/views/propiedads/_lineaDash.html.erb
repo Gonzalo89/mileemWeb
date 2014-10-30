@@ -8,20 +8,19 @@
 			</div>
 			<div class="caption">
 				<h3><%= @propiedad.direccion + " " %> <%= @propiedad.numero %></h3>
-				<p>
-					<%= @propiedad.tipo_publicacion.nombre %>
-				</p>
 
-				<p>
+				<h4>
 					<% if @propiedad.moneda_id == 1 %>
 					$
 					<% else %>
 					US$
 					<% end %>
 					<%= @propiedad.precio %>
+				</h4>
+				<p>
+					<span class="label label-default"><%= @propiedad.tipo_publicacion.nombre %></span>
+					Vence: <%= @propiedad.fecha_finalizacion.strftime("%d/%m/%y") %>
 				</p>
-
-				<p>Vence: <%= @propiedad.fecha_finalizacion.strftime("%d/%m/%y") %></p>
 
 				<div id="botonera">
 					<%= link_to raw("<span class=\"glyphicon glyphicon-eye-open\">"),

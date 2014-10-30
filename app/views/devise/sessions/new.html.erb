@@ -1,14 +1,22 @@
 <h1>Ingreso</h1>
 <hr>
 <%= devise_error_messages! %>
-<div class="center">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="field camposInline"><%= f.label :email,"Email"%>
-  <%= f.text_field :email, autofocus: true %></div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "form-horizontal"}) do |f| %>
 
-  <div class="field camposInline"><%= f.label :password,"Contraseña"%>
-    <%= f.password_field :password, autocomplete: "off" %></div>
+	<div class="form-group">
+		<%= f.label :email,"Email", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+		<div class="col-sm-3">
+			<%= f.text_field :email, autofocus: true, :class=>"form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :password,"Contraseña", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+		<div class="col-sm-3">
+			<%= f.password_field :password, autocomplete: "off", :class=>"form-control" %>
+		</div>
+	</div>
     
 <!-- No anda, no se porque
   <% if devise_mapping.rememberable? -%>
@@ -16,8 +24,9 @@
   <% end -%>
 -->
   
-  <div><%= f.submit "Ingresar" %></div>  
+  <div class="center"><%= f.submit "Ingresar", :class=>"btn btn-default" %></div>  
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="center">
+	<%= render "devise/shared/links" %>
 </div>

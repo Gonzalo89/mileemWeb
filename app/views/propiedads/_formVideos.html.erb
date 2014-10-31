@@ -5,7 +5,7 @@
 	<div class="embed-container">
 	  <%= embed(video.url) %> 
 	</div> 
-	<span class="center"><%= button_to 'Eliminar', video, method: :delete, data: { confirm: '¿Estás seguro?' } %></span>
+	<span class="center"><%= button_to 'Eliminar', video, class:"btn btn-default",method: :delete, data: { confirm: '¿Estás seguro?' } %></span>
 </p>
 <% end %>
 
@@ -31,7 +31,7 @@
     <%= f.hidden_field :propiedad_id, :value => @propiedad.id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Subir Video", :class=>"btn btn-default"%>
   </div>
 <% end %>
 <hr>

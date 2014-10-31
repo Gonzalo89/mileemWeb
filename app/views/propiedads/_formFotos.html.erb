@@ -3,7 +3,7 @@
 <% @propiedad.fotos.each do |foto| %>
 <p class="center">
 	<%= image_tag foto.nombre if foto.nombre? %>
-	<span class="center"><%= button_to 'Eliminar', foto, method: :delete, data: { confirm: '¿Estás seguro?' } %></span>
+	<span class="center"><%= button_to 'Eliminar' , foto, class:"btn btn-default", method: :delete , data: { confirm: '¿Estás seguro?'}%></span>
 </p>
 <% end %>
 
@@ -15,7 +15,7 @@
 	<%= f.file_field :nombre ,:value=>"Buscar",:id => "archivo", :required => true %>
 </p>
 <p>
-	<%= f.submit "Subir Foto"%>
+	<%= f.submit "Subir Foto", :class=>"btn btn-default"%>
 </p>
 <% end %>
 <hr>

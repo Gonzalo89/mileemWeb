@@ -13,6 +13,7 @@ class PropiedadsController < ApplicationController
     for prop in @propiedads
       if prop.fecha_finalizacion < Time.now
         prop.estado_id=3
+        prop.save!
       end
     end
   end

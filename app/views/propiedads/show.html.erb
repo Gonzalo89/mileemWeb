@@ -1,3 +1,13 @@
+
+<script>
+	//bug118
+	$(document).ready(function() {
+		if(<%= @propiedad.tipo_publicacion_id %>==1){
+			$("#video").hide();
+		}
+	}); 
+</script>
+
 <h1>Datos de la publicaci&oacute;n</h1>
 
 <h2>Datos de operación</h2>
@@ -158,7 +168,9 @@
 <div align="center">
 	<br>
 	<%= render 'formFotos' %>
-	<%= render 'formVideos' %>
-
+	<!-- bug 118-->
+	<div id="video">
+		<%= render 'formVideos' %>
+	</div>
 	<%= link_to 'Volver', propiedads_path, class: "btn" %>
 </div>

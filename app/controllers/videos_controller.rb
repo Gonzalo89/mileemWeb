@@ -25,19 +25,31 @@ class VideosController < ApplicationController
 
   # POST /videos
   # POST /videos.json
+  # BUG 117
+  # BUG 119
   def create
+
     @video = Video.new(video_params)
     prop = @video.propiedad    
-
-    if(prop.videos.count >= TipoPublicacion.find(prop.tipo_publicacion).maxVideos)
-      redirect_to propiedad_path(prop), notice: 'No se puede cargar mas videos.'
+    
+    if @video.url ==""
+      redirect_to propiedad_path(prop), alert: 'No puede ingresar una url vacía'
     else
-      if @video.save
-        redirect_to propiedad_path(prop), notice: 'El video se creó correctamente.'
+      
+      if !@video.url.match("youtube.com")
+        redirect_to propiedad_path(prop), alert: 'Debe ingresar un video de youtube'
       else
-        redirect_to propiedad_path(prop)
-      end
-    end 
+        if(prop.videos.count >= TipoPublicacion.find(prop.tipo_publicacion).maxVideos)
+          redirect_to propiedad_path(prop), notice: 'No se puede cargar mas videos.'
+        else
+          if @video.save
+            redirect_to propiedad_path(prop), notice: 'El video se creó correctamente.'
+          else
+            redirect_to propiedad_path(prop)
+          end
+        end 
+       end
+    end
         
   end
 

@@ -1,40 +1,37 @@
-<div id="video">
-	
-	<h2>Videos</h2>
-	<hr>
-	<% @propiedad.videos.each do |video| %>
-	<p class="center">
-		<div class="embed-container">
-		  <%= embed(video.url) %> 
-		</div> 
-		<span class="center"><%= button_to 'Eliminar', video, class:"btn btn-default",method: :delete, data: { confirm: '¿Estás seguro?' } %></span>
-	</p>
-	<% end %>
-	
-	<hr>
-	<%= form_for(@video) do |f| %>
-	  <% if @video.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
-	
-	      <ul>
-	      <% @video.errors.full_messages.each do |message| %>
-	        <li><%= message %></li>
-	      <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
-	
-	  <div class="field">
-	    <%= f.label :url %><br>
-	    <%= f.text_field :url %>
-	  </div>
-	  <div class="field">
-	    <%= f.hidden_field :propiedad_id, :value => @propiedad.id %>
-	  </div>
-	  <div class="actions">
-	    <%= f.submit "Subir Video", :class=>"btn btn-default"%>
-	  </div>
-	<% end %>
-	<hr>
-</div>
+<h2>Videos</h2>
+<hr>
+<% @propiedad.videos.each do |video| %>
+<p class="center">
+	<div class="embed-container">
+	  <%= embed(video.url) %> 
+	</div> 
+	<span class="center"><%= button_to 'Eliminar', video, class:"btn btn-default",method: :delete, data: { confirm: '¿Estás seguro?' } %></span>
+</p>
+<% end %>
+
+<hr>
+<%= form_for(@video) do |f| %>
+  <% if @video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+      <% @video.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :propiedad_id, :value => @propiedad.id %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Subir Video", :class=>"btn btn-default"%>
+  </div>
+<% end %>
+<hr>

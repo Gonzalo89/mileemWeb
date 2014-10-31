@@ -10,6 +10,11 @@ class PropiedadsController < ApplicationController
   # GET /propiedads.json
   def index
     @propiedads = Propiedad.all
+    for prop in @propiedads
+      if prop.fecha_finalizacion < Time.now
+        prop.estado_id=3
+      end
+    end
   end
 
   # GET /propiedads/1

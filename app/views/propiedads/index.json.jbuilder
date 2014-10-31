@@ -30,5 +30,6 @@ json.array!(propValidas) do |propiedad|
   json.fecha_publicacion propiedad.fecha_publicacion
   json.fecha_finalizacion propiedad.fecha_finalizacion
   json.user propiedad.user
+  json.videos propiedad.videos
   
 end

@@ -16,7 +16,7 @@ class Propiedad < ActiveRecord::Base
   validates :superficie, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 999999999 }, allow_blank: true
   validates :ambientes, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 999999999 }, allow_blank: true
   validates :superficie_nc, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 999999999 }, allow_blank: true
-  validates :fecha_publicacion, presence: true, :date => {:after => Time.new(Time.now.year, Time.now.month, Time.now.day-1)  }, :on => :create
+  validates :fecha_publicacion, presence: true
   validates :nombre_titular, presence: true, :if => :no_gratuita;
   validates :apellido_titular, presence: true, :if => :no_gratuita;
   validates :numero_tarjeta, presence: true, length: { minimum: 16, maximum: 16 }, numericality: {only_integer: true} , :if => :no_gratuita;

@@ -29,6 +29,7 @@ en:
       not_a_number: "no es numérico"
       blank: "es obligatorio"
       too_short: "es muy corto. Debe tener al menos %{count} caracteres"
+      too_long: "es muy largo. Debe tener como máximo %{count} caracteres"
       greater_than: "debe ser mayor a %{count}"
       greater_than_or_equal_to: "debe ser mayor o igual a %{count}"
       less_than_or_equal_to: "debe ser menor o igual a %{count}"

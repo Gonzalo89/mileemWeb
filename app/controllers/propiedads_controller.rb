@@ -9,7 +9,7 @@ class PropiedadsController < ApplicationController
   # GET /propiedads
   # GET /propiedads.json
   def index
-    @propiedads = Propiedad.all
+    @propiedads = Propiedad.all.order(tipo_publicacion_id: :desc, created_at: :desc)
     for prop in @propiedads
       if prop.fecha_finalizacion < Time.now
         prop.estado_id=3

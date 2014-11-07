@@ -3,7 +3,23 @@
 <div class="row">
 	<% end %>
 	<div class="col-sm-6 col-md-4">
+		<% if @propiedad.tipo_publicacion_id == 3 %>
+		<div class="thumbnail thumb-premium">
+		<% else %>
 		<div class="thumbnail">
+		<% end %>
+			<div class="ribbon-wrapper">
+			<% if @propiedad.tipo_publicacion_id == 3 %>
+				<div class="ribbon ribbon-premium">
+			<% else if @propiedad.tipo_publicacion_id == 2 %>
+				<div class="ribbon ribbon-basica">
+			<% else %>
+				<div class="ribbon ribbon-gratuita">
+			<% end %>
+			<% end %>
+					<%= @propiedad.tipo_publicacion.nombre %>
+				</div>
+			</div>
 			<div class="image-container">
 				<%= image_tag @propiedad.fotos.first.nombre_url(:preview) if @propiedad.fotos.count != 0 %>
 			</div>
@@ -19,10 +35,9 @@
 					<%= @propiedad.precio %>
 				</h4>
 				<p>
-					<span class="label label-default"><%= @propiedad.tipo_publicacion.nombre %></span>
+					<span class="label label-default"><%= @propiedad.operacion.tipo %></span>
 					Vence: <%= @propiedad.fecha_finalizacion.strftime("%d/%m/%y") %>
 				</p>
-
 				<div id="botonera">
 					<%= link_to raw("<span class=\"glyphicon glyphicon-eye-open\">"),
 					@propiedad,

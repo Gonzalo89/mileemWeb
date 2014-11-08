@@ -55,3 +55,10 @@ Propiedad.new({direccion: 'Murguiondo', piso: '2', numero: 449, departamento: ''
 Propiedad.new({direccion: 'Av Paseo Colon', piso: '', numero: 850, departamento: '', descripcion: 'descripcio4', antiguedad: 10, operacion_id: 1, barrio_id: 35, precio: 115000, moneda_id: 1, superficie: 75, ambientes: 3, dormitorios: 4, expensas: 1200, tipo_propiedad_id: 1, user: usuarios.second, superficie_nc: 20, tipo_publicacion_id: 1, fecha_publicacion: '2014-10-06 10:26:45', fecha_finalizacion: '2014-11-06 10:26:45', estado_id: 1, latitude: -34.6177, longitude: -58.3679}).save(validate: false)
 Propiedad.new({direccion: 'Nazarre', piso: '', numero: 850, departamento: '', descripcion: 'descripcio4', antiguedad: 10, operacion_id: 1, barrio_id: 35, precio: 115000, moneda_id: 1, superficie: 75, ambientes: 3, dormitorios: 4, expensas: 1200, tipo_propiedad_id: 1, user: usuarios.first, superficie_nc: 20, tipo_publicacion_id: 1, fecha_publicacion: '2014-09-30 10:26:45', fecha_finalizacion: '2014-10-31 22:40:45', estado_id: 1, latitude: -34.6177, longitude: -58.3679}).save(validate: false)
 
+
+Vecino.create([{barrio_id: 1, vecino_id: 38}, {barrio_id: 1, vecino_id: 37}, {barrio_id: 1, vecino_id: 15}, {barrio_id: 1, vecino_id: 25}, {barrio_id: 1, vecino_id: 48}, {barrio_id: 1, vecino_id: 43},
+  {barrio_id: 16, vecino_id: 17}, {barrio_id: 16, vecino_id: 41}, {barrio_id: 16, vecino_id: 35},
+  {barrio_id: 41, vecino_id: 16}, {barrio_id: 41, vecino_id: 17}, {barrio_id: 41, vecino_id: 23}, {barrio_id: 41, vecino_id: 34}, {barrio_id: 41, vecino_id: 18}, {barrio_id: 41, vecino_id: 35} ])
+
+
+

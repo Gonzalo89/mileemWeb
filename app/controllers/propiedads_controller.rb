@@ -17,6 +17,31 @@ class PropiedadsController < ApplicationController
       end
     end
   end
+  
+  def estadisticasBarrio
+    if params["barrioId"]      
+      @barrio = Barrio.find(params["barrioId"].to_i)
+
+      @promedioM2 = @barrio.promedioM2
+      @promedioM2Dolares = @promedioM2 / Propiedad.convPesos
+      
+      @vecinos = Vecino.where(barrio_id: @barrio.id)
+      
+      @vecinos.each do |vecino|
+        barrioVecino = Barrio.find(vecino.vecino_id)
+        vecino.promedioM2 = barrioVecino.promedioM2
+        vecino.promedioM2Dolares = vecino.promedioM2 / Propiedad.convPesos
+        vecino.vecino_nombre = barrioVecino.nombre
+      end
+    
+      render json: {nombreBarrio: @barrio.nombre, barrio_id: @barrio.id, promedioM2: @promedioM2,
+        promedioM2Dolares: @promedioM2Dolares, cantCodAmb1: @barrio.cantCodAmb1,
+        cantCodAmb2: @barrio.cantCodAmb2, cantCodAmb3: @barrio.cantCodAmb3,
+        cantCodAmb4: @barrio.cantCodAmb4, vecinos: @vecinos, cantVecinos: @vecinos.size}
+    else
+      redirect_to propiedads_path
+    end
+  end
 
   # GET /propiedads/1
   # GET /propiedads/1.json
@@ -102,7 +127,7 @@ class PropiedadsController < ApplicationController
       redirect_to propiedads_path, notice: "No se pueden republicar publicaciones gratuitas"
     end
     
-  end
+  end  
 
   # PATCH/PUT /propiedads/1
   # PATCH/PUT /propiedads/1.json

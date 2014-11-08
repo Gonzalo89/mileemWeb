@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025000040) do
+ActiveRecord::Schema.define(version: 20141030143512) do
 
   create_table "amenities", force: true do |t|
     t.string   "nombre"
@@ -146,6 +146,18 @@ ActiveRecord::Schema.define(version: 20141025000040) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "vecinos", force: true do |t|
+    t.integer  "vecino_id"
+    t.integer  "barrio_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "promedioM2"
+    t.integer  "promedioM2Dolares"
+    t.string   "vecino_nombre"
+  end
+
+  add_index "vecinos", ["barrio_id"], name: "index_vecinos_on_barrio_id", using: :btree
 
   create_table "videos", force: true do |t|
     t.string   "url"

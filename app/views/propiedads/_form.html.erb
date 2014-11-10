@@ -324,9 +324,9 @@
 				</td>
 				<td>
 					<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
-					<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+					<%= check_box(:tieneamenities, a.nombre,  {style: 'margin:0 4px 0 4px'} ,checked: "checked") %>
 					<% else  %>
-					<%= check_box(:tieneamenities, a.nombre) %>
+					<%= check_box(:tieneamenities, a.nombre,  {style: 'margin:0 4px 0 4px'} ) %>
 					<% end  %>
 				</td>
 				<% end  %>
@@ -338,9 +338,9 @@
 				</td>
 				<td>
 					<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
-					<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+					<%= check_box(:tieneamenities, a.nombre,{style: 'margin:0 4px 0 4px'} , checked: "checked") %>
 					<% else  %>
-					<%= check_box(:tieneamenities, a.nombre) %>
+					<%= check_box(:tieneamenities, a.nombre,{style: 'margin:0 4px 0 4px'} ) %>
 					<% end  %>
 				</td>
 				<% end  %>
@@ -352,9 +352,9 @@
 				</td>
 				<td>
 					<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
-					<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+					<%= check_box(:tieneamenities, a.nombre,{style: 'margin:0 4px 0 4px'}, checked: "checked" ) %>
 					<% else  %>
-					<%= check_box(:tieneamenities, a.nombre) %>
+					<%= check_box(:tieneamenities, a.nombre,{style: 'margin:0 4px 0 4px'} ) %>
 					<% end  %>
 				</td>
 				<% end  %>
@@ -366,9 +366,9 @@
 				</td>
 				<td>
 					<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
-					<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+					<%= check_box(:tieneamenities, a.nombre,{style: 'margin:0 4px 0 4px'}, checked: "checked" ) %>
 					<% else  %>
-					<%= check_box(:tieneamenities, a.nombre) %>
+					<%= check_box(:tieneamenities, a.nombre,{style: 'margin:0 4px 0 4px'} ) %>
 					<% end  %>
 				</td>
 				<% end  %>
@@ -380,9 +380,9 @@
 				</td>
 				<td>
 					<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
-					<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+					<%= check_box(:tieneamenities, a.nombre,{style: 'margin:0 4px 0 4px'}, checked: "checked") %>
 					<% else  %>
-					<%= check_box(:tieneamenities, a.nombre) %>
+					<%= check_box(:tieneamenities, a.nombre,{style: 'margin:0 4px 0 4px'}) %>
 					<% end  %>
 				</td>
 				<% end  %>
@@ -394,9 +394,9 @@
 				</td>
 				<td>
 					<% if @propiedad.amenities.find_by_nombre(a.nombre)%>
-					<%= check_box(:tieneamenities, a.nombre, checked: "checked") %>
+					<%= check_box(:tieneamenities, a.nombre,{style: 'margin:0 4px 0 4px'}, checked: "checked") %>
 					<% else  %>
-					<%= check_box(:tieneamenities, a.nombre) %>
+					<%= check_box(:tieneamenities, a.nombre,{style: 'margin:0 4px 0 4px'}) %>
 					<% end  %>
 				</td>
 				<% end  %>

@@ -29,7 +29,7 @@ class FotosController < ApplicationController
     @propiedad = Propiedad.find(params[:propiedad_id])
 
     if(@propiedad.fotos.count >= TipoPublicacion.find(@propiedad.tipo_publicacion).maxFotos)
-      redirect_to propiedad_path(@propiedad), notice: 'No se puede cargar mas fotos.'
+      redirect_to propiedad_path(@propiedad), alert: 'No se puede cargar más fotos.'
     else
       @foto = @propiedad.fotos.create(foto_params)
       redirect_to propiedad_path(@propiedad)

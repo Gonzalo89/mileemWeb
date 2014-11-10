@@ -40,7 +40,7 @@ class VideosController < ApplicationController
         redirect_to propiedad_path(prop), alert: 'Debe ingresar un video de youtube'
       else
         if(prop.videos.count >= TipoPublicacion.find(prop.tipo_publicacion).maxVideos)
-          redirect_to propiedad_path(prop), notice: 'No se puede cargar mas videos.'
+          redirect_to propiedad_path(prop), alert: 'No se puede cargar más videos.'
         else
           if @video.save
             redirect_to propiedad_path(prop), notice: 'El video se creó correctamente.'

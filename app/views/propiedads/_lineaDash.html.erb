@@ -29,14 +29,15 @@
 					class: "btn btn-default" %> <% if @propiedad.estado_id == 2 %>
 					<%= link_to raw("<span class=\"glyphicon glyphicon-play\">"),
 					reanudar_path(id: @propiedad.id),
-					class: "btn btn-default" %> <% end %>
+					class: "btn btn-default" %> 
+					<% end %>
 
 					<% if @propiedad.estado_id == 1 %>
 					<%= link_to raw("<span class=\"glyphicon glyphicon-pause\">"),
 					pausar_path(id: @propiedad.id),
 					class: "btn btn-default" %>
 					<% end %>
-					<% if @propiedad.estado_id != 3 %>
+					<% if @propiedad.estado_id != 3 &&  @propiedad.estado_id != 4 %>
 					<%= link_to raw("<span class=\"glyphicon glyphicon-stop\">"),
 					finalizar_path(id: @propiedad.id),
 					class: "btn btn-default" %>
@@ -62,6 +63,9 @@
 	          		<% if @propiedad.estado_id == 3 %>
 	            	<span class="estado finalizada">Finalizada</span>
 	          		<% end %>
+	          		<% if @propiedad.estado_id == 4 %>
+	            	<span class="estado pendiente">Pendiente</span>
+	          		<% end %>	          		
 	        	</div>
             	<p>&nbsp;</p>
 			</div>

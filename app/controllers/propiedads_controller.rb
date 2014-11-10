@@ -10,10 +10,16 @@ class PropiedadsController < ApplicationController
   # GET /propiedads.json
   def index
     @propiedads = Propiedad.all
+    
     for prop in @propiedads
+      if prop.estado_id==4 && prop.fecha_publicacion < Time.now
+         prop.estado_id=1
+         prop.save!
+      end
+      
       if prop.fecha_finalizacion < Time.now
         prop.estado_id=3
-        prop.save!
+        prop.save!        
       end
     end
   end
@@ -73,8 +79,12 @@ class PropiedadsController < ApplicationController
       @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(3).mesesDuracion.month
     end
 
-    @propiedad.estado_id = 1
-
+    if @propiedad.fecha_publicacion <= Time.now
+      @propiedad.estado_id = 1
+    else
+      @propiedad.estado_id = 4
+    end
+    
     respond_to do |format|
       if @propiedad.save
         if tieneamenities

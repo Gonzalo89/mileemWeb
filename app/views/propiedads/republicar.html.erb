@@ -14,22 +14,35 @@
 </div>
 <% end %>
 
-<h2>Datos de operaci&oacute;n</h2>
+<h2>Tipo de publicaci&oacute;n</h2>
 <hr>
 
 <div class="form-group">
-	<%= f.label "Tipo de publicación", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
-	<div class="col-sm-3">
+	<div class="col-sm-offset-4 col-sm-4">
 		<% if @propiedad.tipo_publicacion_id == 3 %>		
-	      <%= f.text_field :tipo_publicacion, :value => @propiedad.tipo_publicacion.nombre, :disabled => true, :class=>"form-control" %>
-	      <%= f.hidden_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion_id %>
+	      <div class="radio">
+			    <%=  f.radio_button :tipo_publicacion_id, 3 %>
+			    <%= f.label :tipo_publicacion_id, "Premium", :value => 3 %>
+			    <span class="help-block">12 meses de duración, renovables. Se permiten cargar hasta 10 fotos y 3 videos. Costo: $300. Renovación antes del mes de finalizada: $200 </span>
+		    </div>
+	      	<%= f.hidden_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion_id %>
 	    <% else %>
-	      	<%= f.collection_select :tipo_publicacion_id, TipoPublicacion.find(2, 3), :id,
-		      	:nombre, {:selected => @propiedad.tipo_publicacion_id}, {:class=>"form-control"} %>
+			<div class="radio">
+			    <%=  f.radio_button :tipo_publicacion_id, 2, :checked=>true %>
+			    <%= f.label :tipo_publicacion_id, "Básica", :value => 2 %>
+			    <span class="help-block">3 meses de duración, renovables. Se permiten cargar hasta 5 fotos y 1 video. Costo: $100. Renovación antes del mes de finalizada: $80 </span>
+		    </div>
+		    <div class="radio">
+			    <%=  f.radio_button :tipo_publicacion_id, 3 %>
+			    <%= f.label :tipo_publicacion_id, "Premium", :value => 3 %>
+			    <span class="help-block">12 meses de duración, renovables. Se permiten cargar hasta 10 fotos y 3 videos. Costo: $300. Renovación antes del mes de finalizada: $200 </span>
+		    </div>
 	    <% end %>
 	</div>
 </div>
-	
+
+<h2>Datos de operaci&oacute;n</h2>
+<hr>	
 <div class="form-group">
 	<div class="col-sm-offset-3 col-sm-2 control-label">
 		<%= f.label "Fecha de publicación" %>		
@@ -113,50 +126,56 @@
 </div>
 
 <script>
-	$(document).ready(function() {
-		$("#propiedad_tipo_publicacion_id").change(function() {
-		switch ($(this).val()) {
-		case "2":		
-		  	if (<%= @enPromo %>) {
-				$("#importe").text("$<%= TipoPublicacion.find(2).importePromo %>");
-			}
-			else {
-				$("#importe").text("$<%= TipoPublicacion.find(2).importe %>");	
-			}
-			$("#datosTarjeta").show();		  
-			break;
-		case "3":
-		  	if (<%= @enPromo %>) {
-				$("#importe").text("$<%= TipoPublicacion.find(3).importePromo %>");
-			}
-			else {
-				$("#importe").text("$<%= TipoPublicacion.find(3).importe %>");	
-			}
-			$("#datosTarjeta").show();			  
-			break;
-		}
-		})
-	}); 
+    $(document).ready(function(){
+        $('input[type="radio"]').click(function(){
+            if($(this).attr("value")==2){
+                if (<%= @enPromo %>) {
+					$("#importe").text("$<%= TipoPublicacion.find(2).importePromo %>.-");
+					$("#descuento").text("(¡$20 de descuento!)");
+				}
+				else {
+					$("#importe").text("$<%= TipoPublicacion.find(2).importe %>.-");	
+				}
+				$("#datosTarjeta").show();
+                $("#importe").show();
+            }
+            if($(this).attr("value")==3){
+                if (<%= @enPromo %>) {
+					$("#importe").text("$<%= TipoPublicacion.find(3).importePromo %>.-");
+					$("#descuento").text("(¡$100 de descuento!)");
+				}
+				else {
+					$("#importe").text("$<%= TipoPublicacion.find(3).importe %>.-");	
+				}
+				$("#datosTarjeta").show();
+                $("#importe").show();
+            }
+        });
+    });
 </script>
 <script>
-	$(document).ready(function() {		
- 		switch ($("#propiedad_tipo_publicacion_id").val()) {
-		case "2":
-		  	if (<%= @enPromo %>) {
-				$("#importe").text("$<%= TipoPublicacion.find(2).importePromo %>");
+    $(document).ready(function(){
+        if($('input[type="radio"]').attr("value")==2){
+            if (<%= @enPromo %>) {
+				$("#importe").text("$<%= TipoPublicacion.find(2).importePromo %>.-");
+				$("#descuento").text("(¡$20 de descuento!)");
 			}
 			else {
-				$("#importe").text("$<%= TipoPublicacion.find(2).importe %>");	
-			}			  
-			break;
-		case "3":
-		  	if (<%= @enPromo %>) {
-				$("#importe").text("$<%= TipoPublicacion.find(3).importePromo %>");
+				$("#importe").text("$<%= TipoPublicacion.find(2).importe %>.-");	
+			}
+			$("#datosTarjeta").show();
+            $("#importe").show();
+        }
+        if($('input[type="radio"]').attr("value")==3){
+            if (<%= @enPromo %>) {
+				$("#importe").text("$<%= TipoPublicacion.find(3).importePromo %>.-");
+				$("#descuento").text("(¡$100 de descuento!)");
 			}
 			else {
-				$("#importe").text("$<%= TipoPublicacion.find(3).importe %>");	
-			}			  
-			break;
-		}
-	}); 
+				$("#importe").text("$<%= TipoPublicacion.find(3).importe %>.-");	
+			}
+			$("#datosTarjeta").show();
+            $("#importe").show();
+        }
+    });
 </script>

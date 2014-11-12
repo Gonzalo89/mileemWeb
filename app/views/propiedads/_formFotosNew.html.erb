@@ -1,0 +1,10 @@
+<%= form_for(@foto) do |f| %>
+<p>
+	<span class="camposInline"><%= f.label "Agregar foto" %><span style:"color: red; font-size: 0.8em; white-space:normal;"> (Hasta 5MB)</span></span>
+	<br>
+	<%= f.file_field :nombre ,:value=>"Buscar",:id => "archivo", :required => true %>
+</p>
+<p>
+	<%= f.submit "Subir Foto"%>
+</p>
+<% end %>

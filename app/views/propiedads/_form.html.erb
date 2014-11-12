@@ -61,40 +61,24 @@
 	}); 
 </script>
 <script>
-	$(document).ready(function() {
-		$("#propiedad_tipo_publicacion_id").change(function() {
-		switch ($(this).val()) {
-		case "2":
-			$("#datosTarjeta").show();
-			$("#importe").text("$<%= TipoPublicacion.find(2).importe %>");
-			break;
-		case "3":
-			$("#datosTarjeta").show();
-			$("#importe").text("$<%= TipoPublicacion.find(3).importe %>");
-			break;
-		default:			
-			//gratuita
-			$("#datosTarjeta").hide();		    
-			break;		
-		}
-		})
-	}); 
-</script>
-<script>
-	$(document).ready(function() {
- 		switch ($("#propiedad_tipo_publicacion_id").val()) {
-		case "2":
-			$("#importe").text("$<%= TipoPublicacion.find(2).importe %>");
-			break;
-		case "3":
-			$("#importe").text("$<%= TipoPublicacion.find(3).importe %>");
-			break;
-		default:			
-			//gratuita			
-			$("#datosTarjeta").hide();		    
-			break;		
-		}
-	}); 
+    $(document).ready(function(){
+        $('input[type="radio"]').click(function(){
+            if($(this).attr("value")==2){
+                $("#datosTarjeta").show();
+                $("#importe").show();
+				$("#importe").text("$<%= TipoPublicacion.find(2).importe %>.-");
+            }
+            if($(this).attr("value")==3){
+                $("#datosTarjeta").show();
+                $("#importe").show();
+				$("#importe").text("$<%= TipoPublicacion.find(3).importe %>.-");
+            }
+            if($(this).attr("value")==1){
+                $("#datosTarjeta").hide();
+				$("#importe").hide();
+            }
+        });
+    });
 </script>
 <script>
 	$(document).ready(function() {
@@ -170,19 +154,36 @@
 	<div class="center">
 		<p class="obligatorio center">(*)Obligatorio</p>
 	</div>
-	<h2>Datos de operaci&oacute;n</h2>
+	<h2>Tipo de publicaci&oacute;n</h2>
 	<hr class="linea">
 		<div class="form-group">
-				<%= f.label "Tipo de publicación", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
-			<div class="col-sm-3">
+				<%#= f.label "Tipo de publicación", :class=>"col-sm-offset-3 col-sm-2 control-label" %>
+			<div class="col-sm-offset-4 col-sm-4">
 				<% if params[:action] == "new" || params[:action] == "create" %>	
-				  <%= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
-			      :nombre, {:selected => @propiedad.tipo_publicacion_id}, {:class=>"form-control"} %>       
+				  <%#= f.collection_select :tipo_publicacion_id, TipoPublicacion.all, :id,
+			      :nombre, {:selected => @propiedad.tipo_publicacion_id}, {:class=>"form-control"} %>
+			     <div class="radio">
+				    <%=  f.radio_button :tipo_publicacion_id, 1, :checked => true %>
+				    <%= f.label :tipo_publicacion_id, "Gratuita", :value => 1 %>
+				    <span class="help-block">1 mes de duración, sin renovación. Se permiten cargar hasta 3 fotos y ningún video.</span>
+				</div>
+				<div class="radio">
+				    <%=  f.radio_button :tipo_publicacion_id, 2 %>
+				    <%= f.label :tipo_publicacion_id, "Básica", :value => 2 %>
+				    <span class="help-block">3 meses de duración, renovables. Se permiten cargar hasta 5 fotos y 1 video. Costo: $100. Renovación antes del mes de finalizada: $80 </span>
+			    </div>
+			    <div class="radio">
+				    <%=  f.radio_button :tipo_publicacion_id, 3 %>
+				    <%= f.label :tipo_publicacion_id, "Premium", :value => 3 %>
+				    <span class="help-block">12 meses de duración, renovables. Se permiten cargar hasta 10 fotos y 3 videos. Costo: $300. Renovación antes del mes de finalizada: $200 </span>
+			    </div>       
 			    <% else %>      
 			      <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled => true, :class=>"form-control" %>        
 			    <% end %> 
 			</div>
 		</div>
+	<h2>Datos de operaci&oacute;n</h2>
+	<hr class="linea">
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-2 control-label">
 				<%= f.label "Fecha de publicación" %>

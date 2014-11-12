@@ -9,8 +9,6 @@ def promedioM2
 
     @props = @props.select { |propiedad| propiedad.superficie != nil }
     
-    @props = @props.select { |propiedad| propiedad.operacion_id == 1 }
-    
     totalPesos = 0
     totalM2 = 0
     
@@ -66,5 +64,6 @@ def inicializar
        (propiedad.fecha_publicacion < Time.now) && (propiedad.fecha_finalizacion > Time.now) && (propiedad.estado_id == 1)
     }
 
-    @props = @props.select { |propiedad| propiedad.barrio_id == id }  
+    @props = @props.select { |propiedad| propiedad.barrio_id == id }
+    @props = @props.select { |propiedad| propiedad.operacion_id == 1 }
 end

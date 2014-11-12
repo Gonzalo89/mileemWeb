@@ -137,6 +137,12 @@ class PropiedadsController < ApplicationController
       redirect_to propiedads_path, notice: "No se pueden republicar publicaciones gratuitas"
     end
     
+    @propiedad.nombre_titular = ""
+    @propiedad.apellido_titular= ""
+    @propiedad.numero_tarjeta= ""
+    @propiedad.codigo_seguridad= ""
+    @propiedad.vencimiento_tarjeta= ""
+    
   end  
 
   # PATCH/PUT /propiedads/1

@@ -107,6 +107,7 @@ class PropiedadsController < ApplicationController
     end
   end
 
+#BUG 133
   def pausar
     @propiedad.estado_id = 2
 
@@ -130,11 +131,11 @@ class PropiedadsController < ApplicationController
 
   def republicar
     if (@propiedad.estado_id != 3)
-      redirect_to propiedads_path, alert: "No se pueden republicar publicaciones no finalizadas"
+      redirect_to propiedads_path, alert: "No se puede republicar publicaciones no finalizadas"
     end
         
     if (@propiedad.tipo_publicacion_id == 1)
-      redirect_to propiedads_path, alert: "No se pueden republicar publicaciones gratuitas"
+      redirect_to propiedads_path, alert: "No se puede republicar publicaciones gratuitas"
     end
     
     @propiedad.nombre_titular = ""

@@ -70,6 +70,11 @@ class PropiedadsController < ApplicationController
     @propiedad = Propiedad.new(propiedad_params)
     tieneamenities = params[:tieneamenities]
 
+    if (@propiedad.vencimiento_tarjeta < Time.now)
+      redirect_to propiedads_path(@propiedad), alert: "No puede ingresar una tarjeta vencida" 
+      return
+    end
+    
     case @propiedad.tipo_publicacion_id
     when 1
       @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(1).mesesDuracion.month
@@ -84,6 +89,7 @@ class PropiedadsController < ApplicationController
     else
       @propiedad.estado_id = 4
     end
+    
     
     respond_to do |format|
       if @propiedad.save
@@ -135,6 +141,10 @@ class PropiedadsController < ApplicationController
         
     if (@propiedad.tipo_publicacion_id == 1)
       redirect_to propiedads_path, notice: "No se pueden republicar publicaciones gratuitas"
+    end
+    
+    if (@propiedad.vencimiento_tarjeta < Time.now)
+      redirect_to propiedads_url, alert: "No puede ingresar una tarjeta vencida"  
     end
     
     @propiedad.nombre_titular = ""

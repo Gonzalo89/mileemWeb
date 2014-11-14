@@ -9,7 +9,7 @@ class FotoUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   
   # --------------------Comento para hacer pruebas-------------------- #
-  # storage :file
+  storage :file
   # storage :fog
   
   # Override the directory where uploaded files will be stored.

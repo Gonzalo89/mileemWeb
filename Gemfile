@@ -52,9 +52,8 @@ gem 'geocoder', '~> 1.2.5'
 gem 'devise', '~> 3.3.0'
 gem 'date_validator', '~> 0.7.0'
 group :production do
-  gem 'fog'
+  # Fog es la gema utilizada para guardar archivos en la nube
+  #gem 'fog'
   gem 'pg', '~> 0.15.1'
   gem 'rails_12factor'
-  # Agregada gema para trabajo con archivos en la nube
-
 end

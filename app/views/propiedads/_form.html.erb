@@ -165,17 +165,17 @@
 			     <div class="radio">
 				    <%=  f.radio_button :tipo_publicacion_id, 1, :checked => true %>
 				    <%= f.label :tipo_publicacion_id, "Gratuita", :value => 1 %>
-				    <span class="help-block">1 mes de duración, sin renovación. Se permiten cargar hasta 3 fotos y ningún video.</span>
+				    <span class="help-block">1 mes de duración, sin renovación. Se permite cargar hasta 3 fotos.</span>
 				</div>
 				<div class="radio">
 				    <%=  f.radio_button :tipo_publicacion_id, 2 %>
 				    <%= f.label :tipo_publicacion_id, "Básica", :value => 2 %>
-				    <span class="help-block">3 meses de duración, renovables. Se permiten cargar hasta 5 fotos y 1 video. Costo: $100. Renovación antes del mes de finalizada: $80 </span>
+				    <span class="help-block">3 meses de duración, renovables. Se permite cargar hasta 5 fotos y 1 video. Costo: $100. Renovación dentro del mes de vencimiento: $80 </span>
 			    </div>
 			    <div class="radio">
 				    <%=  f.radio_button :tipo_publicacion_id, 3 %>
 				    <%= f.label :tipo_publicacion_id, "Premium", :value => 3 %>
-				    <span class="help-block">12 meses de duración, renovables. Se permiten cargar hasta 10 fotos y 3 videos. Costo: $300. Renovación antes del mes de finalizada: $200 </span>
+				    <span class="help-block">12 meses de duración, renovables. Se permite cargar hasta 10 fotos y 3 videos. Costo: $300. Renovación dentro del mes de vencimiento: $200 </span>
 			    </div>       
 			    <% else %>      
 			      <%= f.text_field :tipo_publicacion_id, :value => @propiedad.tipo_publicacion.nombre, :disabled => true, :class=>"form-control" %>        

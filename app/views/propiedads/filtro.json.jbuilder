@@ -6,6 +6,7 @@ json.array!(@propiedades) do |propiedad|
   json.url propiedad_url(propiedad, format: :json)
   json.moneda propiedad.moneda.nombre
   json.barrio propiedad.barrio.nombre
+  json.barrio_id propiedad.barrio.id
   json.operacion propiedad.operacion.tipo
   json.tipo_propiedad propiedad.tipo_propiedad.nombre
   json.fotos propiedad.fotos

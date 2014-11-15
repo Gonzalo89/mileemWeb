@@ -148,8 +148,6 @@ class PropiedadsController < ApplicationController
 #      redirect_to propiedads_url, alert: "No puede ingresar una tarjeta vencida"  
 #    end
     
-    @propiedad.nombre_titular = ""
-    @propiedad.apellido_titular= ""
     @propiedad.numero_tarjeta= ""
     @propiedad.codigo_seguridad= ""
     @propiedad.vencimiento_tarjeta= ""

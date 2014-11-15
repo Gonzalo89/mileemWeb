@@ -146,10 +146,6 @@ class PropiedadsController < ApplicationController
       redirect_to propiedads_path, alert: "No se puede republicar publicaciones gratuitas"
     end
     
-#    if (@propiedad.vencimiento_tarjeta < Time.now)
-#      redirect_to propiedads_url, alert: "No puede ingresar una tarjeta vencida"  
-#    end
-    
     @propiedad.numero_tarjeta= ""
     @propiedad.codigo_seguridad= ""
     @propiedad.vencimiento_tarjeta= ""
@@ -162,6 +158,14 @@ class PropiedadsController < ApplicationController
     respond_to do |format|
 
       if @propiedad.update(propiedad_params)
+        
+        if @propiedad.tipo_publicacion_id != 1
+          if (@propiedad.vencimiento_tarjeta < Time.now)
+          redirect_to republicar_path(@propiedad), alert: "No puede ingresar una tarjeta vencida"
+          return
+        end
+      end
+        
         tieneamenities = params[:tieneamenities]
 
         @propiedad.tieneamenities.each do |aprop|

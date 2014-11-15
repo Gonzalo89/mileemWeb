@@ -2,7 +2,7 @@
 <hr>
 <% @propiedad.fotos.each do |foto| %>
 <p class="center">
-	<%= image_tag foto.nombre if foto.nombre? %>
+	<%= image_tag(foto.nombre, :class=>"fotoShow") if foto.nombre? %>
 	<span class="center"><%= button_to 'Eliminar' , foto, class:"btn btn-default", method: :delete , data: { confirm: '¿Estás seguro?'}%></span>
 </p>
 <% end %>

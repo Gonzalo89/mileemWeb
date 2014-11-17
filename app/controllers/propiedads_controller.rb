@@ -80,7 +80,7 @@ class PropiedadsController < ApplicationController
     end
     
     if @propiedad.tipo_publicacion_id != 1
-      if (@propiedad.vencimiento_tarjeta < Time.now)
+      if (@propiedad.vencimiento_tarjeta!=nil && @propiedad.vencimiento_tarjeta < Time.now)
         redirect_to new_propiedad_path, alert: "No puede ingresar una tarjeta vencida"
         return
       end
@@ -160,7 +160,7 @@ class PropiedadsController < ApplicationController
       if @propiedad.update(propiedad_params)
         
         if @propiedad.tipo_publicacion_id != 1
-          if (@propiedad.vencimiento_tarjeta < Time.now)
+          if (@propiedad.vencimiento_tarjeta!=nil && @propiedad.vencimiento_tarjeta < Time.now)
           redirect_to republicar_path(@propiedad), alert: "No puede ingresar una tarjeta vencida"
           return
         end

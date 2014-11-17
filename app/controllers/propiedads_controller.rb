@@ -192,8 +192,12 @@ class PropiedadsController < ApplicationController
           when 3
             @propiedad.fecha_finalizacion = @propiedad.fecha_publicacion + TipoPublicacion.find(3).mesesDuracion.month
           end
-
+        end
+        
+        if @propiedad.fecha_publicacion <= Time.now
           @propiedad.estado_id = 1
+        else
+          @propiedad.estado_id = 4
         end
 
         @propiedad.save

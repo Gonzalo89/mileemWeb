@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   resources :barrios
 
   get 'welcome/index'
+  
+  get '/piechart' => 'piechart#piechart'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

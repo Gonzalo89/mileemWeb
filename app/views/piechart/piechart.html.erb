@@ -5,18 +5,17 @@
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+	
+       var data = google.visualization.arrayToDataTable([
+          ['Ambientes', 'Cantidad de propiedades'],
+          ['1 amb.', Android.getCantidadPropiedades1Amb()],
+          ['2 amb.', Android.getCantidadPropiedades2Amb()],
+          ['3 amb.', Android.getCantidadPropiedades3Amb()],
+          ['4+ amb.', Android.getCantidadPropiedades4MasAmb()],
         ]);
 
         var options = {
-          title: 'My Daily Activities'
+          title: 'Prueba de gráfico de torta'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

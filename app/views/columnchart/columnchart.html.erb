@@ -5,24 +5,29 @@
       google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart);
 function drawChart() {
+  // Se crea la tabla donde se cargaran barrios y precios
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Barrio');
+  data.addColumn('number', 'Precio promedio por metro cuadrado');
+  
+  // Se obtiene la lista de barrios desde Android
+  var barrios = Android.getBarriosGraficoBarras();
+  var cantidadBarrios = barrios.length;
+  
+  // Se completan los valores para cada barrio y se llena la tabla
+  for (var i = 0; i < cantidadBarrios; i++) {
+    data.addRows([barrios[i], Android.getPrecioPromedioDeBarrio(barrios[i]);
+  }
 
-  var data = google.visualization.arrayToDataTable([
-    ['Year', 'Sales', 'Expenses'],
-    ['2004',  1000,      400],
-    ['2005',  1170,      460],
-    ['2006',  660,       1120],
-    ['2007',  1030,      540]
-  ]);
 
   var options = {
-    title: 'Company Performance',
-    hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
+    title: 'Prueba de gráfico de barras',
+    hAxis: {title: 'Barrios', titleTextStyle: {color: 'red'}}
   };
 
   var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 
   chart.draw(data, options);
-
 }
     </script>
   </head>

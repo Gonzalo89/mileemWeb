@@ -14,11 +14,14 @@ function drawChart() {
   var barrios = Android.getBarriosGraficoBarras();
   var cantidadBarrios = barrios.length;
   
+  // Se obtiene la lista de precios promedio por metro cuadrado
+  // que se corresponde 1 a 1 con la lista de barrios
+  var precios = Android.getPrecioPromedioDeBarrios(); 
+  
   // Se completan los valores para cada barrio y se llena la tabla
   for (var i = 0; i < cantidadBarrios; i++) {
-    data.addRows([barrios[i], Android.getPrecioPromedioDeBarrio(barrios[i]);
+    data.addRows([barrios[i], precios[i]);
   }
-
 
   var options = {
     title: 'Prueba de gráfico de barras',

@@ -2,30 +2,80 @@
   <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
+google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart);
 function drawChart() {
   // Se crea la tabla donde se cargaran barrios y precios
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Barrio');
   data.addColumn('number', 'Precio promedio por metro cuadrado');
+  data.addColumn({type: 'string', role: 'style'});
   
-  // Se obtiene la lista de barrios desde Android
-  var barrios = Android.getBarriosGraficoBarras();
-  var cantidadBarrios = barrios.length;
+  // Se obtiene el numero de barrios
+  var cantidadBarrios = Android.getCantidadBarrios();
   
-  // Se obtiene la lista de precios promedio por metro cuadrado
-  // que se corresponde 1 a 1 con la lista de barrios
-  var precios = Android.getPrecioPromedioDeBarrios(); 
+  // Se obtienen los nombres de los barrios
+  var barrio1 = Android.getBarrio1();
+  var barrio2 = Android.getBarrio2();
+  var barrio3 = Android.getBarrio3();
+  var barrio4 = Android.getBarrio4();
+  var barrio5 = Android.getBarrio5();
+  var barrio6 = Android.getBarrio6();
+  var barrio7 = Android.getBarrio7();
+  var barrio8 = Android.getBarrio8();
+  var barrio9 = Android.getBarrio9();
+
   
+  // Se guardan en la variable barrios
+  var barrios = [];
+  barrios.push(barrio1);
+  barrios.push(barrio2);
+  barrios.push(barrio3);
+  barrios.push(barrio4);
+  barrios.push(barrio5);
+  barrios.push(barrio6);
+  barrios.push(barrio7);
+  barrios.push(barrio8);
+  barrios.push(barrio9);
+  
+  // Se obtienen las estadisticas de los barrios vecinos
+  var estadisticaBarrio1 = Android.getEstadisticaBarrio1();
+  var estadisticaBarrio2 = Android.getEstadisticaBarrio2();
+  var estadisticaBarrio3 = Android.getEstadisticaBarrio3();
+  var estadisticaBarrio4 = Android.getEstadisticaBarrio4();
+  var estadisticaBarrio5 = Android.getEstadisticaBarrio5();
+  var estadisticaBarrio6 = Android.getEstadisticaBarrio6();
+  var estadisticaBarrio7 = Android.getEstadisticaBarrio7();
+  var estadisticaBarrio8 = Android.getEstadisticaBarrio8();
+  var estadisticaBarrio9 = Android.getEstadisticaBarrio9();
+  
+
+  // Se guardan en la variable estadisticasBarrios
+  var estadisticasBarrios = [];
+  estadisticasBarrios.push(estadisticaBarrio1);
+  estadisticasBarrios.push(estadisticaBarrio2);
+  estadisticasBarrios.push(estadisticaBarrio3);
+  estadisticasBarrios.push(estadisticaBarrio4);
+  estadisticasBarrios.push(estadisticaBarrio5);
+  estadisticasBarrios.push(estadisticaBarrio6);
+  estadisticasBarrios.push(estadisticaBarrio7);
+  estadisticasBarrios.push(estadisticaBarrio8);
+  estadisticasBarrios.push(estadisticaBarrio9);
+    
   // Se completan los valores para cada barrio y se llena la tabla
   for (var i = 0; i < cantidadBarrios; i++) {
-    data.addRows([barrios[i], precios[i]);
+  	if (i == 0) {
+  		data.addRow([barrios[i], estadisticasBarrios[i], 'red']);
+  	} else {
+  		data.addRow([barrios[i], estadisticasBarrios[i], '']);	
+  	}
   }
 
   var options = {
-    title: 'Prueba de gráfico de barras',
-    hAxis: {title: 'Barrios', titleTextStyle: {color: 'red'}}
+    title: 'Precio promedio del metro cuadrado',
+    titleTextStyle: { color: 'black', fontName: 'verdana', fontSize: 20, bold: true},
+    chartArea: {'width': '90%', 'height': '80%'},
+    legend: {position: 'none'}
   };
 
   var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));

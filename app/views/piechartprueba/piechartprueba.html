@@ -5,17 +5,22 @@
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-	
-       var data = google.visualization.arrayToDataTable([
+
+        var data = google.visualization.arrayToDataTable([
           ['Ambientes', 'Cantidad de propiedades'],
-          ['1 amb.', Android.getCantidadPropiedades1Amb()],
-          ['2 amb.', Android.getCantidadPropiedades2Amb()],
-          ['3 amb.', Android.getCantidadPropiedades3Amb()],
-          ['4+ amb.', Android.getCantidadPropiedades4MasAmb()],
+          ['1 amb.',     11],
+          ['2 amb.',      2],
+          ['3 amb.',  2],
+          ['4+ amb.', 2],
         ]);
 
         var options = {
-          title: 'Tipología'
+          title: 'Tipología',
+          titleTextStyle: { color: 'black', fontName: 'verdana', fontSize: 20, bold: true},
+          chartArea: {'width': '90%', 'height': '80%'},
+          pieSliceTextStyle: {
+            color: 'white',
+          },
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

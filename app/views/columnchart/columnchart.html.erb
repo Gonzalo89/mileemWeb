@@ -72,11 +72,13 @@ function drawChart() {
   }
 
   var options = {
-    title: 'Precio promedio del metro cuadrado',
+    //title: 'Precio promedio del metro cuadrado',
     titleTextStyle: { color: 'black', fontName: 'verdana', fontSize: 20, bold: true},
     chartArea: {'width': '90%', 'height': '80%'},
     legend: {position: 'none'}
   };
+  
+  options.title = 'Precio promedio del metro cuadrado en zona de' + ' ' +  barrio1;
 
   var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 
